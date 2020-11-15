@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="res/vct2019_4rounded.png">
+    <link rel="stylesheet" href="css/main.css">
+
+    <script src="https://unpkg.com/jquery"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+	integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+	crossorigin=""/>
+	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+	integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+	crossorigin=""></script>
+    <script src="js/apiapp.js"></script>
+
+    <title>There_Is | VCT.one</title>
+</head>
+<body>
+    <header>
+        <figure>
+            <img src="res/vct.one_logo.png" alt="VCT.one logo" />
+        </figure>
+        <nav>
+            <a href="index.html"><div>Back To Home Page</div></a>
+        </nav>
+    </header>
+
+    <article>
+        <h2>There_Is</h2>
+        <div class="note">Made in Groningen, 2020.</div>
+        <p>
+            This is the "There_Is" app. You choose a place, and it tells you, what there is!<br>
+            <br>
+            Select a place on the map and find information about it using the buttons below.
+        </p>
+        <section>
+            <h3>Map / Location Selection</h3>
+            <div id="map"></div>
+            <p id="map-info">
+                This text would be replaced with map related information if the app worked as intended.
+            </p>
+            <p class="attribution">
+                Map display engine: <a href="https://leafletjs.com" target="_blank">Leaflet</a><br>
+                Map data and tiles: <a href="https://tools.wmflabs.org/" target="_blank">Wikimedia Labs</a>, &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors (<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>)<br>
+                Map tiles: <a href="http://stamen.com">Stamen Design</a> (<a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>)
+            </p>
+            <p>
+                <u>Click the following buttons</u> for more information.
+            </p>
+        </section>
+        <div class="linkbox"><a onclick="showOrHideElement('#place-section')">About this Location</a></div>
+        <section id="place-section" class="hidden">
+            <p id="place-info">
+                Please enable JavaScript in your browser.
+            </p>
+            <p class="attribution">Location data: <a href="https://www.geonames.org">GeoNames.org</a>.</p>
+        </section>
+        <div class="linkbox"><a onclick="showOrHideElement('#weather-section')">Weather Information</a></div>
+        <section id="weather-section" class="hidden">
+            <p id="weather-info">
+                Please enable JavaScript in your browser.
+            </p>
+            <p class="attribution">Weather information: <a href="https://www.openweathermap.org">OpenWeatherMap</a>.</p>
+        </section>
+        <div class="linkbox"><a onclick="showOrHideElement('#wiki-section')">Wikipedia Articles</a></div>
+        <section id="wiki-section" class="hidden">
+            <p id="wiki-info">
+                Please enable JavaScript in your browser.
+            </p>
+            <p class="attribution">Wikipedia articles: <a href="https://www.wikipedia.org">Wikipedia</a>.</p>
+        </section>
+        <div class="linkbox"><a onclick="showOrHideElement('#covid19-section')">COVID19 Pandemic Infection Cases</a></div>
+        <section id="covid19-section" class="hidden">
+            <h3>COVID19 Pandemic Information</h3>
+            <p id="covid19-info">
+                Please enable JavaScript in your browser.
+            </p>
+            <p class="attribution">
+                Location data: <a href="https://www.geonames.org">GeoNames.org</a><br>
+                COVID19 data: <a href="https://www.covid19api.com">COVID19API.com</a>.</p>
+        </section>
+    </article>
+</body>
+</html>

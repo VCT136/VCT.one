@@ -1,0 +1,179 @@
+body{
+	background-image: url("../res/webbg.jpg");
+	background-repeat: no-repeat;
+	background-color: #0C5D59;
+	background-size: cover;
+	background-attachment: fixed;
+	color: #ffffff;
+	font-family: "Maven Pro", Ubuntu, Calibri, Verdana, Helvetica, sans-serif;
+	overflow-x: hidden;
+}
+
+a{
+	color: #ffbe47;
+	transition-property: color;
+	transition-duration: 1s;
+}
+a:hover{
+	color: #ffc800;
+}
+
+h2{
+	color: #ffbe47;
+	font-family: "Courier New", "Times New Roman", "Ubuntu Mono", Monospace, serif;
+}
+
+img{
+	width: 63vw;
+	margin: 1vw;
+	object-fit: contain;
+	border-radius: 10%;
+}
+
+.content{
+	padding-bottom: 100vh;
+}
+
+.content article{
+	margin-left: 30vw;
+	margin-right: 0;
+	background-image: linear-gradient(to right, #131313c8, #00000036);
+	border-radius: 1em;
+	margin-bottom: 1vh;
+	padding-left: 0.5vw;
+	padding-right: 0.5vw;
+	border: 0.1em;
+	border-style: solid;
+	border-color: #ffc800;
+	width: 65vw;
+}
+
+.content .popupbox{
+	height: 1.5em;
+	transition-property: height;
+	transition-duration: 1s;
+	border: 0.1em;
+	border-style: solid;
+	border-color: #ffbe47;
+	border-radius: 0.5em;
+	overflow: hidden;
+	margin-bottom: 0.5vh;
+}
+
+.content .popupbox:hover{
+	height: auto;
+}
+
+.content h1{
+	text-align: center;
+	font-family: UnifrakturMaguntia, WeissRundgotisch, "Times New Roman", Serif;
+	font-size: 2em;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+}
+
+.content p{
+	text-align: justify;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+	font-size: 1.1em;
+}
+
+.italic{
+	font-style: italic;
+}
+
+#logo{
+	width: 93vw;
+	height: 15vh;
+	margin-left: 1vw;
+	background-image: linear-gradient(to right, #131313c8, #00000036);
+	transition-property: background-color, border-color;
+	transition-duration: 1s;
+	padding: 1vw;
+	border-radius: 1em;
+	border: 0.1em;
+	border-style: solid;
+	border-color: #ffbe47;
+	margin-bottom: 1vh;
+	object-fit: contain;
+}
+
+#logo:hover{
+	background-color: #ffc800;
+	border-color: #000000;
+}
+
+.sidebar{
+	margin-left: 1vw;
+	padding: 0;
+	width: 28vw;
+	height: 75vh;
+	float: left;
+	position: sticky;
+	position: -webkit-sticky;
+	top: 1vh;
+}
+
+.sidebar .linkbtn{
+	background-color: #131313c8;
+	border-radius: 1em;
+	margin-bottom: 1vh;
+	padding: 0.5em;
+	transition-property: color, border-color, background-color;
+	transition-duration: 1s;
+	border: 0.1em;
+	border-style: solid;
+	border-color: #ffbe47;
+	font-size: 1.5em;
+	overflow: hidden;
+}
+
+.sidebar .linkbtn:hover{
+	background-color: #ffc800;
+	border-style: solid;
+	border-color: #000000;
+}
+
+.sidebar a {
+	color: #ffffff;
+	transition-property: color;
+	transition-duration: 0.25s;
+	text-decoration: none;
+	font-family: "Times New Roman", UnifrakturMaguntia, Ubuntu, Verdana, Serif;
+}
+
+.sidebar a:hover {
+	color: #000000;
+}
+
+.sidebar .linkgroup{
+	background-color: #131313c8;
+	border-radius: 1em;
+	margin-bottom: 1vh;
+	padding: 0.5em;
+	transition-property: color, border-color, background-color;
+	transition-duration: 1s;
+	border: 0.1em;
+	border-style: solid;
+	border-color: #ffbe47;
+	font-size: 1.5em;
+}
+
+.sidebar .linkgroup h1{
+	font-family: UnifrakturMaguntia, WeissRundgotisch, "Times New Roman", Serif;
+	font-size: 1em;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+}
+
+.sidebar .linkgroup .linkbtn{
+	background-color: #00000000;
+	font-size: 1em;
+}
+
+.sidebar .linkgroup .linkbtn:hover{
+	background-color: #ffc800;
+	border-style: solid;
+	border-color: #ffffffff;
+}
