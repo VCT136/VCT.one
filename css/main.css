@@ -99,13 +99,15 @@ article p:hover {
 }
 article p a {
     color: crimson;
-    font-weight: bold;
     text-decoration: none;
 }
 article p.attribution {
     font-size: x-small;
     padding: 0 2vmin 0 2vmin;
     text-align: right;
+}
+article p u {
+    margin-top: 1.5vmin;
 }
 article section {
     background-color: #ffffffaa;
@@ -167,10 +169,31 @@ article .linkbox a:hover {
     transition-property: background-color, border, box-shadow, margin;
     transition-duration: 0.5s;
 }
+article .linkbox a img {
+    height: 1em;
+    width: 1em;
+}
+article .linkbox a img:hover {
+    box-shadow: none;
+}
 article .note {
     font-size: small;
     margin: 0.5vmin 2vmin 0.5vmin 0;
     text-align: right;
+}
+article .text-container {
+    background-color: #ffffffaa;
+    border-radius: 2vmin;
+    margin: 0.5vmin 2vmin 0.5vmin 2vmin;
+    padding: 2vmin;
+    text-align: justify;
+    transition-duration: 1s;
+    transition-property: background-color;
+}
+article .text-container:hover {
+    background-color: white;
+    transition-duration: 1s;
+    transition-property: background-color;
 }
 
 h1 {
@@ -208,6 +231,10 @@ header article p {
     margin: 0;
     padding: 0 2vmin 2vmin 2vmin;
     text-align: justify;
+    transition: none;
+}
+header article p:hover {
+    transition: none;
 }
 header figure {
     display: grid;
@@ -282,6 +309,7 @@ nav a div:hover {
     text-shadow: 0 0 5px white;
     width: calc(40vh - 2vmin);
     white-space: nowrap;
+    overflow: hidden;
 }
 .flex-container img {
     animation: cover-image-slide;
@@ -364,10 +392,10 @@ nav a div:hover {
     grid-column: 1 / 2;
     background-image: linear-gradient(#ffffff00, white, #ffffff00);
     margin-top: 3vmin;
-    padding: 0 0 0 2vmin;
+    padding: 0 2vmin 0 2vmin;
 }
 .grid-container section p {
-    padding: 0 0 0 2vmin;
+    padding: 0 2vmin 0 2vmin;
 }
 
 .hidden {
