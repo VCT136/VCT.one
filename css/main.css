@@ -17,7 +17,7 @@ body {
 
 article {
     animation: article-roll-slide;
-    animation-duration: 1s;
+    animation-duration: 1.5s;
     background-color: gold;
     background-image: radial-gradient(white, gold);
     border-radius: 5vmin;
@@ -27,7 +27,6 @@ article {
     min-height: 50vh;
     transition-duration: 0.3s;
     transition-property: box-shadow, transform;
-    transform: rotate(1deg);
     z-index: 50;
 }
 article:hover {
@@ -257,19 +256,21 @@ nav a {
     font-size: x-large;
     place-items: center;
 }
-nav a div {
-    align-items: center;
+nav div {
     display: grid;
-    text-align: center;
+    place-items: center;
+}
+nav div a {
     background-color: gold;
     background-image: radial-gradient(white, gold);
     border-radius: 3vmin;
     box-shadow: 0 0 5px black;
     padding: 2vmin;
+    text-align: center;
     transition-duration: 0.6s;
     transition-property: background-color;
 }
-nav a div:hover {
+nav div a:hover {
     background-color: chocolate;
     background-image: none;
     box-shadow: inset 0 0 5px black;
@@ -437,7 +438,7 @@ nav a div:hover {
     }
     to {
         margin-top: 5vh;
-        transform: rotate(1deg);
+        transform: none;
     }
 }
 
