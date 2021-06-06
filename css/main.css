@@ -235,6 +235,7 @@ header article p {
     transition: none;
 }
 header article p:hover {
+    background-color: #00000000;
     transition: none;
 }
 header figure {
