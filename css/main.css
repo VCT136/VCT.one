@@ -227,6 +227,7 @@ header article h1 {
     text-decoration-color: #c80000;
 }
 header article p {
+    background-color: #00000000;
     font-size: large;
     margin: 0;
     padding: 0 2vmin 2vmin 2vmin;
