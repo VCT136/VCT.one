@@ -58,6 +58,7 @@ section {
 }
 
 .video-container {
+    background-color: black;
     border: none;
     height: calc(9 * (90vmin / 16));
     width: 90vmin;
