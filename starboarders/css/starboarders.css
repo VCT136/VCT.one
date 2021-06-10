@@ -18,7 +18,7 @@ footer {
     width: 100%;
 
     color: white;
-    text-shadow: 0 0 1vmin black;
+    text-shadow: 0 0 1vmin black, 0 0 1vmin black;
 
     background-image: url("../res/wallpaper_starboarders_bw2.png");
     background-size: cover;
