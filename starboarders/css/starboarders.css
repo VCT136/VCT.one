@@ -12,6 +12,23 @@ body {
     margin: 0;
 }
 
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
+    color: white;
+    text-shadow: 0 0 1vmin black;
+
+    background-image: url("../res/wallpaper_starboarders_bw2.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    display: grid;
+    place-items: center;
+}
+
 h2 {
     font-family: "Nova Flat", "Maven Pro", Ubuntu, sans-serif;
     font-size: 3vh;
@@ -19,35 +36,29 @@ h2 {
     margin: 0;
 }
 
-header {
+nav {
     background-image: linear-gradient(#ffffff3f, #ffffff7f);
+    position: sticky;
 }
 
-header img {
-    height: 6vh;
-    padding-top: 2vh;
-    padding-bottom: 2vh;
-    padding-left: 1vw;
+nav img {
+    height: 6vmin;
+    padding-top: 2vmin;
+    padding-bottom: 2vmin;
+    padding-left: 1vmin;
 }
 
 section {
     /*Temporary for while there only is the trailer:*/
-    height: 80vh;
     display: grid;
     place-items: center;
 
-    margin-top: 1vh;
-    margin-bottom: 1vh;
+    margin-top: 1vmin;
+    margin-bottom: 1vmin;
 }
 
 .video-container {
-    height: 50vh;
-    display: grid;
-    place-items: center;
-}
-
-.video-container iframe {
     border: none;
-    height: 50vh;
-    width: calc(16 * (50vh / 9));
+    height: calc(9 * (90vmin / 16));
+    width: 90vmin;
 }
