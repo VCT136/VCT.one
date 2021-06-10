@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Nova+Flat&display=swap');
+
+html {
+    background-attachment: fixed;
+    background-image: url("../res/sitebg.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body {
+    margin: 0;
+}
+
+h2 {
+    font-family: "Nova Flat", "Maven Pro", Ubuntu, sans-serif;
+    font-size: 3vh;
+    text-align: center;
+    margin: 0;
+}
+
+header {
+    background-image: linear-gradient(#ffffff3f, #ffffff7f);
+}
+
+header img {
+    height: 6vh;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    padding-left: 1vw;
+}
+
+section {
+    /*Temporary for while there only is the trailer:*/
+    height: 80vh;
+    display: grid;
+    place-items: center;
+
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+
+.video-container {
+    height: 50vh;
+    display: grid;
+    place-items: center;
+}
+
+.video-container iframe {
+    border: none;
+    height: 50vh;
+    width: calc(16 * (50vh / 9));
+}
