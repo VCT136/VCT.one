@@ -31,7 +31,7 @@ body {
     min-height: 100vh;
     display: grid;
     grid-gap: 2vmin;
-    grid-template-rows: 10vmin repeat(3, min-content) auto min-content;
+    grid-template-rows: 10vh repeat(3, min-content) auto min-content;
     place-items: center;
 }
 
@@ -51,7 +51,7 @@ a {
 nav {
     background-color: white;
     box-shadow: 0 0 1vmin 0.5vmin var(--fifty-percent-black);
-    height: 8vmin;
+    height: 8vh;
     width: 100%;
     position: sticky;
     top: 0;
@@ -59,7 +59,7 @@ nav {
 
     display: grid;
     grid-gap: 2vmin;
-    padding: 1vmin 0 1vmin 0;
+    padding: 1vh 0 1vh 0;
     place-items: center;
 }
 
