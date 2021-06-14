@@ -15,7 +15,7 @@ function adjust() {
 
     //role cards
 
-    //make cards 1:0.6 if on phone
+    //make cards 1:0.6
     $("div.role-cards article").css("height", 
         "calc(" + $("div.role-cards article").css("width") + " * 0.6)"
     );
