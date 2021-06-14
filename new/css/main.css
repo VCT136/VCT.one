@@ -185,8 +185,15 @@ div.role-cards article img {
     object-fit: contain;
 }
 
+/* phone size */
+@media screen and (max-width: 800px) {
+    div.role-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* small size */
-@media screen and (max-width: 1300px) {
+@media screen and (min-width: 801px) and (max-width: 1300px) {
     div.role-cards {
         grid-template-columns: 1fr 1fr;
     }
