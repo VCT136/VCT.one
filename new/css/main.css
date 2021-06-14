@@ -75,6 +75,7 @@ article.introduction {
     max-width: 1500px;
     display: grid;
     grid-template-columns: 20vmin 1fr;
+    grid-gap: 2vmin;
     place-items: center;
     margin-left: auto;
     margin-right: auto;
@@ -99,7 +100,6 @@ article.introduction div {
     background-color: white;
     border-radius: 2vmin;
     padding: 2vmin;
-    margin: 0 0 0 2vmin;
     box-shadow: 0 0 1vmin var(--fifty-percent-black);
 }
 article.introduction h1 {
@@ -113,12 +113,6 @@ article.introduction p {
 @media screen and (max-width: 800px) {
     article.introduction {
         grid-template-columns: 1fr;
-    }
-    article.introduction img {
-        margin: 3vmin 0 0 0;
-    }
-    article.introduction div {
-        margin: 2vmin 0 2vmin 0;
     }
 }
 
