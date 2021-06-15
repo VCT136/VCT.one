@@ -217,6 +217,7 @@ article.collection {
     max-width: calc(1500px - 4vmin);
     border-radius: 2vmin;
     padding: 2vmin;
+    box-shadow: 0 0 1vmin var(--fifty-percent-black);
 
     display: grid;
     grid-template-rows: min-content, repeat(auto-fill, 1fr);
