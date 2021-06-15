@@ -122,16 +122,26 @@ article.introduction p {
     }
 }
 
-/* role cards */
+/* roles */
+
+article.roles {
+    background-color: lightgrey;
+    border-radius: 2vmin;
+    padding: 2vmin;
+    width: calc(90vw - 4vmin);
+    box-shadow: 0 0 1vmin var(--fifty-percent-black);
+    max-width: calc(1500px - 4vmin);
+    margin-left: auto;
+    margin-right: auto;
+
+    display: grid;
+    grid-gap: 2vmin;
+}
 
 div.role-cards {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 2vmin;
-    width: 90vw;
-    max-width: 1500px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 div.role-cards article {
@@ -204,6 +214,7 @@ div.row-button:hover {
 article.collection {
     background-color: white;
     width: calc(90vw - 4vmin);
+    max-width: calc(1500px - 4vmin);
     border-radius: 2vmin;
     padding: 2vmin;
 
@@ -212,19 +223,43 @@ article.collection {
     grid-gap: 2vmin;
 }
 
-article.collection div.projects {
+ol.projects {
     display: grid;
-    grid-template-rows: repeat(auto-fill, min-content);
+    list-style-type: none;
+    padding: 0;
+}
+ol.projects li {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}
+ol.projects li:nth-child(2n+1) {
+    background-color: lightgrey;
+}
+ol.projects li div {
+    padding: 2vmin;
+    border-style: outset;
+    border-width: 1px;
+}
+ol.projects li:nth-child(n+2) div:nth-child(2) {
+    font-weight: bold;
+    font-style: italic;
+}
+ol.projects li div img {
+    object-fit: contain;
+    width: 100%;
 }
 
-article.collection div.projects div.project {
-    padding: 2vmin;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 3fr;   
-    grid-gap: 2vmin;
+/* phone size */
+@media screen and (max-width: 800px) {
+    ol.projects li {
+        grid-template-columns: 1fr 1fr;
+    }
 }
-article.collection div.projects div.project:nth-child(2n) {
-    background-color: var(--twenty-five-percent-black);    
+/* small size */
+@media screen and (min-width: 801px) and (max-width: 1300px) {
+    ol.projects li {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
 }
 
 /* footer */
