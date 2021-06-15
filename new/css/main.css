@@ -227,6 +227,7 @@ ol.projects {
     display: grid;
     list-style-type: none;
     padding: 0;
+    margin: 0;
 }
 ol.projects li {
     display: grid;
@@ -274,6 +275,29 @@ footer {
     padding: 2vmin;
     place-items: center;
     text-align: center;
+}
+
+/* social media icons */
+
+div.social-media-icons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 90vw;
+    place-items: center;
+}
+div.social-media-icons a {
+    color: black;
+}
+div.social-media-icons img {
+    object-fit: contain;
+    height: 1.5em;
+}
+
+/* phone size */
+@media screen and (max-width: 800px) {
+    div.social-media-icons {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 .flex-container {
