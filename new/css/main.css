@@ -226,6 +226,7 @@ article.collection {
 
 ol.projects {
     display: grid;
+    grid-gap: 1vmin;
     list-style-type: none;
     padding: 0;
     margin: 0;
