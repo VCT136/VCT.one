@@ -1,4 +1,8 @@
 function adjust() {
+
+    //body
+
+    console.log($("body").children.length);
     
     //introduction article
     
