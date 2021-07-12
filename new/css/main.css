@@ -16,6 +16,7 @@ large: 1301px <= x
     --highlight-red: #c80000;
     --optimist-gold: #ffd700;
     --clean-white: #ffffff;
+    --almost-white: #f6f6f6;
     --fifty-percent-black: #0000007f;
     --twenty-five-percent-black: #00000040;
     --fifty-percent-white: #ffffff7f;
@@ -125,7 +126,7 @@ article.introduction p {
 /* roles */
 
 article.roles {
-    background-color: lightgrey;
+    background-color: var(--almost-white);
     border-radius: 2vmin;
     padding: 2vmin;
     width: calc(90vw - 4vmin);
@@ -442,5 +443,14 @@ div.social-media-icons img {
     }
     to {
         margin-top: 0;
+    }
+}
+
+@keyframes slide-in-from-left {
+    from {
+        margin-right: 100vw;
+    }
+    to {
+        margin-right: 0;
     }
 }
