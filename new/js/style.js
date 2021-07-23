@@ -2,19 +2,20 @@ function adjust() {
 
     //body
 
-    console.log($("body").children.length);
+    //adjust grid template to amount of contents
+    $("body").css("grid-template-rows", "10vh repeat(" + ($("body > :not(script)").length - 3) + ", min-content) auto min-content");
     
     //introduction article
     
     //adjust image size to div height
     let divheight = $("article.introduction div").css("height");
-    let imgdimensionsize = "calc(" + divheight + " + 3vmin)";
+    let imgdimensionsize = divheight;
     $("article.introduction img").css("height", imgdimensionsize);
     $("article.introduction img").css("width", imgdimensionsize);
 
     //fit text box width to image size unless on phone
     if (!window.matchMedia("(max-width: 800px)").matches) {
-        $("article.introduction").css("grid-template-columns", "calc(" +divheight + " + 4vmin) 1fr");
+        $("article.introduction").css("grid-template-columns",  divheight + " 1fr");
     }
 
     //role cards
@@ -23,5 +24,11 @@ function adjust() {
     $("div.role-cards article").css("height", 
         "calc(" + $("div.role-cards article").css("width") + " * 0.6)"
     );
-    
+
+    //role introduction
+
+    //adjust horizontal padding to create white field
+    let roleintrowidth = $("article.role-introduction").css("width");
+    $("article.role-introduction").css("padding-left", "calc((100% - " + roleintrowidth + ") / 2)");
+    $("article.role-introduction").css("padding-right", "calc((100% - " + roleintrowidth + ") / 2)");
 }

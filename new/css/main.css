@@ -33,7 +33,7 @@ body {
     min-height: 100vh;
     display: grid;
     grid-gap: 2vmin;
-    grid-template-rows: 10vh repeat(4, min-content) auto min-content;
+    grid-template-rows: 10vh repeat(1, min-content) auto min-content;
     place-items: center;
 }
 
@@ -51,6 +51,10 @@ a {
 h1 {
     font-size: 1.5em;
     margin: 0;
+}
+
+.white-text {
+    color: white;
 }
 
 /* nav bar at the top */
@@ -78,6 +82,7 @@ nav img {
 /* introduction article */
 
 article.introduction {
+    box-sizing: border-box;
     width: 90vw;
     max-width: 1500px;
     display: grid;
@@ -92,6 +97,7 @@ article.introduction img {
     border-style: solid;
     border-width: 0.5vmin;
     border-radius: 50%;
+    box-sizing: border-box;
     height: 1vmin;
     object-fit: cover;
     background-color: white;
@@ -105,8 +111,10 @@ article.introduction img:hover {
 }
 article.introduction div {
     background-color: white;
+    width: 100%;
     border-radius: 2vmin;
     padding: 2vmin;
+    box-sizing: border-box;
     box-shadow: 0 0 1vmin var(--fifty-percent-black);
 }
 article.introduction h1 {
@@ -129,9 +137,10 @@ article.roles {
     background-color: var(--almost-white);
     border-radius: 2vmin;
     padding: 2vmin;
-    width: calc(90vw - 4vmin);
+    width: 90vw;
+    box-sizing: border-box;
     box-shadow: 0 0 1vmin var(--fifty-percent-black);
-    max-width: calc(1500px - 4vmin);
+    max-width: 1500px;
     margin-left: auto;
     margin-right: auto;
 
@@ -199,8 +208,9 @@ div.row-button {
     background-color: white;
     border-radius: 2vmin;
     box-shadow: 0 0 1vmin var(--fifty-percent-black);
-    width: calc(90vw - 4vmin);
-    max-width: calc(1500px - 4vmin);
+    box-sizing: border-box;
+    width: 90vw;
+    max-width: 1500px;
     padding: 2vmin;
 
     transition-duration: 1s;
@@ -214,8 +224,9 @@ div.row-button:hover {
 
 article.collection {
     background-color: white;
-    width: calc(90vw - 4vmin);
-    max-width: calc(1500px - 4vmin);
+    width: 90vw;
+    max-width: 1500px;
+    box-sizing: border-box;
     border-radius: 2vmin;
     padding: 2vmin;
     box-shadow: 0 0 1vmin var(--fifty-percent-black);
@@ -224,6 +235,8 @@ article.collection {
     grid-template-rows: min-content, repeat(auto-fill, 1fr);
     grid-gap: 2vmin;
 }
+
+/* projects list */
 
 ol.projects {
     display: grid;
@@ -271,7 +284,8 @@ ol.projects li div img {
 footer {
     background-color: white;
     box-shadow: 0 0 1vmin 0.5vmin var(--fifty-percent-black);
-    width: calc(100% - 4vmin);
+    width: 100%;
+    box-sizing: border-box;
 
     display: grid;
     grid-gap: 2vmin;
@@ -301,6 +315,39 @@ div.social-media-icons img {
     div.social-media-icons {
         grid-template-columns: 1fr 1fr;
     }
+}
+
+/* role introduction */
+
+article.role-introduction {
+    background-color: white;
+    width: 90vw;
+    max-width: 1500px;
+    padding: 2vmin;
+    box-shadow: 0 0 1vmin 0 var(--fifty-percent-black);
+    box-sizing: content-box;
+}
+article.role-introduction img {
+    height: 15vmin;
+    float: left;
+    padding: 2vmin;
+}
+
+/* article card */
+
+article.card {
+    background-color: white;
+    box-sizing: border-box;
+    width: 90vw;
+    max-width: 1500px;
+    padding: 2vmin;
+    border-radius: 2vmin;
+    box-shadow: 0 0 1vmin var(--fifty-percent-black);
+}
+article.card img {
+    height: 20vmin;
+    padding: 1vmin;
+    float: left;
 }
 
 .flex-container {
