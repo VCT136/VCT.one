@@ -31,4 +31,12 @@ function adjust() {
     let roleintrowidth = $("article.role-introduction").css("width");
     $("article.role-introduction").css("padding-left", "calc((100% - " + roleintrowidth + ") / 2)");
     $("article.role-introduction").css("padding-right", "calc((100% - " + roleintrowidth + ") / 2)");
+
+    //id links
+
+    $("a").on("click", function(event) {
+        event.preventDefault();
+        let linkOffset = $($(this).attr("href")).offset();
+        window.scrollTo(linkOffset, linkOffset.top - $("nav").outerHeight(true));
+    });
 }
