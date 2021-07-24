@@ -35,8 +35,20 @@ function adjust() {
     //id links
 
     $("a").on("click", function(event) {
-        event.preventDefault();
-        let linkOffset = $($(this).attr("href")).offset();
-        window.scrollTo(linkOffset, linkOffset.top - $("nav").outerHeight(true));
+        if ($(this).attr("href").substring(0, 1) == "#") {
+            event.preventDefault();
+            let linkOffset = $($(this).attr("href")).offset();
+            //if a table of contents exists and it's not on a phone
+            if (
+                $("#table-of-contents").length > 0 &&
+                window.matchMedia("(min-width: 801px)").matches
+            ) {
+                window.scrollTo(linkOffset, linkOffset.top - $("nav").outerHeight(true) - $("#table-of-contents").outerHeight(true));
+            }
+            //otherwise
+            else {
+                window.scrollTo(linkOffset, linkOffset.top - $("nav").outerHeight(true));
+            }
+        }
     });
 }
