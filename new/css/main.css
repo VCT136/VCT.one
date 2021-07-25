@@ -63,6 +63,10 @@ h3 {
     margin: 0;
 }
 
+p {
+    margin-bottom: 0;
+}
+
 ul {
     margin: 0;
 }
@@ -365,6 +369,9 @@ article.card img {
     padding: 1vmin;
     float: left;
 }
+article.card p {
+    margin: 0;
+}
 
 /* table of contents */
 
@@ -446,6 +453,54 @@ ol.organizations li div img {
 @media screen and (max-width: 800px) {
     ol.projects li {
         grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* main-card */
+
+article.main-card img {
+    padding: 0;
+    width: 100%;
+    height: auto;
+    max-height: 50vmin;
+    object-fit: cover;
+
+    animation: cover-image-slide;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-play-state: paused;
+    animation-timing-function: linear;
+}
+article.main-card img:hover {
+    animation-play-state: running;
+}
+
+/* project specifications */
+
+ul.project-specifications {
+    list-style: none;
+    padding: 0;
+}
+ul.project-specifications li {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+ul.project-specifications li div {
+    width: 100%;
+    padding-left: 1em;
+    box-sizing: border-box;
+    border-style: outset;
+    border-width: 1px;
+}
+
+/* phone size */
+@media screen and (max-width: 800px) {
+    ul.project-specifications li {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    ul.project-specifications li:nth-child(2n) {
+        background-color: lightgrey;
     }
 }
 
