@@ -475,6 +475,14 @@ article.main-card img:hover {
     animation-play-state: running;
 }
 
+/* full-image-card */
+
+article.full-image-card img {
+    padding: 0;
+    width: 100%;
+    height: auto;
+}
+
 /* project specifications */
 
 ul.project-specifications {
