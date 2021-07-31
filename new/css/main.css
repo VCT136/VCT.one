@@ -63,6 +63,11 @@ h3 {
     margin: 0;
 }
 
+hr {
+    width: 80vw;
+    max-width: 1333px;
+}
+
 p {
     margin-bottom: 0;
 }
