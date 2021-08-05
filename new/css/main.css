@@ -35,6 +35,7 @@ body {
     grid-gap: 2vmin;
     grid-template-rows: 10vh repeat(1, min-content) auto min-content;
     place-items: center;
+    text-align: justify;
 }
 
 ::selection {
@@ -209,6 +210,13 @@ div.role-cards article img {
     height: 100%;
     width: 100%;
     object-fit: contain;
+}
+/* work in progress roles */
+div.role-cards a.wip article {
+    background-color: lightgrey;
+}
+div.role-cards a.wip article img {
+    filter: grayscale(1);
 }
 
 /* phone size */

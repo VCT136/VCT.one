@@ -1,3 +1,16 @@
+//set up recurring elements by replacing placeholders
+function setup() {
+
+    $("body").prepend("<nav></nav>");
+    $("body nav:first-child").load("/elements.html #nav");
+
+    $("body").append('<div class="space"></div>');
+    $("body").append("<footer></footer>");
+    $("body footer").load("/elements.html #footer")
+
+}
+
+//adjust to screen size
 function adjust() {
 
     //body
