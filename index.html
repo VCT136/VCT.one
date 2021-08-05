@@ -7,190 +7,179 @@
     <!-- Open Graph Protocol -->
     <meta property="og:title" content="VCT.one" />
     <meta property="og:image" content="//VCT.one/res/vct.one_logo.png" />
-    <meta property="og:description" content="Vınсenт's website & online portfolio." />
+    <meta property="og:description" content="Vınсenт's online portfolio." />
     <meta property="og:url" content="//VCT.one/" />
 
-	<link rel="stylesheet" href="css/main.css">
-    <link rel="shortcut icon" href="res/vct2019_4rounded.png">
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- style -->
+	<link rel="stylesheet" href="/css/main.css">
+    <script src="/js/style.js"></script>
+    
+    <link rel="shortcut icon" href="/res/vct2019_4rounded.png">
     
 	<title>VCT.one</title>
 </head>
-<body>
-    <header>
-        <figure>
-            <img src="res/vct.one_logo.png" alt="VCT.one logo" />
-        </figure>
-        <article>
-            <h1>VCT.one Home_Page</h1>
+<body onload="setup(); adjust();" onresize="adjust()">
+
+    <article class="introduction">
+        <a href="about">
+            <img src="/res/2020decemeberme.jpg" alt="a photo of me" />
+        </a>
+        <div>
+            <h1>VCT.one Home Page</h1>
             <p>
-                <b>Hello!</b> Welcome to my website. I'm Vınсenт, a game design student and political activist in Groningen. My motto is <i>"Question everything!"</i>. On this website you can find some of my favorite projects. Thank you for visiting!
+                <b>Hello!</b> I'm Vincent, a student of Communication and Multimedia design with a major in Game Design and a political activist in Groningen. My motto is <i>"Question everything!"</i>.<br>
+                <br>
+                Thank you for visiting my portfolio website! Below you can find links to <a href="#roles">portfolios customized for specific roles</a>, information <a href="#about-me">about me</a>, and an overview of my <a href="#projects">projects</a>.
             </p>
-        </article>
-    </header>
+        </div>
+    </article>
 
-    <div class="grid-container">
+    <a href="about" id="about-me"><div class="row-button"><h1>About Me</h1></div></a>
 
-        <section class="highlight" id="about">
-            <h2>About</h2>
-            <p>information on me</p>
-            <div class="flex-container">
-                <figure>
-                    <a href="about.html">
-                        <img src="res/2020novemeberme.png" alt="a photo of me from november 2020" />
-                        <div class="rot">My Story</div>
-                    </a>
-                </figure>
-                <figure>
-                    <a href="contact.html">
-                        <img src="res/contacts_bg.jpg" alt="photo of a house in Groningen" />
-                        <div class="rot">Contact</div>
-                    </a>
-                </figure>
-                <figure>
-                    <a href="cv.html">
-                        <img src="res/cv.png" alt="VCT's CV" />
-                        <div class="rot">Curriculum Vitae</div>
-                    </a>
-                </figure>
-            </div>
-        </section>
+    <article class="roles" id="roles">
 
-        <section class="highlight" id="video-games">
-            <h2>Video Games</h2>
-            <p>entertaining works of art</p>
-            <div class="flex-container">
-                <figure>
-                    <a href="stellarTransporter.html">
-                        <img src="res/stellarTransporter.jpg" alt="Stellar Transporter" />
-                        <div class="rot">Stellar Transporter</div>
-                    </a>
-                </figure>
-                <figure>
-                    <a href="supermarineAirSupport">
-                        <img src="res/supermarineAirSupportScreenshot.png" alt="Supermarine Air Support" />
-                        <div class="rot">Supermarine Air Support</div>
-                    </a>
-                </figure>
-                <figure>
-                    <a href="coinconquest.html">
-                        <img src="res/coinconquest.jpg" alt="Coin Conquest" />
-                        <div class="rot">Coin Conquest</div>
-                    </a>
-                </figure>
-            </div>
-        </section>
+        <h1>Role Portfolios</h1>
 
-        <section class="highlight" id="physical-games">
-            <h2>Board / Card Games</h2>
-            <p>for fun with friends</p>
-            <div class="flex-container">
-                <figure>
-                    <a href="tait.html">
-                        <img src="res/tait_bg.jpg" alt="Tait" />
-                        <div class="rot">TAIT</div>
-                    </a>
-                </figure>
-                <figure>
-                    <a href="kaiserzeit1926.html">
-                        <img src="res/game_photo_1.jpg" alt="Kaiserzeit 1926" />
-                        <div class="rot">Kaiserzeit 1926</div>
-                    </a>
-                </figure>
-            </div>
-        </section>
+        <div class="role-cards">
 
-        <section class="highlight" id="design">
-            <h2>Design</h2>
-            <p>things appear well</p>
-            <div class="flex-container">
-                <figure>
-                    <a href="designs.html">
-                        <img src="res/vctbrand.jpg" alt="VCT brand overview image" />
-                        <div class="rot">Visual Design Samples</div>
-                    </a>
-                </figure>
-                <figure>
-                    <a href="vnvsval.html">
-                        <img src="res/vnvsval_cover.png" alt="cover of my design portfolio 'VNVSVAL'" />
-                        <div class="rot">Digital Design Portfolio "VNVSVAL"</div>
-                    </a>
-                </figure>
-                <!--figure>
-                    <a href="merch.html">
-                        <img src="res/redbubble_store.jpg" alt="an image" />
-                        <div class="rot">Merchandise</div>
-                    </a>
-                </figure-->
-            </div>
-        </section>
+            <a href="teamcoordinator">
+                <article>
+                    <h1>Team Coordinator</h1>
+                    <img src="/res/happygroup.svg" alt="pictogram of heads consisting of interlocked gears displaying happy faces" />
+                </article>
+            </a>
+    
+            <a href="#" class="wip">
+                <article>
+                    <h1>Programmer</h1>
+                    <img src="/res/codedisplay.svg" alt="pictogram of a computer screen with code on it" />
+                </article>
+            </a>
+    
+            <a href="#" class="wip">
+                <article>
+                    <h1>Game Designer</h1>
+                    <img src="/res/boardgamepictogram.svg" alt="pictogram of a board game piece on a grid">
+                </article>
+            </a>
+    
+            <a href="#" class="wip">
+                <article>
+                    <h1>Visual Designer</h1>
+                    <img src="/res/visualdesign.svg" alt="monochrome representation of vector graphics design exemplified using the VCT logo">
+                </article>
+            </a>
+    
+        </div>
 
-        <section id="vr">
-            <h2>Serious VR Games</h2>
-            <p>virtual reality concepts and prototypes</p>
-            <div class="flex-container">
-                <figure>
-                    <a href="vrgora.html">
-                        <img src="res/vrgora_screenshot.png" alt="screenshot of a VRgora prototype" />
-                        <div class="rot">VRgora</div>
-                    </a>
-                    
-                </figure>
-                <figure>
-                    <a href="vrquaponics.html">
-                        <img src="res/vrquaponics_screenshot.jpg" alt="screenshot of a VRquaponics prototype" />
-                        <div class="rot">VRquaponics</div>
-                    </a>
-                </figure>
-            </div>
-        </section>
+    </article>
 
-        <section id="volt">
-            <h2>Volt</h2>
-            <p>volunteering at / supporting Volt Europa</p>
-            <div class="flex-container">
-                <figure>
-                    <a href="voltmerch.html">
-                        <img src="res/fabian_with_volt_backpack.jpg" alt="Volt member Fabian Gaukel wearinga Volt backpack" />
-                        <div class="rot">Volt Merchandise</div>
-                    </a>
-                </figure>
-                <figure>
-                    <a href="politics.html">
-                        <img src="res/volt_europe_flag.jpg" alt="flag of Volt Europa" />
-                        <div class="rot">Politics</div>
-                    </a>
-                </figure>
-                <figure>
-                    <a href="politicsmakesbettergamedesign.html">
-                        <img src="res/voltworkplace.jpg" alt="a computer with Volt's internal platform on screen" />
-                        <div class="rot">
-                            How becoming involved with politics <br>
-                            made me a better game designer
-                        </div>
-                    </a>
-                </figure>
-            </div>
-        </section>
+    <article class="collection" id="projects">
+        <h1>My Latest Projects</h1>
         
-        <section id="other">
-            <h2>Other</h2>
-            <p>products of mine</p>
-            <div class="flex-container">
-                <figure>
-                    <a href="fonts.html">
-                        <img src="res/font_preview_saiberfouk.jpg" alt="image of a sample text" />
-                        <div class="rot">Fonts</div>
-                    </a>
-                </figure>
-                <figure>
-                    <a href="maps.html">
-                        <img src="res/allborders19art.jpg" alt="image of a map" />
-                        <div class="rot">Maps</div>
-                    </a>
-                </figure>
-            </div>
-        </section>
+        <ol class="projects">
+            <li>
+                <div><b>Image</b></div>
+                <div><b>Title</b></div>
+                <div><b>Description</b></div>
+                <div><b>Time</b></div>
+                <div><b>Team Size</b></div>
+                <div><b>My Role</b></div>
+            </li>
 
-    </div>
+            <li>
+                <div><img src="/res/today-on-the-council-logo.png" alt="Today on the Council logo"></div>
+                <div>Today on the Council</div>
+                <div>social deduction party politics card game</div>
+                <div>2021-ongoing</div>
+                <div>me</div>
+                <div>game design</div>
+            </li>
+            <li>
+                <div><img src="/res/starboarders_screenshot.jpg" alt="screenshot of Starboarders taken during development" /></div>
+                <div>Starboarders</div>
+                <div>mutiplayer toys-to-life tactical sci-fi shooter</div>
+                <div>2020-ongoing</div>
+                <div>8 people</div>
+                <div>programming and management</div>
+            </li>
+            <li>
+                <div><img src="/res/voltshop_org_screenshot.png" alt="screenshot of the Volt Shop" /></div>
+                <div><a href="/projects/voltmerch/">Volt Shop</a></div>
+                <div>official merchandise webshop for Volt Europa</div>
+                <div>2021-ongoing</div>
+                <div>about 2+ people (varying)</div>
+                <div>interdisciplinary coordination, project management and visual design</div>
+            </li>
+            <li>
+                <div><img src="/res/vrgora_screenshot.png" alt="screenshot of VRgora" /></div>
+                <div><a href="/games/vrgora">VRgora</a></div>
+                <div>VR prototype for a concept of an AR app designed to improve the lives of people with agoraphobia</div>
+                <div>2020-2021</div>
+                <div>5 people</div>
+                <div>programming, management, game design and brand design</div>
+            </li>
+            <li>
+                <div><img src="/res/supermarineAirSupportScreenshot.png" alt="screenshot of Supermarine Air Support" /></div>
+                <div><a href="/games/supermarineairsupport">Supermarine Air Support</a></div>
+                <div>sidescrolling 2D jump-and-run, where you are supporting, but not controlling the main character</div>
+                <div>2020</div>
+                <div>4 people</div>
+                <div>programming, game design and management</div>
+            </li>
+            <li>
+                <div><img src="/res/stellarTransporter.jpg" alt="screenshot of Stellar Transporter" /></div>
+                <div><a href="/games/stellartransporter">Stellar Transporter</a></div>
+                <div>2D space cargo trading simulation</div>
+                <div>2020</div>
+                <div>me</div>
+                <div>game development</div>
+            </li>
+            <li>
+                <div><img src="/res/vrquaponics_screenshot.jpg" alt="screenshot of VRquaponics" /></div>
+                <div><a href="/games/vrquaponics">VRquaponics</a></div>
+                <div>sci-fi VR simulation prototype promoting sustainable, aquaponic farming</div>
+                <div>2020</div>
+                <div>6 people</div>
+                <div>programming, management and test organization</div>
+            </li>
+            <li>
+                <div><img src="/res/coinconquest.jpg" alt="screenshot of Coin Conquest" /></div>
+                <div><a href="/games/coinconquest">Coin Conquest</a></div>
+                <div>casino style game, based on the minigame "Fruit Cahoots" from the Mario Party game series by Nintendo</div>
+                <div>2019-2020</div>
+                <div>me</div>
+                <div>game development</div>
+            </li>
+            <li>
+                <div><img src="/res/sailsale_screenshot.jpg" alt="screenshot of Sail Sale" /></div>
+                <div>Sail Sale</div>
+                <div>dialogue and trade based puzzle game demo</div>
+                <div>2019-2020</div>
+                <div>5 people</div>
+                <div>programming</div>
+            </li>
+            <li>
+                <div><img src="/res/tait_bg.jpg" alt="photo of TAIT cards" /></div>
+                <div><a href="/games/tait">TAIT</a></div>
+                <div>fun and innovative casual card game for friends and families</div>
+                <div>2019</div>
+                <div>me</div>
+                <div>game design</div>
+            </li>
+            <li>
+                <div><img src="/res/game_photo_1.jpg" alt="photo of Kaiserzeit 1926" /></div>
+                <div><a href="/games/kaiserzeit1926">Kaiserzeit 1926</a></div>
+                <div>alternate history board game</div>
+                <div>2019</div>
+                <div>2 people</div>
+                <div>game- and visual design</div>
+            </li>
+        </ol>
+    </article>
+    
 </body>
 </html>

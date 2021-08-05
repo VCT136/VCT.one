@@ -1,0 +1,454 @@
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,700&display=swap');
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Maven Pro", Ubuntu, Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
+}
+
+::selection {
+    color: white;
+    background: black;
+}
+
+article {
+    animation: article-roll-slide;
+    animation-duration: 1.5s;
+    background-color: gold;
+    background-image: radial-gradient(white, gold);
+    border-radius: 5vmin;
+    box-shadow: 0 0 5px black;
+    margin: 5vh 2vw 2vh 2vw;
+    padding: 5vmin 0 5vmin 0;
+    min-height: 50vh;
+    transition-duration: 0.3s;
+    transition-property: box-shadow, transform;
+    z-index: 50;
+}
+article:hover {
+    box-shadow: 0 0 3px black;
+    transition-duration: 0.3s;
+    transition-property: box-shadow, transform;
+    transform: scale(1.01);
+}
+article h2 {
+    background-image: linear-gradient(#ffffff00, white, #ffffff00);
+    font-size: xx-large;
+    margin: 0 0 3vmin 0;
+    padding-left: 3vmin;
+}
+article h2.pre-logo {
+    background-image: linear-gradient(#ffffff00, white);
+    margin: 0;
+}
+article h3 {
+    margin: 0 0 0 3vmin;
+}
+article iframe {
+    width: 100%;
+    height: 50vh;
+}
+article img {
+    animation: cover-image-slide;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-play-state: paused;
+    animation-timing-function: linear;
+    object-fit: cover;
+    width: 100%;
+    height: 40vh;
+    transition-duration: 0.3s;
+    transition-property: box-shadow;
+}
+article img:hover {
+    animation-play-state: running;
+    box-shadow: 0 0 5px black;
+    transition-duration: 0.3s;
+    transition-property: box-shadow;
+}
+article img.page-logo {
+    animation: none;
+    background-image: linear-gradient(white, white, #ffffff00);
+    padding-left: 3%;
+    object-fit: contain;
+    object-position: left;
+    height: 10vh;
+    width: 97%;
+}
+article img.page-logo:hover {
+    box-shadow: none;
+}
+article p {
+    background-color: #ffffffaa;
+    border-radius: 2vmin;
+    margin: 0.5vmin 2vmin 0.5vmin 2vmin;
+    padding: 2vmin;
+    text-align: justify;
+    transition-duration: 1s;
+    transition-property: background-color;
+}
+article p:hover {
+    background-color: white;
+    transition-duration: 1s;
+    transition-property: background-color;
+}
+article p a {
+    color: crimson;
+    text-decoration: none;
+}
+article p.attribution {
+    font-size: x-small;
+    padding: 0 2vmin 0 2vmin;
+    text-align: right;
+}
+article p u {
+    margin-top: 1.5vmin;
+}
+article section {
+    background-color: #ffffffaa;
+    border-radius: 2vmin;
+    margin: 0.5vmin 2vmin 0.5vmin 2vmin;
+    padding: 2vmin;
+    transition-duration: 1s;
+    transition-property: background-color;
+}
+article section:hover {
+    background-color: white;
+    transition-duration: 1s;
+    transition-property: background-color;
+}
+article section h3 {
+    margin: 0;
+}
+article section p {
+    background: none;
+    border-radius: 2vmin;
+    margin: 0;
+    padding: 0;
+    transition-duration: 1s;
+    transition-property: background-color;
+}
+article section p img.icon{
+    background-color: #000000c8;
+    border-radius: 2vmin;
+    height: auto;
+    width: 10vmin;
+}
+article .linkbox {
+    background: none;
+    margin: 0;
+    padding: 0;
+}
+article .linkbox:hover {
+    background: none;
+}
+article .linkbox a {
+    display: block;
+    color: black;
+    background-color: #ffae00;
+    border: 3px groove lightgrey;
+    border-radius: 2vmin;
+    box-shadow: 0 0 3px black;
+    text-decoration: none;
+    margin: 1vmin 2vmin 1vmin 2vmin;
+    padding: 1vmin;
+    transition-property: background-color, border, box-shadow, margin;
+    transition-duration: 0.5s;
+}
+article .linkbox a:hover {
+    background-color: chocolate;
+    border: 2px inset lightgrey;
+    border-radius: 2vmin;
+    box-shadow: inset 0 0 5px black;
+    margin: calc(1vmin + 1px) 2vmin calc(1vmin + 1px) 2vmin;
+    transition-property: background-color, border, box-shadow, margin;
+    transition-duration: 0.5s;
+}
+article .linkbox a img {
+    height: 1em;
+    width: 1em;
+}
+article .linkbox a img:hover {
+    box-shadow: none;
+}
+article .note {
+    font-size: small;
+    margin: 0.5vmin 2vmin 0.5vmin 0;
+    text-align: right;
+}
+article .text-container {
+    background-color: #ffffffaa;
+    border-radius: 2vmin;
+    margin: 0.5vmin 2vmin 0.5vmin 2vmin;
+    padding: 2vmin;
+    text-align: justify;
+    transition-duration: 1s;
+    transition-property: background-color;
+}
+article .text-container:hover {
+    background-color: white;
+    transition-duration: 1s;
+    transition-property: background-color;
+}
+
+h1 {
+    margin: 0 0 0 2.5vmin;
+}
+
+header {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 2vmin;
+    padding: 2vmin;
+}
+header article {
+    animation: none;
+    background: none;
+    box-shadow: none;
+    margin: 0;
+    min-height: 0;
+    padding: 0;
+    transform: none;
+}
+header article:hover {
+    box-shadow: none;
+    transform: none;
+}
+header article h1 {
+    font-size: larger;
+    margin: 0;
+    padding: 2vmin 2vmin 0 2vmin;
+    text-decoration: underline overline;
+    text-decoration-color: #c80000;
+}
+header article p {
+    background-color: #00000000;
+    font-size: large;
+    margin: 0;
+    padding: 0 2vmin 2vmin 2vmin;
+    text-align: justify;
+    transition: none;
+}
+header article p:hover {
+    background-color: #00000000;
+    transition: none;
+}
+header figure {
+    display: grid;
+    place-items: center;
+    margin: 0;
+}
+header figure img {
+    max-height: 15vh;
+}
+
+nav {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10ch, 1fr));
+    grid-column-gap: 2.5vmin;
+    height: 100%;
+}
+nav a {
+    display: grid;
+    color: black;
+    font-size: x-large;
+    place-items: center;
+}
+nav div {
+    display: grid;
+    place-items: center;
+}
+nav div a {
+    background-color: gold;
+    background-image: radial-gradient(white, gold);
+    border-radius: 3vmin;
+    box-shadow: 0 0 5px black;
+    padding: 2vmin;
+    text-align: center;
+    transition-duration: 0.6s;
+    transition-property: background-color;
+}
+nav div a:hover {
+    background-color: chocolate;
+    background-image: none;
+    box-shadow: inset 0 0 5px black;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+}
+.flex-container figure {
+    margin: 0;
+    flex: 1;
+    transition-property: flex;
+    transition-duration: 0.3s;
+}
+.flex-container figure:hover {
+    flex: 10;
+    transition-property: flex;
+    transition-duration: 0.3s;
+    z-index: 100;
+}
+.flex-container figure.slow {
+    transition-duration: 1s;
+}
+.flex-container figure.slow:hover {
+    transition-duration: 3s;
+}
+.flex-container figure .rot {
+    background-image: linear-gradient(#ffffffee, #ffffffaa, #00000000);
+    color: black;
+    transform: rotate(-90deg) translateX(0.33ch);
+    transform-origin: 0 0;
+    font-family: Ubuntu, "Maven Pro", Verdana, Geneva, Tahoma, sans-serif;
+    font-size: large;
+    padding: 0 1vmin 0 1vmin;
+    position: absolute;
+    text-shadow: 0 0 5px white;
+    width: calc(40vh - 2vmin);
+    white-space: nowrap;
+    overflow: hidden;
+}
+.flex-container img {
+    animation: cover-image-slide;
+    animation-duration: 10s;
+    animation-iteration-count: 
+    infinite;
+    animation-play-state: paused;
+    animation-timing-function: linear;
+    object-fit: cover;
+    width: 100%;
+    height: 40vh;
+    transition-property: box-shadow;
+    transition-duration: 0.3s;
+}
+.flex-container figure:nth-child(even) img {
+    animation-direction: reverse;
+}
+.flex-container img:hover {
+    animation-play-state: running;
+    transition-property: box-shadow;
+    transition-duration: 0.3s;
+    box-shadow: 0 0 5px black;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-column-gap: 3vmin;
+    grid-row-gap: 3vmin;
+    padding: 2vw 2vh 2vw 2vh;
+}
+.grid-container section {
+    animation: slide-in;
+    animation-duration: 1s;
+    border-radius: 3vmin;
+    background-color: lightgrey;
+    background-image: radial-gradient(white, lightgrey);
+    box-shadow: 0 0 5px black;
+    padding-bottom: 3vmin;
+    transition-duration: 0.5s;
+    transition-property: box-shadow, transform;
+    transform: rotate(-1deg) translateY(10px);    
+}
+.grid-container .highlight {
+    background-color: gold;
+    background-image: radial-gradient(white, gold);
+}
+.grid-container section:nth-child(even) {
+    transform: rotate(1deg);
+}
+.grid-container section:nth-child(3n) {
+    transform: rotate(-2deg);
+}
+.grid-container section:hover {
+    box-shadow: 0 0 5px black;
+    transform: scale(1.05);
+    transition-duration: 0.5s;
+    transition-property: box-shadow, transform;
+}
+.grid-container section img {
+    animation: cover-image-slide;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-play-state: paused;
+    animation-timing-function: linear;
+    object-fit: cover;
+    width: 100%;
+    height: 40vh;
+    margin: 0;
+    transition-property: box-shadow;
+    transition-duration: 0.3s;
+}
+.grid-container section img:hover {
+    animation-play-state: running;
+    box-shadow: 0 0 5px black;
+    transition-property: box-shadow;
+    transition-duration: 0.3s;
+}
+.grid-container section h2 {
+    grid-column: 1 / 2;
+    background-image: linear-gradient(#ffffff00, white, #ffffff00);
+    margin-top: 3vmin;
+    padding: 0 2vmin 0 2vmin;
+}
+.grid-container section p {
+    padding: 0 2vmin 0 2vmin;
+}
+
+.hidden {
+    display: none;
+}
+
+#map {
+    border: 2px inset lightgrey;
+    height: 50vh;
+    min-height: 400px;
+    margin: 1vmin 0 1vmin 0;
+}
+#map img:hover {
+    box-shadow: none;
+}
+
+@keyframes cover-image-slide {
+    from {
+        object-position: center;
+    }
+    25% {
+        object-position: top left;
+    }
+    50% {
+        object-position: center;
+    }
+    75% {
+        object-position: bottom right;
+    }
+    to {
+        object-position: center;
+    }
+}
+
+@keyframes article-roll-slide {
+    from {
+        margin-top: 100vh;
+        transform: rotate(-45deg);
+    }
+    to {
+        margin-top: 5vh;
+        transform: none;
+    }
+}
+
+@keyframes slide-in {
+    from {
+        margin-top: 100vh;
+    }
+    to {
+        margin-top: 0;
+    }
+}
