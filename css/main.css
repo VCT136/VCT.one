@@ -415,7 +415,7 @@ div.skills img {
 div.skills div.skill-group {
     display: grid;
     grid-gap: 1vmin;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 
     border-radius: 1vmin;
     box-shadow: 0 0 1.5vmin -1vmin var(--stage-burgundy) inset;
@@ -429,6 +429,12 @@ div.skills div.skill-group div {
 @media screen and (max-width: 800px) {
     div.skills div.skill-group {
         grid-template-columns: 1fr 1fr;
+    }
+}
+/* small size */
+@media screen and (min-width: 801px) and (max-width: 1300px) {
+    div.skills div.skill-group {
+        grid-template-columns: 1fr 1fr 1fr;
     }
 }
 
