@@ -416,6 +416,7 @@ div.skills div.skill-group {
     display: grid;
     grid-gap: 1vmin;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 1vmin;
 
     border-radius: 1vmin;
     box-shadow: 0 0 1.5vmin -1vmin var(--stage-burgundy) inset;
