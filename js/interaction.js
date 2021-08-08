@@ -17,11 +17,11 @@ function specializeSkillsList() {
     else if (url.includes("programmer")) {
         $("#skills").load("/elements.html #programmer-skills-list");
     }
-    else if (url.includes("programmer")) {
-        $("#skills").load("/elements.html #programmer-skills-list");
+    else if (url.includes("gamedesign")) {
+        $("#skills").load("/elements.html #game-designer-skills-list");
     }
-    else if (url.includes("programmer")) {
-        $("#skills").load("/elements.html #programmer-skills-list");
+    else if (url.includes("visualdesign")) {
+        $("#skills").load("/elements.html #visual-designer-skills-list");
     }
     else {
         $("#skills").load("/elements.html #full-skills-list", () => {
@@ -29,5 +29,4 @@ function specializeSkillsList() {
             $("#skills").append("<p>Oops! It appears that something went wrong trying to read this url, so I'll just leave the full skills list here for now.</p>");
         });
     }
-
 }

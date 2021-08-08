@@ -1,13 +1,36 @@
 //set up recurring elements by replacing placeholders
 function setup() {
 
+    //nav bar at the top
     $("body").prepend("<nav></nav>");
     $("body nav:first-child").load("/elements.html #nav");
 
+    //footer
     $("body").append('<div class="space"></div>');
     $("body").append("<footer></footer>");
     $("body footer").load("/elements.html #footer")
 
+    //skills lists
+
+    $("#skills").empty();
+    let url = window.location.href;
+    if (url.includes("coordinator")) {
+        $("#skills").load("/elements.html #team-coordinator-skills-list");
+    }
+    else if (url.includes("programmer")) {
+        $("#skills").load("/elements.html #programmer-skills-list");
+    }
+    else if (url.includes("gamedesign")) {
+        $("#skills").load("/elements.html #game-designer-skills-list");
+    }
+    else if (url.includes("visualdesign")) {
+        $("#skills").load("/elements.html #visual-designer-skills-list");
+    }
+    else {
+        $("#skills").load("/elements.html #full-skills-list", () => {
+            $("#skills button").css("display", "none");
+        });
+    }
 }
 
 //adjust to screen size
