@@ -49,6 +49,10 @@ a {
     font-weight: bold;
 }
 
+button {
+    cursor: pointer;
+}
+
 h1 {
     font-size: 1.5em;
     margin: 0;
@@ -377,6 +381,24 @@ article.card {
     display: grid;
     grid-gap: 2vmin;
 }
+article.card button {
+    background-color: var(--almost-white);
+    color: var(--highlight-red);
+    font-family: inherit;
+    font-weight: bold;
+    width: fit-content;
+
+    border-style: none;
+    border-radius: 1vmin;
+    padding: 1vmin;
+    box-shadow: 0 0 0.75vmin var(--fifty-percent-black);
+
+    transition-property: box-shadow;
+    transition-duration: 1s;
+}
+article.card button:hover {
+    box-shadow: 0 0 0.25vmin var(--fifty-percent-black);
+}
 article.card img {
     height: 20vmin;
     padding: 1vmin;
@@ -397,6 +419,11 @@ article.card p {
 }
 
 /* skills list */
+
+div.skills-article {
+    display: grid;
+    grid-gap: 2vmin;
+}
 
 div.skills {
     display: grid;
