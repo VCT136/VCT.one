@@ -328,6 +328,15 @@ footer {
     place-items: center;
     text-align: center;
 }
+footer img.bottom-left {
+    height: 10vmin;
+    width: 100vw;
+    object-fit: contain;
+    object-position: left;
+    position: absolute;
+    left: 0;
+    background-color: white;
+}
 
 /* social media icons */
 
