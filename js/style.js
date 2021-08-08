@@ -1,3 +1,12 @@
+//load interaction script when document is ready
+$(document).ready(function() 
+{
+    let interactionScript = document.createElement("script");
+    interactionScript.type = "text/javascript";
+    interactionScript.src = "/js/interaction.js";
+    $("head").append(interactionScript);
+});
+
 //set up recurring elements by replacing placeholders
 function setup() {
 
