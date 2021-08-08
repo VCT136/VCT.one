@@ -7,11 +7,11 @@ function moveViewTo(targetElement) {
         $("#table-of-contents").length > 0 &&
         window.matchMedia("(min-width: 801px)").matches
     ) {
-        window.scrollTo(targetOffset, targetOffset.top - $("nav").outerHeight(true) - $("#table-of-contents").outerHeight(true));
+        window.scrollTo(targetOffset, targetOffset.top - $("nav").outerHeight(true) - $("#table-of-contents").outerHeight(true) - 10);
     }
     //otherwise
     else {
-        window.scrollTo(targetOffset, targetOffset.top - $("nav").outerHeight(true));
+        window.scrollTo(targetOffset, targetOffset.top - $("nav").outerHeight(true) - 10);
     }
 }
 
