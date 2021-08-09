@@ -1,3 +1,20 @@
+//scroll to an element and take nav and table of contents into account
+
+function moveViewTo(targetElement) {
+    let targetOffset = $(targetElement).offset();
+    //if a table of contents exists and it's not on a phone
+    if (
+        $("#table-of-contents").length > 0 &&
+        window.matchMedia("(min-width: 801px)").matches
+    ) {
+        window.scrollTo(targetOffset, targetOffset.top - $("nav").outerHeight(true) - $("#table-of-contents").outerHeight(true) - 10);
+    }
+    //otherwise
+    else {
+        window.scrollTo(targetOffset, targetOffset.top - $("nav").outerHeight(true) - 10);
+    }
+}
+
 //skills lists
 
 function fullSkillsList() {
@@ -29,4 +46,6 @@ function specializeSkillsList() {
             $("#skills").append("<p>Oops! It appears that something went wrong trying to read this url, so I'll just leave the full skills list here for now.</p>");
         });
     }
+
+    moveViewTo("#skills");
 }

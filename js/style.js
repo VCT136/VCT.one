@@ -1,3 +1,12 @@
+//load interaction script when document is ready
+$(document).ready(function() 
+{
+    let interactionScript = document.createElement("script");
+    interactionScript.type = "text/javascript";
+    interactionScript.src = "/js/interaction.js";
+    $("head").append(interactionScript);
+});
+
 //set up recurring elements by replacing placeholders
 function setup() {
 
@@ -75,16 +84,7 @@ function adjust() {
             event.preventDefault();
             let linkOffset = $($(this).attr("href")).offset();
             //if a table of contents exists and it's not on a phone
-            if (
-                $("#table-of-contents").length > 0 &&
-                window.matchMedia("(min-width: 801px)").matches
-            ) {
-                window.scrollTo(linkOffset, linkOffset.top - $("nav").outerHeight(true) - $("#table-of-contents").outerHeight(true));
-            }
-            //otherwise
-            else {
-                window.scrollTo(linkOffset, linkOffset.top - $("nav").outerHeight(true));
-            }
+            moveViewTo($(this).attr("href"));
         }
     });
 }
