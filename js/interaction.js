@@ -21,7 +21,7 @@ function fullSkillsList() {
 
     $("#skills").empty();
     $("#skills").load("/elements.html #full-skills-list");
-
+    moveViewTo("#skills");
 }
 
 function specializeSkillsList() {
@@ -46,6 +46,5 @@ function specializeSkillsList() {
             $("#skills").append("<p>Oops! It appears that something went wrong trying to read this url, so I'll just leave the full skills list here for now.</p>");
         });
     }
-
     moveViewTo("#skills");
 }
