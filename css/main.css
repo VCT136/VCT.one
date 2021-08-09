@@ -330,11 +330,22 @@ footer {
 }
 footer img.bottom-left {
     height: 10vmin;
-    width: 100%;
+    width: 50%;
     object-fit: contain;
     object-position: left;
     position: absolute;
     left: 0;
+    background-color: white;
+}
+footer img.bottom-right {
+    height: 10vmin;
+    width: 50%;
+    padding: 1vmin;
+    box-sizing: border-box;
+    object-fit: contain;
+    object-position: right;
+    position: absolute;
+    left: 50%;
     background-color: white;
 }
 
