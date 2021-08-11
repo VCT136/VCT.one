@@ -401,6 +401,14 @@ article.card {
     display: grid;
     grid-gap: 2vmin;
 }
+article.card.slide-in {
+    animation-name: slide-in;
+    animation-duration: 1s;
+}
+article.card.slide-out {
+    animation-name: slide-out;
+    animation-duration: 1s;
+}
 article.card button {
     background-color: var(--almost-white);
     color: var(--highlight-red);
@@ -579,6 +587,7 @@ ul.project-specifications li div {
     }
 }
 
+/*
 .flex-container {
     display: flex;
     flex-direction: row;
@@ -683,6 +692,7 @@ ul.project-specifications li div {
 #map img:hover {
     box-shadow: none;
 }
+*/
 
 @keyframes cover-image-slide {
     from {
@@ -702,6 +712,7 @@ ul.project-specifications li div {
     }
 }
 
+/*
 @keyframes article-roll-slide {
     from {
         margin-top: 100vh;
@@ -728,5 +739,24 @@ ul.project-specifications li div {
     }
     to {
         margin-right: 0;
+    }
+}
+*/
+
+@keyframes slide-in {
+    from {
+        transform: translateX(-100vw);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slide-out {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(100vw);
     }
 }
