@@ -23,7 +23,6 @@ function fullSkillsList() {
     setTimeout(() => {
         $("#skills").addClass("slide-out");
         $("#skills").on("animationend", () => {
-            $("#skills").empty();
             $("#skills").load("/elements.html #full-skills-list");
             $("#skills").removeClass("slide-out");
             $("#skills").addClass("slide-in");
@@ -37,7 +36,6 @@ function specializeSkillsList() {
     setTimeout(() => {
         $("#skills").addClass("slide-out");
         $("#skills").on("animationend", () => {
-            $("#skills").empty();
             let url = window.location.href;
             if (url.includes("coordinator")) {
                 $("#skills").load("/elements.html #team-coordinator-skills-list");
