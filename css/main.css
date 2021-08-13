@@ -446,6 +446,24 @@ article.card p {
     }
 }
 
+/* contact button */
+
+button.contact {
+    position: fixed;
+    bottom: 2vmin;
+    right: 2vmin;
+
+    border-style: none;
+    border-radius: 1vmin;
+    padding: 1vmin;
+    box-shadow: 0 0 1vmin var(--fifty-percent-black);
+    
+    color: var(--highlight-red);
+    background-color: white;
+    font-weight: bold;
+    font-family: inherit;
+}
+
 /* skills list */
 
 div.skills-article {

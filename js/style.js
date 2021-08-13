@@ -10,14 +10,28 @@ $(document).ready(function()
 //set up recurring elements by replacing placeholders
 function setup() {
 
+    //contact button
+    $("body").prepend('<div id="contact-button"></div>');
+    $("div#contact-button").load("/elements.html #contact-button");
+
     //nav bar at the top
     $("body").prepend("<nav></nav>");
-    $("body nav:first-child").load("/elements.html #nav");
+    $("nav:first-child").load("/elements.html #nav");
 
     //footer
     $("body").append('<div class="space"></div>');
     $("body").append("<footer></footer>");
-    $("body footer").load("/elements.html #footer")
+    $("footer").load("/elements.html #footer");
+
+    //window scroll function
+    window.onscroll = function() {
+        if (window.scrollY > $("footer").offset().top - window.innerHeight) {
+            $("button.contact").css("display", "none");
+        }
+        else {
+            $("button.contact").css("display", "block");
+        }
+    }
 
     //skills lists
 
