@@ -33,6 +33,10 @@ function setup() {
         }
     }
 
+    //background info on me
+
+    $("#background").load("/elements.html #background-info");
+
     //skills lists
 
     $("#skills").empty();
