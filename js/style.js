@@ -25,11 +25,27 @@ function setup() {
 
     //window scroll function
     window.onscroll = function() {
+        let upScrollY = ($("body").outerHeight() - window.scrollY - window.innerHeight);
         if (window.scrollY > $("footer").offset().top - window.innerHeight) {
-            $("button.contact").css("display", "none");
+            $("button.contact").html(`
+                Contact Info<br>
+                ↓
+            `);
+            $("button.contact").css({
+                "right": "50%",
+                "bottom": "calc(2vmin + " + ($("footer").outerHeight() - upScrollY) + "px)",
+                "transform": "translateX(50%)"
+            });
         }
         else {
-            $("button.contact").css("display", "block");
+            $("button.contact").html(`
+                Contact
+            `);
+            $("button.contact").css({
+                "right": "2vmin",
+                "bottom": "2vmin",
+                "transform": "translateX(0)"
+            });
         }
     }
 

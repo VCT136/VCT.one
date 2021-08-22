@@ -446,6 +446,12 @@ article.card p {
     }
 }
 
+/* space div */
+
+div.space {
+    height: calc(4vmin + 1em);
+}
+
 /* contact button */
 
 button.contact {
@@ -462,6 +468,9 @@ button.contact {
     background-color: white;
     font-weight: bold;
     font-family: inherit;
+
+    transition-property: right;
+    transition-duration: 1s;
 }
 
 /* background info section */
