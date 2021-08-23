@@ -7,21 +7,30 @@ $(document).ready(function()
     $("head").append(interactionScript);
 });
 
-//set up recurring elements by replacing placeholders
+//set up recurring elements missing from a page
 function setup() {
 
     //contact button
-    $("body").prepend('<div id="contact-button"></div>');
-    $("div#contact-button").load("/elements.html #contact-button");
+    if ($("div#contact-button").length == 0) {
+        $("body").append('<div id="contact-button"></div>');
+        $("div#contact-button").load("/elements.html #contact-button");
+        console.warn("Automatically added contact button. Add it to page html to increase site performance.");
+    }
 
     //nav bar at the top
-    $("body").prepend("<nav></nav>");
-    $("nav:first-child").load("/elements.html #nav");
+    if ($("nav").length == 0) {
+        $("body").prepend("<nav></nav>");
+        $("nav:first-child").load("/elements.html #nav");
+        console.warn("Automatically added nav. Add it to page html to increase site performance.");
+    }
 
     //footer
-    $("body").append('<div class="space"></div>');
-    $("body").append("<footer></footer>");
-    $("footer").load("/elements.html #footer");
+    if ($("footer").length == 0) {
+        $("body").append('<div class="space"></div>');
+        $("body").append("<footer></footer>");
+        $("footer").load("/elements.html #footer");
+        console.warn("Automatically added footer. Add it to page html to increase site performance.");
+    }
 
     //window scroll function
     window.onscroll = function() {
@@ -51,28 +60,38 @@ function setup() {
 
     //background info on me
 
-    $("#background").load("/elements.html #background-info");
+    if ($("#background").length > 0 && $("#background-info").length == 0) {
+        $("#background").load("/elements.html #background-info");
+        console.warn("Automatically added background info. Add it to page html to increase site performance.");
+    }
 
     //skills lists
 
-    $("#skills").empty();
-    let url = window.location.href;
-    if (url.includes("coordinator")) {
-        $("#skills").load("/elements.html #team-coordinator-skills-list");
-    }
-    else if (url.includes("programmer")) {
-        $("#skills").load("/elements.html #programmer-skills-list");
-    }
-    else if (url.includes("gamedesign")) {
-        $("#skills").load("/elements.html #game-designer-skills-list");
-    }
-    else if (url.includes("visualdesign")) {
-        $("#skills").load("/elements.html #visual-designer-skills-list");
-    }
-    else {
-        $("#skills").load("/elements.html #full-skills-list", () => {
-            $("#skills button").css("display", "none");
-        });
+    if ($("#skills").length > 0) {
+        $("#skills").empty();
+        let url = window.location.href;
+        if (url.includes("coordinator")) {
+            $("#skills").load("/elements.html #team-coordinator-skills-list");
+            console.warn("loaded skills list");
+        }
+        else if (url.includes("programmer")) {
+            $("#skills").load("/elements.html #programmer-skills-list");
+            console.warn("loaded skills list");
+        }
+        else if (url.includes("gamedesign")) {
+            $("#skills").load("/elements.html #game-designer-skills-list");
+            console.warn("loaded skills list");
+        }
+        else if (url.includes("visualdesign")) {
+            $("#skills").load("/elements.html #visual-designer-skills-list");
+            console.warn("loaded skills list");
+        }
+        else {
+            $("#skills").load("/elements.html #full-skills-list", () => {
+                $("#skills button").css("display", "none");
+            });
+            console.warn("loaded skills list");
+        }
     }
 }
 
