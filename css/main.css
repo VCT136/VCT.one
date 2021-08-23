@@ -493,17 +493,17 @@ article#skills div.skills {
     display: grid;
     gap: 1vmin;
 }
-article#skills h2 {
+div.skills h2 {
     padding-left: 1em;
 }
-article#skills h3 {
+div.skills h3 {
     padding-left: 2em;
 }
-article#skills img {
+div.skills img {
     height: 1.5em;
     padding: 0;
 }
-article#skills div.skill-group {
+div.skills div.skill-group {
     display: grid;
     gap: 1vmin;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -512,7 +512,7 @@ article#skills div.skill-group {
     border-radius: 1vmin;
     box-shadow: 0 0 1.5vmin -1vmin var(--stage-burgundy) inset;
 }
-article#skills div.skill-group div {
+div.skills div.skill-group div {
     display: grid;
     place-items: center;
 }
