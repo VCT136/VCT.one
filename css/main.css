@@ -484,26 +484,26 @@ button.contact {
 
 /* skills list */
 
-div.skills-article {
+article#skills {
     display: grid;
     grid-gap: 2vmin;
 }
 
-div.skills {
+article#skills {
     display: grid;
     grid-gap: 1vmin;
 }
-div.skills h2 {
+article#skills h2 {
     padding-left: 1em;
 }
-div.skills h3 {
+article#skills h3 {
     padding-left: 2em;
 }
-div.skills img {
+article#skills img {
     height: 1.5em;
     padding: 0;
 }
-div.skills div.skill-group {
+article#skills div.skill-group {
     display: grid;
     grid-gap: 1vmin;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -512,7 +512,7 @@ div.skills div.skill-group {
     border-radius: 1vmin;
     box-shadow: 0 0 1.5vmin -1vmin var(--stage-burgundy) inset;
 }
-div.skills div.skill-group div {
+article#skills div.skill-group div {
     display: grid;
     place-items: center;
 }

@@ -60,14 +60,14 @@ function setup() {
 
     //background info on me
 
-    if ($("#background").length > 0 && $("#background-info").length == 0) {
+    if ($("#background").length > 0 && $("#background-info").length == 0 && $("#background").html().length == 0) {
         $("#background").load("/elements.html #background-info");
         console.warn("Automatically added background info. Add it to page html to increase site performance.");
     }
 
     //skills lists
 
-    if ($("#skills").length > 0) {
+    if ($("#skills").length > 0 && $("#skills").children().length == 0) {
         $("#skills").empty();
         let url = window.location.href;
         if (url.includes("coordinator")) {
