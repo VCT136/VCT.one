@@ -107,6 +107,12 @@ nav img {
     max-height: 8vmin;
 }
 
+/* circle image */
+
+img.circle {
+    border-radius: 50%;
+}
+
 /* introduction article */
 
 article.introduction {
