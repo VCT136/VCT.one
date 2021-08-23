@@ -24,6 +24,12 @@
 </head>
 <body onload="setup(); adjust();" onresize="adjust()">
 
+    <!--top bar-->
+    <nav>
+        <a href="/"><img id="logo" src="/res/vct.one_logo.png" alt="VCT.one logo" /></a>
+    </nav>
+    <!--top bar end-->
+
     <article class="introduction">
         <a href="/about/">
             <img src="/res/2021julyme.jpg" alt="a photo of me" />
@@ -75,6 +81,71 @@
     </article>
 
     <article class="card" id="skills">
+        <h1>Relevant Skills</h1>
+        <div class="skills">
+            <h2>Agile/Scrum methodology</h2>
+            <h2>Project management software</h2>
+            <div class="skill-group">
+                <div>
+                    Trello<br/>
+                    <img src="/res/trello_logo.svg" alt="Trello logo" />
+                </div>
+                <div>
+                    Asana<br/>
+                    <img src="/res/asana_logo.svg" alt="Asana logo" />
+                </div>
+            </div>
+            <h2>Collaboration and communication tools</h2>
+            <div class="skill-group">
+                <div>
+                    Google Drive<br/>
+                    <img src="/res/google_drive_logo.png" alt="Google Drive logo" />
+                </div>
+                <div>
+                    Google Meet<br/>
+                    <img src="/res/google_meet_logo.png" alt="Google Meet logo" />
+                </div>
+                <div>
+                    Google Calendar<br/>
+                    <img src="/res/google_calendar_logo.png" alt="Google Calendar Logo" />
+                </div>
+                <div>
+                    Google Docs / Sheets / Slides<br/>
+                    <img src="/res/google_docs_sheets_slides.png" alt="logos of the Google products 'Docs', 'Sheets' and 'Slides'" />
+                </div>
+                <div>
+                    Discord<br/>
+                    <img src="/res/discord_logo.svg" alt="Discord logo" />
+                </div>
+            </div>
+            <h2>Public relations and social media</h2>
+            <div class="skill-group">
+                <div>
+                    Facebook<br/>
+                    <img src="/res/facebook_f_icon.png" alt="Facebook logo" />
+                </div>
+                <div>
+                    Instagram<br/>
+                    <img src="/res/instagram_logo.png" alt="Instagram logo" />
+                </div>
+            </div>
+            <h2>Languages</h2>
+            <div class="skill-group">
+                <div>
+                    English<br/>
+                    <img src="/res/eu_flag.svg" alt="Flag of the EU" />
+                </div>
+                <div>
+                    German<br/>
+                    <img src="/res/germany_flag.svg" alt="Flag of Germany" />
+                </div>
+                <div>
+                    Dutch<br/>
+                    <img src="/res/netherlands_flag.svg" alt="Flag of the Netherlands" />
+                </div>
+            </div>
+        </div>
+        <button onclick="fullSkillsList()">+ Full Skills List</button>
     </article>
 
     <h1 class="white-text" id="experience">Experience</h1>
@@ -170,7 +241,104 @@
         </p>
     </article>
 
-    <div id="background">Please enable JavaScript to see this section.</div>
+    <!--background info start-->
+
+    <h1 class="white-text" id="background">Background</h1>
+
+    <article class="card">
+        <h1>Education</h1>
+        <ul>
+            <li>
+                since 2019: Hanzehogeschool Groningen, Groningen
+                <ul>
+                    <li>Communication & Multimedia Design, major Game Design</li>
+                </ul>
+            </li>
+            <li>
+                2010-2019: Stadtteilschule Walddörfer, Hamburg
+                <ul>
+                    <li>graduated with Abitur, grade 1.6</li>
+                </ul>
+            </li>
+            <li>
+                2006-2010: Grundschule Ahrensburger Weg, Hamburg
+            </li>
+        </ul>
+    </article>
+
+    <article class="card">
+        <h1>Volunteer Work</h1>
+        <ul>
+            <li>
+                Volt Europa
+                <ul>
+                    <li>Merchandise Lead (since February 2021)</li>
+                    <li>Discord Moderator (January - June 2021; 6 months)</li>
+                    <li>Discord Team Lead (January 2020 - January 2021; 1 year)</li>
+                </ul>
+            </li>
+            <li>
+                Volt Nederland
+                <ul>
+                    <li>Local Communications Team Member in Groningen (September 2019 - January 2020 & July 2020 - May 2021; 1 year, 4 months)</li>
+                    <li>Local Communications Lead (January 2020 - July 2020; 6 months)</li>
+                </ul>
+            </li>
+        </ul>
+    </article>
+
+    <article class="card">
+        <h1>Internships</h1>
+        <ul>
+            <li>Software Development @ Fielmann Ventures GmbH (February 2015)</li>
+            <li>IT-Administration & -Development @ Christoph Kroschke GmbH (February 2014)</li>
+        </ul>
+    </article>
+
+    <!--background info end-->
+
+    <!--recurring page end elements-->
+    
+    <div id="contact-button">
+        <button class="contact" onclick="moveViewTo('footer')">Contact</button>
+    </div>
+
+    <div class="space"></div>
+
+    <footer>
+        <div>
+            VCT.one is the portfolio website of Vincent Busch a.k.a. VCT.
+        </div>
+        <div class="social-media-icons">
+            <a href="https://instagram.com/vct136">
+                <img src="/res/instagram_icon.png" alt="Instagram icon" /><br>
+                @vct136
+            </a>
+            <a href="https://linkedin.com/in/vct">
+                <img src="/res/linkedin_logo_black.png" alt="LinkedIn icon" /><br>
+                Vincent Busch / VCT
+            </a>
+            <a href="mailto://vct136@gmail.com">
+                <img src="/res/email-icon-vindicator-at.svg" alt="at-symbol" /><br>
+                VCT136@Gmail.com
+            </a>
+            <a href="tel:+4917657470599">
+                <img src="/res/phone_icon.svg" alt="phone icon" /><br>
+                +49 176 5 747 0599
+            </a>
+            <a href="https://facebook.com/vct136">
+                <img src="/res/facebook_f_icon_black.png" alt="Facebook icon" /><br>
+                Vincent Busch / VCT136
+            </a>
+        </div>
+        <div>
+            ©2021 Vincent Busch
+        </div>
+        <img class="bottom-left" src="/res/mesitting2021.png" alt="a photo of me sitting" />
+        <img class="bottom-right" src="/res/logo.png" alt="VCT logo" />
+    </footer>
+
+    <!--page end-->
 
 </body>
 </html>
