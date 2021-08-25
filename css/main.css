@@ -435,7 +435,9 @@ article.card button:hover {
     box-shadow: 0 0 0.25vmin var(--fifty-percent-black);
 }
 article.card img {
-    height: 20vmin;
+    max-height: 25vmin;
+    max-width: 40vw;
+    object-fit: contain;
     padding: 1vmin;
     float: left;
 }
