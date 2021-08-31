@@ -336,6 +336,9 @@ footer {
 
     position: relative;
 }
+footer img:not(.bottom-left) {
+    max-height: 6vmin;
+}
 
 /* bottom images */
 
