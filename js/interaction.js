@@ -17,6 +17,10 @@ function moveViewTo(targetElement) {
 
 //skills lists
 
+
+/**
+ * replaces a specialized skills list with the full one
+ */
 function fullSkillsList() {
 
     moveViewTo("#skills");
@@ -30,6 +34,9 @@ function fullSkillsList() {
     }, 500);
 }
 
+/**
+ * replaces the full skills list with a specialized one
+ */
 function specializeSkillsList() {
 
     moveViewTo("#skills");
