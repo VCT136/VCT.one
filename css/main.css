@@ -25,6 +25,9 @@ large: 1301px <= x
 html {
     scroll-behavior: smooth;
     background-color: var(--stage-burgundy);
+    background-image: url("/res/VCT_Logo_outline_monochrome_transparent.svg");
+    background-size: 15vmin;
+    background-repeat: space;
 }
 
 body {
