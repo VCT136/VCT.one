@@ -523,7 +523,7 @@ div.skills div.skill-group {
     padding: 1vmin;
 
     border-radius: 1vmin;
-    box-shadow: 0 0 1.5vmin -1vmin var(--highlight-red) inset;
+    box-shadow: 0 0 1.5vmin -1vmin var(--fifty-percent-black) inset;
 }
 div.skills div.skill-group div {
     display: grid;
