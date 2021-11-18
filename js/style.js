@@ -32,7 +32,7 @@ function setup() {
         console.warn("Automatically added footer. Add it to page html to increase site performance.");
     }
 
-    //window scroll function
+    //window scroll function and contact button adjustment
     window.onscroll = function() {
         let upScrollY = ($("body").outerHeight() - window.scrollY - window.innerHeight);
         if (window.scrollY > $("footer").offset().top - window.innerHeight) {
