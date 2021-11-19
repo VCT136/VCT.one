@@ -101,6 +101,26 @@ ul {
     margin: 0;
 }
 
+/* scroll bar */
+
+::-webkit-scrollbar {
+    width: auto;
+}
+::-webkit-scrollbar-track {
+    background-image: linear-gradient(to right, var(--fifty-percent-black), #00000000);
+    background-color: var(--almost-white);
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--clean-white);
+    border-radius: 2vmin;
+    box-shadow: 0 0 0.5vmin 0 black inset;
+}
+::-webkit-scrollbar-thumb:hover {
+    box-shadow: 0 0 0.5vmin 0.1vmin var(--highlight-red) inset;
+}
+
+/* section labels, typically displayed off any cards */
+
 .section-label {
     color: black;
     filter: drop-shadow(0 0 1vmin white);
