@@ -254,8 +254,8 @@ div.role-cards a.wip article img {
     animation-duration: 1s;
 }
 .card button {
-    background-color: var(--almost-white);
-    color: var(--highlight-red);
+    background-color: var(--highlight-red);
+    color: white;
     font-family: inherit;
     font-weight: bold;
     width: fit-content;
