@@ -64,6 +64,11 @@ button {
     cursor: pointer;
 }
 
+code {
+    background-color: var(--lighter-grey);
+    font-family: "Ubuntu Mono", Consolas, monospace;
+}
+
 h1 {
     font-size: 1.5em;
     margin: 0;
@@ -86,6 +91,10 @@ hr {
 
 p {
     margin-bottom: 0;
+}
+
+pre {
+    margin: 0;
 }
 
 ul {
@@ -606,6 +615,21 @@ article.full-image-card img {
     padding: 0;
     width: 100%;
     height: auto;
+}
+
+/* textarea for code */
+
+textarea.code {
+    background-color: #000000f0;
+    color: white;
+    height: 30em;
+    width: 100%;
+    resize: vertical;
+    border-radius: 1vmin 0 0 1vmin;
+    border-color: var(--highlight-red);
+}
+textarea.code::selection {
+    background-color: var(--fifty-percent-white);
 }
 
 /* project specifications */

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Open Graph Protocol -->
+    <meta property="og:title" content="VCT.one" />
+    <meta property="og:image" content="//VCT.one/res/vct.one_logo.png" />
+    <meta property="og:description" content="Vınсenт's online portfolio." />
+    <meta property="og:url" content="//VCT.one/" />
+
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- style -->
+	<link rel="stylesheet" href="/css/main.css">
+    <script src="/js/style.js"></script>
+    
+    <link rel="shortcut icon" href="/res/vct2019_4rounded.png">
+    
+	<title>Code Samples | VCT.one</title>
+</head>
+<body onload="setup(); adjust();" onresize="adjust()">
+
+    <!--top bar-->
+    <nav>
+        <a href="/"><img id="logo" src="/res/vct.one_logo.png" alt="VCT.one logo" /></a>
+    </nav>
+    <!--top bar end-->
+    
+    <h1 class="section-label">Code Samples</h1>
+
+    <article class="card" id="table-of-contents">
+        <h1>Table of Contents</h1>
+        <ul>
+            <li>
+                <a href="#unity">Unity / C#</a>
+                <ul>
+                    <li><a href="#sas-level-generator">Level Generator for Supermarine Air Support</a></li>
+                </ul>
+            </li>
+        </ul>
+    </article>
+
+    <h1 class="section-label" id="unity">Unity / C#</h1>
+
+    <article class="card" id="sas-level-generator">
+        <h1>Level Generator for Supermarine Air Support</h1>
+        <p>
+            For the project <a href="/games/supermarineairsupport/">Supermarine Air Support</a> I wrote this level generator.<br>
+            It uses pixel data from an input texture (<code>texture</code>) to instantiate various kinds of game objects. The generator is given a list of scriptable objects (<code>colorObjectAssignments</code>) to instantiate the correct object based on the pixel color.<br>
+            <br>
+            Since generating the level entirely at once took a considerable amount of time, I made use of a coroutine (<code>GenerateLevelOverTime</code>) to continously generate parts the level at runtime. 
+        </p>
+        <pre><code><textarea readonly class="code">
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class LevelGenerator : MonoBehaviour
+{
+
+    [SerializeField] private Texture2D texture = null;
+    [SerializeField] private ColorGameObjectAssignment[] colorObjectAssignments = null;
+    [SerializeField] private int columnsPerFrame = 1;
+    [SerializeField] private bool colorDebugMessages = false;
+    [Header("Level Finish Properties")]
+    [SerializeField] private GameObject failMenuObject = null;
+    [Header("Target Coordinates")]
+    [Tooltip("the x-coordinate this object has to reach to win")]
+    [SerializeField] private float targetX = 100;
+    [Tooltip("the object has to reach targetX at this or a higher y-cordinate")]
+    [SerializeField] private float minimumTartgetY = 0;
+    [Header("Other Level Bounds")]
+    [SerializeField] private float minimumLevelX = 0;
+    [SerializeField] private float minimumLevelY = 0;
+    [SerializeField] private float maximumLevelY = 500; 
+
+    void Start()
+    {
+        StartCoroutine(GenerateLevelOverTime(columnsPerFrame));
+    }
+
+    IEnumerator GenerateLevelOverTime(int columnsPerFrame) {
+        
+        Color[] pixels = texture.GetPixels();
+        
+        //iterate through all the pixels of the texture
+        int blockNumber = 0;
+        for (int x = 0; x < texture.width; x++) {
+            for (int y = 0; y < texture.height; y++) {
+
+                //OverlapCircle returns a collider within the check area if there is one. TEMP. DISABLED
+                //Collider2D collider = Physics2D.OverlapCircle(spawnLocation, 0.4f, layersToCheckForCollision);
+                //If no collider was found, spawn the object.
+                //if (!collider) {
+                    
+                    bool objectCreatedForThisPixel = false;
+
+                    foreach (ColorGameObjectAssignment colorObjectAssignment in colorObjectAssignments) {
+                        if (pixels[blockNumber] == colorObjectAssignment.color) {
+                            GameObject gO = Instantiate(
+                                colorObjectAssignment.gameObject,
+                                new Vector3(x, y, colorObjectAssignment.gameObject.transform.position.z) + colorObjectAssignment.spawnLocationOffset,
+                                Quaternion.identity
+                            );
+                            objectCreatedForThisPixel = true;
+
+                            //special case for the character
+                            if (gO.GetComponent<LevelFinisher>()) {
+                                LevelFinisher gOLevelFinisher = gO.GetComponent<LevelFinisher>();
+                                gOLevelFinisher.failMenuObject = failMenuObject;
+                                gOLevelFinisher.targetX = targetX;
+                                gOLevelFinisher.minimumTargetY = minimumTartgetY;
+                                gOLevelFinisher.minimumLevelX = minimumLevelX;
+                                gOLevelFinisher.minimumLevelY = minimumLevelY;
+                                gOLevelFinisher.maximumLevelY = maximumLevelY;
+                            }
+
+                        }
+                    }
+
+                    if (!objectCreatedForThisPixel && colorDebugMessages) {
+                        if (ColorUtility.ToHtmlStringRGB(pixels[blockNumber]) != "FFFFFF") {
+                            Debug.Log("The level generator is lacking instructions for color " + ColorUtility.ToHtmlStringRGB(pixels[blockNumber]));
+                        }
+                    }
+
+                //}
+
+                if (y == texture.height - 1) {
+                    blockNumber -= y * texture.width - 1;
+                }
+                else {
+                    blockNumber += texture.width;
+                }
+            }
+            if (x % columnsPerFrame == 0) {
+                yield return null;
+            }
+        }        
+    }
+}
+        </textarea></code></pre>
+    </article>
+
+    <!--recurring page end elements-->
+    
+    <div id="contact-button">
+        <button class="contact" onclick="moveViewTo('footer')">Contact</button>
+    </div>
+
+    <div class="space"></div>
+
+    <footer>
+        <div class="social-media-icons">
+            <a href="https://instagram.com/vct136">
+                <img src="/res/instagram_icon.png" alt="Instagram icon" /><br>
+                @vct136
+            </a>
+            <a href="https://linkedin.com/in/vct">
+                <img src="/res/linkedin_logo_black.png" alt="LinkedIn icon" /><br>
+                Vincent Busch / VCT
+            </a>
+            <a href="mailto://vct136@gmail.com">
+                <img src="/res/email-icon-vindicator-at.svg" alt="at-symbol" /><br>
+                VCT136@Gmail.com
+            </a>
+            <a href="tel:+4917657470599">
+                <img src="/res/phone_icon.svg" alt="phone icon" /><br>
+                +49 176 5 747 0599
+            </a>
+            <a href="https://facebook.com/vct136">
+                <img src="/res/facebook_f_icon_black.png" alt="Facebook icon" /><br>
+                Vincent Busch / VCT136
+            </a>
+        </div>
+        <div>
+            VCT.one is the portfolio website of Vincent Busch a.k.a. VCT.
+        </div>
+        <div>
+            ©2021 Vincent Busch
+        </div>
+        <img class="bottom-left" src="/res/mesitting2021.png" alt="a photo of me sitting" />
+        <img class="bottom-right" src="/res/logo.png" alt="VCT logo" />
+    </footer>
+
+    <!--page end-->
+
+</body>
+</html>
