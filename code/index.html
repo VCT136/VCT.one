@@ -37,8 +37,9 @@
             <li>
                 <a href="#unity">Unity / C#</a>
                 <ul>
-                    <li><a href="#sas-destruction">Dynamic Destruction for Supermarine Air Support</a></li>
-                    <li><a href="#sas-level-generator">Level Generator for Supermarine Air Support</a></li>
+                    <li><a href="#sas-destruction">Dynamic destruction for Supermarine Air Support</a></li>
+                    <li><a href="#level-object-mover">Displaying objects within bounds for VRgora</a></li>
+                    <li><a href="#sas-level-generator">Level generator for Supermarine Air Support</a></li>
                 </ul>
             </li>
         </ul>
@@ -47,7 +48,7 @@
     <h1 class="section-label" id="unity">Unity / C#</h1>
 
     <article class="card" id="sas-destruction">
-        <h1>Dynamic Destruction for Supermarine Air Support</h1>
+        <h1>Dynamic destruction for Supermarine Air Support</h1>
         <p>
             I wrote this dynamic destruction system for <a href="/games/supermarineairsupport/">Supermarine Air Support</a>.<br>
             <br>
@@ -322,10 +323,272 @@ public class HitpointImpactDestroyer : MonoBehaviour
     }
 }  
         </textarea></code></pre>
+        <p>
+            <img src="/res/supermarine air support/trapping_zombies.gif" alt="animation showing the player trapping zombies in a pit using the dynamic destruction system in Supermarine Air Support"><br>
+            In this animation the player makes use of the system to trap three zombies in a pit.<br>
+            The player's projectiles, the terrain, the dynamite and the zombies all implement this script. 
+        </p>
+    </article>
+
+    <article class="card" id="level-object-mover">
+        <h1>Displaying objects within bounds for VRgora</h1>
+        <p>
+            In <a href="/games/vrgora/">VRgora</a> the protagonist moves through a crowded pedestrian street surrounded by buildings.<br>
+            <br>
+            The houses, "pedestrians" (capsules) and other environmental objects of this prototype level have the <code>LevelObjectMover</code> script attached to them.<br>
+            It is responsible for displaying the level objects only when they are within the area above the table (or rather the <code>gameBoard</code> GameObject), and moving them along depending on the protagonist's "speed" (<code>characterWalkSpeed</code>; derived from the <code>character</code> GameObject).<br>
+            <br>
+            While the level objects only move in one direction in the prototype, quite some code is already prepared within the script to allow movement in four directions. (along the X and Z axes).<br>
+            The <code>squish</code> boolean determines whether the objects shall be "squished" into place or faded in / out when appearing / disappearing. In the prototype all objects use the "squishing".<br>
+            <br>
+            Although I have later learnt that it would have been significantly more performant to have coded this functionality as a GPU run shader, I am quite proud of how it turned out, since it was my first time manipulating 3D meshes using code.
+        </p>
+        <pre><code><textarea readonly class="code">
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class LevelObjectMover : MonoBehaviour
+{
+    [SerializeField] private GameObject gameBoard = null;
+    [SerializeField] private GameObject character = null;
+    [SerializeField] private bool useZInteadOfXAxisToScroll = false;
+    [SerializeField] private float fadeTime = 1;
+    [SerializeField] private bool squish = true;
+    private MeshRenderer meshRenderer = null;
+    private MeshFilter meshFilter = null;
+    private float characterWalkSpeed = 0;
+    private bool fading = false;
+    private bool visible = false;
+    private bool startsOnPositiveSideOfTheAxis = true;
+    private bool fadingIn = false;
+    private Vector3[] unmodifiedVertices;
+
+    void Start()
+    {
+        //workaround for attaching game board objects to prefabs using game board object name
+        if (gameBoard == null) {
+            gameBoard = GameObject.Find("GameBoard");
+        }
+        //workaround for attaching the character object to prefabs using object name
+        if (character == null) {
+            character = GameObject.Find("Character");
+        }
+
+        meshRenderer = GetComponent<MeshRenderer>();
+        meshRenderer.enabled = false;
+        //check on which side the object starts
+        if (useZInteadOfXAxisToScroll)
+        {
+            if (transform.position.z < gameBoard.transform.position.z)
+            {
+                startsOnPositiveSideOfTheAxis = false;
+            }
+            else
+            {
+                startsOnPositiveSideOfTheAxis = true;
+            }
+        }
+        else
+        {
+            if (transform.position.x < gameBoard.transform.position.x)
+            {
+                startsOnPositiveSideOfTheAxis = false;
+            }
+            else
+            {
+                startsOnPositiveSideOfTheAxis = true;
+            }
+        }
+        meshFilter = GetComponent<MeshFilter>();
+        unmodifiedVertices = meshFilter.mesh.vertices;
+    }
+
+    void Update()
+    {
+        Collider collider = GetComponent<Collider>();
+        Collider gameBoardCollider = gameBoard.GetComponent<Collider>();
+
+        characterWalkSpeed = character.GetComponent<CharacterBehavior>().walkSpeed;
+        //move object around character
+        if (useZInteadOfXAxisToScroll)
+        {
+            transform.Translate(new Vector3(0, 0, characterWalkSpeed * Time.deltaTime), Space.World);
+        }
+        else
+        {
+            transform.Translate(new Vector3(characterWalkSpeed * Time.deltaTime, 0, 0), Space.World);
+        }
+
+        //for non-squishable objects or ones that shouldn't be squished
+        if (!squish) {
+
+            //start fading
+            if (!fading && useZInteadOfXAxisToScroll)
+            {
+                //appear if close enough
+                if (
+                    !visible && Mathf.Abs(transform.position.z - gameBoard.transform.position.z) < gameBoardCollider.bounds.size.z / 2 + collider.bounds.size.z / 2 &&
+                    (startsOnPositiveSideOfTheAxis && transform.position.z > gameBoard.transform.position.z || !startsOnPositiveSideOfTheAxis && transform.position.z < gameBoard.transform.position.z)
+                )
+                {
+                    meshRenderer.enabled = true;
+                    fading = true;
+                    fadingIn = true;
+                    Color materialColor = meshRenderer.material.color;
+                    materialColor.a = 0;
+                    meshRenderer.material.color = materialColor;
+                    visible = true;
+                }
+                //disappear if too far
+                else if (
+                    Mathf.Abs(transform.position.z - gameBoard.transform.position.z) > gameBoardCollider.bounds.size.z / 2 + collider.bounds.size.z / 2 &&
+                    (startsOnPositiveSideOfTheAxis && transform.position.z < gameBoard.transform.position.z || !startsOnPositiveSideOfTheAxis && transform.position.z > gameBoard.transform.position.z)
+                )
+                {
+                    fading = true;
+                    fadingIn = false;
+                }
+            }
+            else if (!fading)
+            {
+                //appear if close enough
+                if (
+                    !visible && Mathf.Abs(transform.position.x - gameBoard.transform.position.x) < gameBoardCollider.bounds.size.x / 2 + collider.bounds.size.x / 2 &&
+                    (startsOnPositiveSideOfTheAxis && transform.position.x > gameBoard.transform.position.x || !startsOnPositiveSideOfTheAxis && transform.position.x < gameBoard.transform.position.x)
+                )
+                {
+                    meshRenderer.enabled = true;
+                    fading = true;
+                    fadingIn = true;
+                    Color materialColor = meshRenderer.material.color;
+                    materialColor.a = 0;
+                    meshRenderer.material.color = materialColor;
+                    visible = true;
+                }
+                //disappear if too far
+                else if (
+                    Mathf.Abs(transform.position.x - gameBoard.transform.position.x) > gameBoardCollider.bounds.size.x / 2 + collider.bounds.size.x / 2 &&
+                    (startsOnPositiveSideOfTheAxis && transform.position.x < gameBoard.transform.position.x || !startsOnPositiveSideOfTheAxis && transform.position.x > gameBoard.transform.position.x)
+                )
+                {
+                    fading = true;
+                    fadingIn = false;
+                }
+            }
+        }
+
+        //for squishable objects
+        else {
+
+            //model operations
+            Vector3[] vertices = meshFilter.mesh.vertices;
+            bool withinDisplayRange = false;
+            for (int i = 0; i < vertices.Length; i++) {
+                Vector3 vertex = vertices[i];
+                Vector3 unmodifiedVertex = unmodifiedVertices[i];
+                Vector3 point = transform.TransformPoint(vertex);
+                Vector3 unmodifiedPoint = transform.TransformPoint(unmodifiedVertex);
+                //squeeze x
+                if (unmodifiedPoint.x < gameBoardCollider.bounds.min.x) {
+                    point.x = gameBoardCollider.bounds.min.x;
+                    vertices[i] = transform.InverseTransformPoint(point);
+                }
+                else if (unmodifiedPoint.x > gameBoardCollider.bounds.max.x) {
+                    point.x = gameBoardCollider.bounds.max.x;
+                    vertices[i] = transform.InverseTransformPoint(point);
+                }
+                else if (point.x != unmodifiedPoint.x) {
+                    point.x = unmodifiedPoint.x;
+                    vertices[i] = transform.InverseTransformPoint(point);
+                }
+                //squeeze z
+                if (unmodifiedPoint.z < gameBoardCollider.bounds.min.z) {
+                    point.z = gameBoardCollider.bounds.min.z;
+                    vertices[i] = transform.InverseTransformPoint(point);
+                }
+                else if (unmodifiedPoint.z > gameBoardCollider.bounds.max.z) {
+                    point.z = gameBoardCollider.bounds.max.z;
+                    vertices[i] = transform.InverseTransformPoint(point);
+                }
+                else if (point.z != unmodifiedPoint.z) {
+                    point.z = unmodifiedPoint.z;
+                    vertices[i] = transform.InverseTransformPoint(point);
+                }
+                
+                //check if it is within display range
+                if (
+                    unmodifiedPoint.x < gameBoardCollider.bounds.max.x &&
+                    unmodifiedPoint.x > gameBoardCollider.bounds.min.x &&
+                    unmodifiedPoint.z < gameBoardCollider.bounds.max.z &&
+                    unmodifiedPoint.z > gameBoardCollider.bounds.min.z &&
+                    !withinDisplayRange
+                ) {
+                    withinDisplayRange = true;
+                }
+            }
+            meshFilter.mesh.vertices = vertices;
+            //start fading
+            //in
+            if (!fading && !visible && withinDisplayRange) {
+                meshRenderer.enabled = true;
+                fading = true;
+                fadingIn = true;
+                Color materialColor = meshRenderer.material.color;
+                materialColor.a = 0;
+                meshRenderer.material.color = materialColor;
+                visible = true;
+            }
+            //out
+            if (!fading && visible && !withinDisplayRange) {
+                fading = true;
+                fadingIn = false;
+            }
+        }
+
+        
+
+        //fade
+        if (fading)
+        {
+            //fade in
+            if (fadingIn)
+            {
+                Color materialColor = meshRenderer.material.color;
+                materialColor.a += Time.deltaTime / fadeTime; 
+                meshRenderer.material.color = materialColor;
+                if (meshRenderer.material.color.a >= 1)
+                {
+                    fading = false;
+                    fadingIn = false;
+                }
+            }
+            //fade out
+            else
+            {
+                Color materialColor = meshRenderer.material.color;
+                materialColor.a -= Time.deltaTime / fadeTime;
+                meshRenderer.material.color = materialColor;
+                if (meshRenderer.material.color.a <= 0)
+                {
+                    fading = false;
+                    fadingIn = false;
+                    meshRenderer.enabled = false;
+                    visible = false;
+                }
+            }
+        }
+    }
+}            
+        </textarea></code></pre>
+        <p>
+            <img src="/res/vrgora/vrgora_optimized.gif" alt="animated gampeplay of VRgora"><br>
+            In this animation you can see the system in action.
+        </p>
     </article>
 
     <article class="card" id="sas-level-generator">
-        <h1>Level Generator for Supermarine Air Support</h1>
+        <h1>Level generator for Supermarine Air Support</h1>
         <p>
             For the project <a href="/games/supermarineairsupport/">Supermarine Air Support</a> I wrote this level generator.<br>
             <br>
