@@ -37,6 +37,7 @@
             <li>
                 <a href="#unity">Unity / C#</a>
                 <ul>
+                    <li><a href="#sas-destruction">Dynamic Destruction for Supermarine Air Support</a></li>
                     <li><a href="#sas-level-generator">Level Generator for Supermarine Air Support</a></li>
                 </ul>
             </li>
@@ -45,11 +46,290 @@
 
     <h1 class="section-label" id="unity">Unity / C#</h1>
 
+    <article class="card" id="sas-destruction">
+        <h1>Dynamic Destruction for Supermarine Air Support</h1>
+        <p>
+            I wrote this dynamic destruction system for <a href="/games/supermarineairsupport/">Supermarine Air Support</a>.<br>
+            <br>
+            <b>Hitpoints</b><br>
+            <br>
+            With the following script attached as a component to a GameObject, you can set its <code>hitpoints</code> in the inspector. The script can handle damage calculation based on collision impact strengths, and makes the object shatter into pieces when the <code>hitpoints</code> field reaches a value of 0.<br>
+            <br>
+            If you don't want certain other objects to cause damage to the one with the script, you can add their names to the <code>passiveDamageExemptionList</code>. In Supermarine Air Support we mainly used this to avoid having the protagonist cause damage to the environment.<br>
+            <br>
+            <b>Debris</b><br>
+            <br>
+            When 0 <code>hitpoints</code> are reached, 9 debris pieces (<code>debrisInstance</code>s) are generated, taking their shape and texture from a <code>debrisObject</code> and their color from the original object's texture, and launched into different directions.* The original object is simultaneously dissolved.<br>
+            If the <code>debrisObject</code> is destructible using this system too, which in Supermarine Air Support it always is, you can use the <code>debrisHitpoints</code> integer to set the amount of hitpoints the debris should be generated with.<br>
+            If the <code>keepAsBackground</code> field is set to true, a darkened, non-interactive version of the original object will remain in the background of the game instead of having the object disappear entirely.<br>
+            <br>
+            *Debris pieces are not generated in case they would be smaller than a certain threshold or very transparent.<br>
+            <br>
+            <b>Explosions</b><br>
+            <br>
+            When the object is <code>explosive</code>, an instance of its <code>explosionObject</code> is created in addition to debris and all objects with Rigidbody2D physics simulation within <code>explosionRadius</code> will be impacted by the explosion's "shockwave". The higher the value of <code>explosionStrength</code> the more.
+        </p>
+        <pre><code><textarea readonly class="code">
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[RequireComponent (typeof(SpriteRenderer))]
+public class HitpointImpactDestroyer : MonoBehaviour
+{
+    [SerializeField] public float hitpoints = 1;
+    
+    [Header("Damage Exemptions")]
+    [Tooltip("Objects with names in this list can not damage this object.")]
+    [SerializeField] private List<string> passiveDamageExemptionList = new List<string>();
+    
+    [Header("Debris Settings")]
+    [SerializeField] private GameObject debrisObject = null;
+    [SerializeField] private int debrisHitpoints = 1;
+    [SerializeField] private bool logDamageTaken = false;
+
+    [Header("Explosion Settings")]
+    [SerializeField] private bool explosive = false;
+    [SerializeField] private GameObject explosionObject = null;
+    [SerializeField] private float explosionRadius = 1;
+    [SerializeField] private float explosionStrength = 1;
+
+    [Header("Other")]
+    [SerializeField] private bool keepAsBackground = false;
+
+    private bool dissolving = false;
+    private bool keptAsBackground = false;
+
+    void Update()
+    {
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+
+        //fall apart if hitpoints lost
+        if (debrisObject && hitpoints <= 0 && !dissolving) {
+
+            float ppu = spriteRenderer.sprite.pixelsPerUnit;
+            int height = spriteRenderer.sprite.texture.height;
+            int width = spriteRenderer.sprite.texture.width;
+            Bounds srBounds = spriteRenderer.bounds;
+            Vector2 impactVelocity = new Vector2();
+
+            //disable collider and rigidbody if possible
+            if (GetComponent<Collider2D>()) {
+                GetComponent<Collider2D>().enabled = false;
+            }
+            if (GetComponent<Rigidbody2D>()) {
+                impactVelocity = GetComponent<Rigidbody2D>().velocity;
+                GetComponent<Rigidbody2D>().isKinematic = true;
+            }
+
+            int debrisNumber = 0;
+            
+            //create and set up debris objects
+            for (int iy = 1; iy < 11; iy += 4) {
+                for (int ix = 1; ix < 11; ix += 4) {
+                    
+                    //get color for debris
+                    Color color = spriteRenderer.sprite.texture.GetPixel(ix * (int)Mathf.Round(width / 11), iy * (int)Mathf.Round(height / 11)) * spriteRenderer.color;
+
+                    //instantiate and set up objets
+                    //if the objects are going to be large and rather opaque
+                    if (
+                        color.a > 0.3f &&
+                        (transform.localScale.x * (width / ppu) / 3 + transform.localScale.y * (height / ppu) / 3) / 2 > 0.2f
+                    ) {
+                        
+                        GameObject debrisInstance = Instantiate(
+                            debrisObject,
+                            new Vector3(
+                                srBounds.min.x + transform.localScale.x * ix * (width / ppu) / 11,
+                                srBounds.min.y + transform.localScale.y * iy * (height / ppu) / 11,
+                                transform.position.z
+                            ),
+                            transform.rotation
+                        );
+
+                        //give debris hitpoints if it has this component too
+                        if (debrisInstance.GetComponent<HitpointImpactDestroyer>()) {
+                            debrisInstance.GetComponent<HitpointImpactDestroyer>().hitpoints = debrisHitpoints;
+                        }
+
+                        //set up debris rigidbody
+                        if (debrisInstance.GetComponent<Rigidbody2D>()) {
+                            debrisInstance.GetComponent<Rigidbody2D>().isKinematic = false;
+                            debrisInstance.GetComponent<Rigidbody2D>().useAutoMass = true;
+                            if (GetComponent<Rigidbody2D>()) {
+                                
+                                //debrisInstance.GetComponent<Rigidbody2D>().velocity = impactVelocity;
+                                
+                                float directionVectorX = 0;
+                                float directionVectorY = 0;
+                                
+                                if (debrisNumber % 3 == 0) {
+                                    directionVectorX = -1;
+                                }
+                                else if (debrisNumber == 2 || debrisNumber == 5 || debrisNumber == 8) {
+                                    directionVectorX = 1;
+                                }
+                                if (debrisNumber < 3) {
+                                    directionVectorY = -1;
+                                }
+                                else if (debrisNumber > 5) {
+                                    directionVectorY = 1;
+                                }
+                                
+                                debrisInstance.GetComponent<Rigidbody2D>().velocity = new Vector2(directionVectorX * impactVelocity.magnitude, directionVectorY * impactVelocity.magnitude);
+                            }
+                        }
+                        if (debrisInstance.GetComponent<Collider2D>()) {
+                            debrisInstance.GetComponent<Collider2D>().enabled = true;
+                            debrisInstance.GetComponent<Collider2D>().density = GetComponent<Collider2D>().density;
+                        }
+
+                        //color and scale debris
+                        if (debrisInstance.GetComponent<SpriteRenderer>()) {
+                            debrisInstance.GetComponent<SpriteRenderer>().color = color;
+                            debrisInstance.transform.localScale = new Vector3(
+                                transform.localScale.x * (width / ppu) / 3,
+                                transform.localScale.y * (height / ppu) / 3,
+                                transform.position.z
+                            );
+                        }
+                    }
+
+                    debrisNumber ++;
+                }
+            }
+
+            dissolving = true;
+        }
+
+        //dissolve at the end
+        if (dissolving) {
+            
+            //destroy some components if possible
+            if (GetComponent<Animator>()) {
+                Destroy(GetComponent<Animator>());
+            }
+            if (GetComponent<CollisionSoundEmitter>()) {
+                Destroy(GetComponent<CollisionSoundEmitter>());
+            }
+            if (GetComponent<AudioSource>()) {
+                Destroy(GetComponent<AudioSource>());
+            }
+            if (GetComponent<CharacterMovement>()) {
+                Destroy(GetComponent<CharacterMovement>());
+            }
+
+            //explode
+            if (explosive && explosionObject) {
+                explosive = false;
+                GameObject explosion = Instantiate(explosionObject, new Vector3(transform.position.x, transform.position.y, transform.position.z - 1), transform.rotation);
+                explosion.transform.localScale = new Vector3(explosionRadius, explosionRadius, 1);
+                
+                CircleCollider2D circleCollider = gameObject.AddComponent(typeof(CircleCollider2D)) as CircleCollider2D;
+                circleCollider.radius = explosionRadius;
+                circleCollider.isTrigger = true;
+                
+                List<Collider2D> collidersOfObjectsInExplosionRange = new List<Collider2D>();
+                collidersOfObjectsInExplosionRange.ToArray();
+                ContactFilter2D noContactFilter = new ContactFilter2D();
+                noContactFilter.NoFilter();
+                circleCollider.OverlapCollider(noContactFilter, collidersOfObjectsInExplosionRange);
+                foreach(Collider2D collider in collidersOfObjectsInExplosionRange) {
+                    
+                    //throw rigidbody objects away
+                    if (collider.gameObject.GetComponent<Rigidbody2D>()) {
+                        Rigidbody2D impactedObjectRb = collider.gameObject.GetComponent<Rigidbody2D>();
+                        impactedObjectRb.velocity = (Vector3) impactedObjectRb.velocity + explosionStrength * (collider.gameObject.transform.position - transform.position).normalized * (explosionRadius - (collider.gameObject.transform.position - transform.position).magnitude);
+                    }
+
+                    //damage objects with hitpoints
+                    if (collider.gameObject.GetComponent<HitpointImpactDestroyer>()) {
+                        HitpointImpactDestroyer impactedObjectHid = collider.gameObject.GetComponent<HitpointImpactDestroyer>();
+                        impactedObjectHid.hitpoints -= 5 * explosionStrength * (explosionRadius - (collider.gameObject.transform.position - transform.position).magnitude);
+                    }
+                    
+                }
+            }
+
+            //dissolve / self-destruct
+            if (!keepAsBackground) {
+                if (spriteRenderer.color.a <= 0) {
+                    Destroy(gameObject);
+                }
+                else {
+                    spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, spriteRenderer.color.a - Time.deltaTime);
+                }
+            }
+            //keep as background
+            else if (!keptAsBackground) {
+                //disable collider and rigidbody if possible
+                if (GetComponent<Collider2D>()) {
+                    GetComponent<Collider2D>().enabled = false;
+                }
+                if (GetComponent<Rigidbody2D>()) {
+                    GetComponent<Rigidbody2D>().isKinematic = true;
+                    GetComponent<Rigidbody2D>().simulated = false;
+                }
+                //move into background
+                transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1);
+                //darken
+                spriteRenderer.color = new Color(spriteRenderer.color.r - 0.3f, spriteRenderer.color.g - 0.3f, spriteRenderer.color.b - 0.3f, spriteRenderer.color.a);
+                keptAsBackground = true;
+            }
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision) {
+        
+        bool passiveDamageExempt = false;
+        foreach(string name in passiveDamageExemptionList) {
+            if (collision.collider.name.Contains(name)) {
+                passiveDamageExempt = true;
+            }
+        }
+
+        if (!passiveDamageExempt) {
+            
+            //kineticEnergy = 0.5 * mass * relativeVelocity ^ 2
+            float damage = 0;
+            if (collision.rigidbody) {
+                damage = 0.5f * collision.rigidbody.mass * Mathf.Pow(collision.relativeVelocity.magnitude, 2);
+            }
+            else if (collision.collider) {
+                damage = 0.5f * collision.collider.bounds.size.x * collision.collider.bounds.size.y * Mathf.Pow(collision.relativeVelocity.magnitude, 2);
+            }
+            hitpoints -= damage;
+            if (damage > 1 && logDamageTaken) {
+                Debug.Log(gameObject.name + " took " + damage + " damage from " + collision.gameObject.name);
+            }         
+            //hitpoints -= collision.relativeVelocity.magnitude;
+
+            if (hitpoints <= 0 && GetComponent<Rigidbody2D>() == null && !dissolving) {
+                Rigidbody2D tempRb = gameObject.AddComponent<Rigidbody2D>() as Rigidbody2D;
+                tempRb.velocity = 0.5f * collision.relativeVelocity;
+                hitpoints = 1;
+            }
+
+        }
+        
+    }
+
+    void OnCollisionStay2D(Collision2D collision) {
+
+        OnCollisionEnter2D(collision);
+
+    }
+}  
+        </textarea></code></pre>
+    </article>
+
     <article class="card" id="sas-level-generator">
         <h1>Level Generator for Supermarine Air Support</h1>
         <p>
             For the project <a href="/games/supermarineairsupport/">Supermarine Air Support</a> I wrote this level generator.<br>
-            It uses pixel data from an input texture (<code>texture</code>) to instantiate various kinds of game objects. The generator is given a list of scriptable objects (<code>colorObjectAssignments</code>) to instantiate the correct object based on the pixel color.<br>
+            <br>
+            It uses pixel data from an input texture (<code>texture</code>) to instantiate various kinds of game objects at relative coordinates. The generator is given a list of scriptable objects (<code>colorObjectAssignments</code>) to instantiate the correct object based on the pixel color.<br>
             <br>
             Since generating the level entirely at once took a considerable amount of time, I made use of a coroutine (<code>GenerateLevelOverTime</code>) to continously generate parts the level at runtime. 
         </p>
@@ -90,44 +370,40 @@ public class LevelGenerator : MonoBehaviour
         int blockNumber = 0;
         for (int x = 0; x < texture.width; x++) {
             for (int y = 0; y < texture.height; y++) {
-
-                //OverlapCircle returns a collider within the check area if there is one. TEMP. DISABLED
-                //Collider2D collider = Physics2D.OverlapCircle(spawnLocation, 0.4f, layersToCheckForCollision);
-                //If no collider was found, spawn the object.
-                //if (!collider) {
                     
-                    bool objectCreatedForThisPixel = false;
+                bool objectCreatedForThisPixel = false;
 
-                    foreach (ColorGameObjectAssignment colorObjectAssignment in colorObjectAssignments) {
-                        if (pixels[blockNumber] == colorObjectAssignment.color) {
-                            GameObject gO = Instantiate(
-                                colorObjectAssignment.gameObject,
-                                new Vector3(x, y, colorObjectAssignment.gameObject.transform.position.z) + colorObjectAssignment.spawnLocationOffset,
-                                Quaternion.identity
-                            );
-                            objectCreatedForThisPixel = true;
+                //iterate through color object assignments
+                foreach (ColorGameObjectAssignment colorObjectAssignment in colorObjectAssignments) {
+                    
+                    //check if it matches pixel color
+                    if (pixels[blockNumber] == colorObjectAssignment.color) {
+                        GameObject gO = Instantiate(
+                            colorObjectAssignment.gameObject,
+                            new Vector3(x, y, colorObjectAssignment.gameObject.transform.position.z) + colorObjectAssignment.spawnLocationOffset,
+                            Quaternion.identity
+                        );
+                        objectCreatedForThisPixel = true;
 
-                            //special case for the character
-                            if (gO.GetComponent<LevelFinisher>()) {
-                                LevelFinisher gOLevelFinisher = gO.GetComponent<LevelFinisher>();
-                                gOLevelFinisher.failMenuObject = failMenuObject;
-                                gOLevelFinisher.targetX = targetX;
-                                gOLevelFinisher.minimumTargetY = minimumTartgetY;
-                                gOLevelFinisher.minimumLevelX = minimumLevelX;
-                                gOLevelFinisher.minimumLevelY = minimumLevelY;
-                                gOLevelFinisher.maximumLevelY = maximumLevelY;
-                            }
-
+                        //special case for the character
+                        if (gO.GetComponent<LevelFinisher>()) {
+                            LevelFinisher gOLevelFinisher = gO.GetComponent<LevelFinisher>();
+                            gOLevelFinisher.failMenuObject = failMenuObject;
+                            gOLevelFinisher.targetX = targetX;
+                            gOLevelFinisher.minimumTargetY = minimumTartgetY;
+                            gOLevelFinisher.minimumLevelX = minimumLevelX;
+                            gOLevelFinisher.minimumLevelY = minimumLevelY;
+                            gOLevelFinisher.maximumLevelY = maximumLevelY;
                         }
-                    }
 
-                    if (!objectCreatedForThisPixel && colorDebugMessages) {
-                        if (ColorUtility.ToHtmlStringRGB(pixels[blockNumber]) != "FFFFFF") {
-                            Debug.Log("The level generator is lacking instructions for color " + ColorUtility.ToHtmlStringRGB(pixels[blockNumber]));
-                        }
                     }
+                }
 
-                //}
+                if (!objectCreatedForThisPixel && colorDebugMessages) {
+                    if (ColorUtility.ToHtmlStringRGB(pixels[blockNumber]) != "FFFFFF") {
+                        Debug.Log("The level generator is lacking instructions for color " + ColorUtility.ToHtmlStringRGB(pixels[blockNumber]));
+                    }
+                }
 
                 if (y == texture.height - 1) {
                     blockNumber -= y * texture.width - 1;
