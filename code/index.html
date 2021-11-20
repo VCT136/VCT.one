@@ -684,6 +684,107 @@ public class LevelGenerator : MonoBehaviour
         </textarea></code></pre>
     </article>
 
+    <article class="card" id="fog-of-war">
+        <h1>Fog of war for Starboarders</h1>
+        <p>
+            In <b>Starboarders</b> two opposing teams of space pirates are facing each other in a tactical, turn-based shooter match. I wrote this script for its fog of war system.<br>
+            <br>
+            It manages the fog of war objects (using references in the <code>FOWObjects</code> list) placed by the game's level generator, by updating which fog of war elements should and shouldn't be shown, depending on which team's turn it is. (The latter is managed by the <code>turnsManager</code> component referenced in the script.)<br>
+            <br>
+            At the start of a new pirate's turn, the <code>turnsManager</code> calls the <code>FOWManager</code>'s <code>OnNewTurn</code> function, updating the <code>piratesOfCurrentTeam</code> list.<br>
+            Then, or whenever a pirate stops moving, the function <code>UpdateFOW</code> is run.<br>
+            <br>
+            The <code>UpdateFOW</code> function uses a number of Raycasts to the fog of war objects from not only the active pirate, but also all their teammates, to determine which parts of the level should be revealed or concealed.
+        </p>
+        <pre><code><textarea class="code">
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class FOWManager : MonoBehaviour
+{
+    [Header("auto managed")]
+    public List<GameObject> FOWObjects = new List<GameObject>();
+    private TurnsManager turnsManager = null;
+    private List<characterStatsContainer> piratesOfCurrentTeam = new List<characterStatsContainer>();
+
+    void Start() {
+        turnsManager = FindObjectOfType<TurnsManager>();
+        if (!turnsManager) {
+            Debug.LogError("missing turns manager!");
+        }
+    }
+
+    public void UpdateFOW()
+    {
+        //raycast to each pirate of current team and hide fow if no obstacles in the way
+        if (piratesOfCurrentTeam.Count > 0) {
+            foreach (GameObject fow in FOWObjects) {
+                bool pirateInRange = false;
+                MeshRenderer fowRenderer = fow.GetComponent<MeshRenderer>();
+                Vector3 halfExtents = new Vector3(fowRenderer.bounds.extents.x, 0f, fowRenderer.bounds.extents.z);
+                Vector3 halfExtentsReversed = new Vector3(-fowRenderer.bounds.extents.x, 0f, fowRenderer.bounds.extents.z);
+                foreach (characterStatsContainer pirate in piratesOfCurrentTeam) {
+                    Physics.Raycast(fow.transform.position + halfExtents, (pirate.transform.position - (fow.transform.position + halfExtents)), out RaycastHit hit, Vector3.Distance(fow.transform.position + halfExtents, pirate.transform.position));
+                    Physics.Raycast(fow.transform.position - halfExtents, (pirate.transform.position - (fow.transform.position - halfExtents)), out RaycastHit hit1, Vector3.Distance(fow.transform.position - halfExtents, pirate.transform.position));
+                    Physics.Raycast(fow.transform.position + halfExtentsReversed, (pirate.transform.position - (fow.transform.position + halfExtentsReversed)), out RaycastHit hit2, Vector3.Distance(fow.transform.position + halfExtentsReversed, pirate.transform.position));
+                    Physics.Raycast(fow.transform.position - halfExtentsReversed, (pirate.transform.position - (fow.transform.position - halfExtentsReversed)), out RaycastHit hit3, Vector3.Distance(fow.transform.position - halfExtentsReversed, pirate.transform.position));
+                    Debug.DrawRay(fow.transform.position, (pirate.transform.position - fow.transform.position), Color.blue);                 
+                    //if raycast hit a pirate
+                    if ((hit.collider && hit.collider.GetComponent<characterStatsContainer>()) ||
+                        (hit1.collider && hit1.collider.GetComponent<characterStatsContainer>()) ||
+                        (hit2.collider && hit2.collider.GetComponent<characterStatsContainer>()) || 
+                        (hit3.collider && hit3.collider.GetComponent<characterStatsContainer>())) {
+                        pirateInRange = true;
+                        break;   
+                    }
+                }
+
+                if (pirateInRange) {
+                    fow.GetComponent<NeoFOWBehavior>().setShowSelf(false);
+                }
+                else {
+                    fow.GetComponent<NeoFOWBehavior>().setShowSelf(true);
+                }
+            }
+        }
+    }
+
+    public void OnNewTurn() {
+        if (turnsManager.online) {
+            //find your pirates
+            piratesOfCurrentTeam.Clear();
+            if (turnsManager.currentTurnTaker) {
+                foreach (characterStatsContainer pirate in turnsManager.pirates) {
+                    if (pirate.belongsToTeamPositive == turnsManager.isOnlineTeamPositive) {
+                        piratesOfCurrentTeam.Add(pirate);
+                    }
+                }
+            }
+        }
+        else {
+            //find pirates of current team
+            piratesOfCurrentTeam.Clear();
+            if (turnsManager.currentTurnTaker) {
+                foreach (characterStatsContainer pirate in turnsManager.pirates) {
+                    if (pirate.belongsToTeamPositive == turnsManager.currentTurnTaker.GetComponent<characterStatsContainer>().belongsToTeamPositive) {
+                        piratesOfCurrentTeam.Add(pirate);
+                    }
+                }
+            }
+        }
+
+        //update fow
+        UpdateFOW();
+    }
+}            
+        </textarea></code></pre>
+        <p>
+            <img src="/res/starboarders_screenshot_fow.jpg" alt="screenshot of Starboarders in the Unity editor"><br>
+            In this screenshot of the Unity editor you can see the dark grey fog of war elements conceiling "non visible" parts of the map.
+        </p>
+    </article>
+
     <!--recurring page end elements-->
     
     <div id="contact-button">
