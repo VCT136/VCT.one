@@ -608,6 +608,8 @@ ol.organizations li:nth-child(n+2) div:nth-child(2) {
 ol.organizations li div img {
     object-fit: contain;
     height: 2vmin;
+    border-radius: 0;
+    border-style: none;
 }
 
 /* phone size */
