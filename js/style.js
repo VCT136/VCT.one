@@ -58,6 +58,81 @@ function setup() {
         }
     }
 
+    //image "lightbox"
+    let lightboxImageParent = null;
+    $(".card img").click((event) => {
+        //event.target is the clicked image
+        if (
+            $("html").css("overflow") == "visible"
+        ) {
+            
+            //place image in center
+            let distanceToCenterX = $(document).width() / 2 - $(event.target).offset().left - $(event.target).width() / 2;
+            let distanceToCenterY = window.scrollY + $(window).height() / 2 - $(event.target).height() / 2 - $(event.target).offset().top;
+
+            let lightboxedImageScale = 1;
+            if ($(document).width() / $(event.target).width() < (0.8 * $(window).height()) / $(event.target).height()) {
+                lightboxedImageScale = $(document).width() / $(event.target).width();
+            }
+            else {
+                lightboxedImageScale = (0.8 * $(window).height()) / $(event.target).height();
+            }
+            
+            $(event.target).css("transform", `translate3d(${distanceToCenterX}px, ${distanceToCenterY}px, 11px) scale(${lightboxedImageScale})`);
+
+            //add background
+            $(event.target).css("background-color", "#0000007f");
+            $(event.target).css("box-shadow", "0 0 100vmax 30vmax #0000007f");
+
+            //remove border
+            $(event.target).css("border-style", "none");
+            $(event.target).css("border-radius", "0");
+
+            //disable scrolling
+            $("html").css("overflow", "hidden");
+
+            //set z-index of top-level parent to 11
+            let topLevelParentIdentified = false;
+            lightboxImageParent = $(event.target);
+            let iterationCounter = 0;
+            while (!topLevelParentIdentified) {
+                if ($(lightboxImageParent).parent().is("body")) {
+                    topLevelParentIdentified = true;
+                }
+                else if (iterationCounter == 999) {
+                    console.log("Failed to find image's parent element which is a direct child of the document's body.");
+                    break;
+                }
+                else {
+                    lightboxImageParent = $(lightboxImageParent).parent();
+                }
+                iterationCounter++;
+            }
+            $(lightboxImageParent).css("z-index", "11");
+
+        }
+        //if the lightbox is already active, turn it off
+        else if ($("html").css("overflow") == "hidden") {
+
+            //reset transform
+            $(event.target).css("transform", "");
+            
+            //reset background
+            $(event.target).css("background-color", "");
+            $(event.target).css("box-shadow", "");
+
+            //reset border
+            $(event.target).css("border-style", "");
+            $(event.target).css("border-radius", "");
+            
+            //re-enable scrolling
+            $("html").css("overflow", "visible");
+            
+            //reset top level parent's z-index
+            $(lightboxImageParent).css("z-index", "");
+        }
+    });
+
     //background info on me
 
     if ($("#background").length > 0 && $("#background-info").length == 0 && $("#background").html().length == 0) {

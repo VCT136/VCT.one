@@ -312,6 +312,8 @@ div.role-cards a.wip article img {
     object-fit: contain;
     margin: 1vmin 1vmin 0 0;
     float: left;
+    transition-property: transform, box-shadow, background-color, border-radius;
+    transition-duration: 1s;
 }
 .card p {
     margin: 0;
@@ -689,6 +691,19 @@ ul.project-specifications li div {
     ul.project-specifications li:nth-child(2n) {
         background-color: lightgrey;
     }
+}
+
+/* lightbox background */
+div.lightbox-bg {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--fifty-percent-black);
+    overflow: auto;
 }
 
 @keyframes cover-image-slide {
