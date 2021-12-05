@@ -28,15 +28,6 @@ large: 1301px <= x
 
 html {
     scroll-behavior: smooth;
-    background-color: var(--lighter-grey);
-    /* background-image: url("/res/VCT_Logo_outline_monochrome_transparent.svg");
-    background-size: 15vmin;
-    background-repeat: space; */
-    background-image: url("/res/sitebg.jpg");
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 body {
@@ -48,6 +39,12 @@ body {
     grid-template-rows: 10vh repeat(1, min-content) auto min-content;
     place-items: center;
     text-align: justify;
+    background-color: var(--lighter-grey);
+    background-image: url("/res/sitebg.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 ::selection {

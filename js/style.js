@@ -66,6 +66,11 @@ function setup() {
             $("html").css("overflow") == "visible"
         ) {
             
+            //disable image height limit
+            if ($(event.target).is("article.main-card img")) {
+                $(event.target).css("max-height", "none");
+            }
+
             //place image in center
             let distanceToCenterX = $(document).width() / 2 - $(event.target).offset().left - $(event.target).width() / 2;
             let distanceToCenterY = window.scrollY + $(window).height() / 2 - $(event.target).height() / 2 - $(event.target).offset().top;
@@ -113,6 +118,11 @@ function setup() {
         }
         //if the lightbox is already active, turn it off
         else if ($("html").css("overflow") == "hidden") {
+
+            //re-enable image height limit if needed
+            if ($(event.target).is("article.main-card img")) {
+                $(event.target).css("max-height", "50vmin");
+            }
 
             //reset transform
             $(event.target).css("transform", "");
