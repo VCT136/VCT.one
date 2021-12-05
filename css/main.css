@@ -431,8 +431,19 @@ ol.projects li:nth-child(n+2) div:nth-child(2) {
     font-style: italic;
 }
 ol.projects li div img {
-    object-fit: contain;
+    object-fit: cover;
+    height: 20vh;
+    max-height: none;
     width: 100%;
+
+    animation: cover-image-slide;
+    animation-duration: 30s;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+    animation-timing-function: linear;
+}
+ol.projects li div img:hover {
+    animation-play-state: paused;
 }
 
 /* phone size */

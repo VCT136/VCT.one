@@ -66,9 +66,12 @@ function setup() {
             $("html").css("overflow") == "visible"
         ) {
             
-            //disable image height limit
+            //disable image size limit
             if ($(event.target).is("article.main-card img")) {
                 $(event.target).css("max-height", "none");
+            }
+            if ($(event.target).is("ol.projects li div img")) {
+                $(event.target).css("height", "auto");
             }
 
             //place image in center
@@ -119,9 +122,12 @@ function setup() {
         //if the lightbox is already active, turn it off
         else if ($("html").css("overflow") == "hidden") {
 
-            //re-enable image height limit if needed
+            //re-enable image size limit if needed
             if ($(event.target).is("article.main-card img")) {
                 $(event.target).css("max-height", "50vmin");
+            }
+            if ($(event.target).is("ol.projects li div img")) {
+                $(event.target).css("height", "20vh");
             }
 
             //reset transform
