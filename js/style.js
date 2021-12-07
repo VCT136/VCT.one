@@ -63,7 +63,8 @@ function setup() {
     $(".card img").click((event) => {
         //event.target is the clicked image
         if (
-            $("html").css("overflow") == "visible"
+            $("html").css("overflow") == "visible" &&
+            !$(event.target).is(".mini-card img")
         ) {
             
             //disable image size limit

@@ -256,11 +256,13 @@ article.introduction p {
     }
 }
 
-/* roles */
+/* off color articles */
 
-article.roles {
+article.off-color {
     background-color: var(--ninety-three-percent-almost-white);
 }
+
+/* role cards */
 
 div.role-cards {
     display: grid;
@@ -378,6 +380,89 @@ div.role-cards a.wip article img {
 @media screen and (min-width: 801px) and (max-width: 1300px) {
     div.role-cards {
         grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* mini cards */
+
+.mini-cards {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2vmin;
+    width: 100%;
+}
+
+.mini-card {
+    background-color: white;
+    box-shadow: 0 0 1vmin var(--fifty-percent-black);
+    box-sizing: border-box;
+    border-radius: 3vmin;
+    padding-bottom: 2vmin;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    text-align: center;
+
+    display: grid;
+    grid-template-rows: calc(1.25em + 2vmin) 15vmin;
+    gap: 1vmin;
+    place-items: center;
+}
+.mini-card button {
+    box-shadow: none;
+}
+.mini-card h2 {
+    padding: 2vmin 0 0 0;
+}
+.mini-card .color-and-circle {
+    background-color: var(--lighter-grey);
+    width: 100%;
+    display: grid;
+    place-items: center;
+    margin: 2.5vmin 0 2.5vmin 0;
+}
+.mini-card .color-and-circle img {
+    height: 10vmin;
+    width: 10vmin;
+    object-fit: cover;
+    background-color: white;
+    border-radius: 7.5vmin;
+    border-color: black;
+    margin: 0;
+    transform: scale(1.5);
+
+    animation: cover-image-slide;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+    animation-timing-function: linear;
+}
+.mini-card p {
+    padding: 0 2vmin 0 2vmin;
+}
+.mini-card .stats {
+    color: var(--fifty-percent-black);
+    padding: 0 1vmin 0 1vmin;
+
+    display: grid;
+    gap: 1vmin;
+    place-items: center;
+}
+.mini-card .stats p {
+    padding: 0;
+}
+
+/* phone size */
+@media screen and (max-width: 800px) {
+    .mini-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* small size */
+@media screen and (min-width: 801px) and (max-width: 1300px) {
+    .mini-cards {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
