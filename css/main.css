@@ -457,6 +457,13 @@ div.role-cards a.wip article img {
     .mini-cards {
         grid-template-columns: repeat(2, 1fr);
     }
+    .mini-card {
+        grid-template-rows: calc(2.5em + 2vmin) 22.5vmin;
+    }
+    .mini-card .color-and-circle img {
+        height: 15vmin;
+        width: 15vmin;
+    }
 }
 
 /* small size */
