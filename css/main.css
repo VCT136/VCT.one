@@ -473,6 +473,42 @@ div.role-cards a.wip article img {
     }
 }
 
+/* image collections */
+
+div.image-collection {
+    display: flex;
+    flex-wrap: wrap;
+}
+div.image-collection div.column {
+    flex: 25%;
+    max-width: 25%;
+}
+div.image-collection img {
+    vertical-align: middle;
+    object-fit: cover;
+    width: 100%;
+    max-height: none;
+    box-sizing: border-box;
+    border-radius: 0;
+    border-style: none;
+    margin: 0;
+
+    transition-property: border-radius;
+    transition-duration: 1s;
+}
+div.image-collection img:hover {
+    border-radius: 1vmin;
+    border-style: solid;
+}
+
+/* phone size */
+@media screen and (max-width: 800px) {
+    div.image-collection div.column {
+        flex: 50%;
+        max-width: 50%;
+    }
+}
+
 /* about button */
 
 div.row-button {
@@ -495,47 +531,6 @@ div.row-button:hover {
 
 article.collection {
     grid-template-rows: min-content, repeat(auto-fill, 1fr);
-}
-
-/* projects list */
-
-ol.projects {
-    display: grid;
-    gap: 1vmin;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-ol.projects li {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-}
-ol.projects li:nth-child(2n+1) {
-    background-color: lightgrey;
-}
-ol.projects li div {
-    padding: 2vmin;
-    border-style: outset;
-    border-width: 1px;
-}
-ol.projects li:nth-child(n+2) div:nth-child(2) {
-    font-weight: bold;
-    font-style: italic;
-}
-ol.projects li div img {
-    object-fit: cover;
-    height: 20vh;
-    max-height: none;
-    width: 100%;
-
-    animation: cover-image-slide;
-    animation-duration: 30s;
-    animation-iteration-count: infinite;
-    animation-play-state: running;
-    animation-timing-function: linear;
-}
-ol.projects li div img:hover {
-    animation-play-state: paused;
 }
 
 /* phone size */
