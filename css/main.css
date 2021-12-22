@@ -476,36 +476,34 @@ div.role-cards a.wip article img {
 /* image collections */
 
 div.image-collection {
-    display: flex;
-    flex-wrap: wrap;
-}
-div.image-collection div.column {
-    flex: 25%;
-    max-width: 25%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2vmin;
+    align-items: center;
 }
 div.image-collection img {
-    vertical-align: middle;
-    object-fit: cover;
-    width: 100%;
-    max-height: none;
+    
+    object-fit: contain;
+    max-width: 100%;
     box-sizing: border-box;
+    background-image: linear-gradient(var(--almost-white), var(--lighter-grey));
+    box-shadow: 0.5vmin 0.5vmin 1vmin 0 var(--fifty-percent-black);
     border-radius: 0;
-    border-style: none;
+    border-color: var(--fifty-percent-black);
     margin: 0;
 
-    transition-property: border-radius;
+    transition-property: border-color;
     transition-duration: 1s;
 }
 div.image-collection img:hover {
-    border-radius: 1vmin;
+    border-color: var(--highlight-red);
     border-style: solid;
 }
 
 /* phone size */
 @media screen and (max-width: 800px) {
-    div.image-collection div.column {
-        flex: 50%;
-        max-width: 50%;
+    div.image-collection {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
