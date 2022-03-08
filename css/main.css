@@ -217,6 +217,7 @@ article.introduction {
 }
 article.introduction img {
     padding: 0.5vmin;
+    background-color: var(--vct-red);
     border-radius: 50%;
     box-sizing: border-box;
     height: 1vmin;
