@@ -13,9 +13,7 @@ large: 1301px <= x
 
 :root {
     /* colors */
-    --stage-burgundy: #8e0c35;
-    --highlight-red: #c80000;
-    --optimist-gold: #ffd700;
+    --vct-red: #C00136;
     --clean-white: #ffffff;
     --almost-white: #f6f6f6;
     --lighter-grey: #dadada;
@@ -53,7 +51,7 @@ body {
 }
 
 a {
-    color: var(--highlight-red);
+    color: var(--vct-red);
     text-decoration: none;
     font-weight: bold;
 }
@@ -114,7 +112,7 @@ ul {
     box-shadow: 0 0 0.5vmin 0 black inset;
 }
 ::-webkit-scrollbar-thumb:hover {
-    box-shadow: 0 0 0.5vmin 0.1vmin var(--highlight-red) inset;
+    box-shadow: 0 0 0.5vmin 0.1vmin var(--vct-red) inset;
 }
 
 /* section labels, typically displayed off any cards */
@@ -130,7 +128,7 @@ nav {
     background-color: white;
     border-width: 0 0 0.6vmin 0;
     border-style: solid;
-    border-color: var(--highlight-red);
+    border-color: var(--vct-red);
     box-shadow: 0 0 1vmin 0.5vmin var(--fifty-percent-black);
     height: 8vh;
     width: 100%;
@@ -335,7 +333,7 @@ div.role-cards a.wip article img {
     animation-duration: 1s;
 }
 .card button {
-    background-color: var(--highlight-red);
+    background-color: var(--vct-red);
     color: white;
     font-family: inherit;
     font-weight: bold;
@@ -354,7 +352,7 @@ div.role-cards a.wip article img {
 }
 .card img {
     border-radius: 1vmin;
-    border-color: var(--highlight-red);
+    border-color: var(--vct-red);
     border-style: solid;
     border-width: 1px;
     max-height: 25vmin;
@@ -496,7 +494,7 @@ div.image-collection img {
     transition-duration: 1s;
 }
 div.image-collection img:hover {
-    border-color: var(--highlight-red);
+    border-color: var(--vct-red);
     border-style: solid;
 }
 
@@ -548,7 +546,7 @@ article.collection {
 
 footer {
     background-color: white;
-    border-color: var(--highlight-red);
+    border-color: var(--vct-red);
     border-style: solid;
     border-width: 0.6vmin 0 0 0;
     box-shadow: 0 0 1vmin 0.5vmin var(--fifty-percent-black);
@@ -614,7 +612,7 @@ div.social-media-icons img {
 article.role-introduction {
     background-color: var(--ninety-three-percent-white);
     backdrop-filter: blur(5px);
-    border-color: var(--highlight-red);
+    border-color: var(--vct-red);
     border-style: solid;
     border-width: 0.3vmin 0 0.3vmin 0;
     width: 90vw;
@@ -655,12 +653,12 @@ button.contact {
 
     border-style: none;
     border-radius: 1vmin;
-    border-color: var(--highlight-red);
+    border-color: var(--vct-red);
     padding: 1vmin;
     box-shadow: 0 0 1vmin var(--fifty-percent-black);
     
     color: white;
-    background-color: var(--highlight-red);
+    background-color: var(--vct-red);
     font-weight: bold;
     font-family: inherit;
 
@@ -810,7 +808,7 @@ textarea.code {
     width: 100%;
     resize: vertical;
     border-radius: 1vmin 0 0 1vmin;
-    border-color: var(--highlight-red);
+    border-color: var(--vct-red);
 }
 textarea.code::selection {
     background-color: var(--fifty-percent-white);
