@@ -1,3 +1,5 @@
+/* import fonts from the internet */
+
 @import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
@@ -343,7 +345,6 @@ div.role-cards a.wip article img {
     border-style: none;
     border-radius: 1vmin;
     padding: 1vmin;
-    box-shadow: 0 0 0.75vmin var(--fifty-percent-black);
 
     transition-property: box-shadow;
     transition-duration: 1s;
@@ -406,9 +407,6 @@ div.role-cards a.wip article img {
     grid-template-rows: calc(1.25em + 2vmin) 15vmin;
     gap: 1vmin;
     place-items: center;
-}
-.mini-card button {
-    box-shadow: none;
 }
 .mini-card h2 {
     padding: 2vmin 0 0 0;
