@@ -235,11 +235,12 @@ article.introduction img {
     backdrop-filter: blur(5px);
     filter: drop-shadow(0 0 1vmin var(--fifty-percent-black));
 
-    transition-duration: 1s;
-    transition-property: transform;
+    transition-duration: 0.2s;
+    transition-property: transform, filter;
 }
 article.introduction img:hover {
     transform: scale(0.95);
+    filter: drop-shadow(0 0 1vmin var(--vct-red));
 }
 article.introduction div {
     background-color: var(--ninety-three-percent-white);
