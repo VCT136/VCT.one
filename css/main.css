@@ -420,6 +420,12 @@ div.role-cards a.wip article img {
 .mini-card h2 {
     padding: 2vmin 0 0 0;
 }
+.mini-card img {
+    margin: 0;
+    border-width: 0;
+    max-width: 100%;
+    max-height: 100%;
+}
 .mini-card .color-and-circle {
     background-color: var(--lighter-grey);
     width: 100%;
