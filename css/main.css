@@ -747,45 +747,6 @@ div.skills div.skill-group div {
     }
 }
 
-/* organizations list */
-
-ol.organizations {
-    display: grid;
-    gap: 1vmin;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-ol.organizations li {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr) 2fr;
-}
-ol.organizations li:nth-child(2n+1) {
-    background-color: lightgrey;
-}
-ol.organizations li div {
-    padding: 2vmin;
-    border-style: outset;
-    border-width: 1px;
-}
-ol.organizations li:nth-child(n+2) div:nth-child(2) {
-    font-weight: bold;
-    font-style: italic;
-}
-ol.organizations li div img {
-    object-fit: contain;
-    height: 2vmin;
-    border-radius: 0;
-    border-style: none;
-}
-
-/* phone size */
-@media screen and (max-width: 800px) {
-    ol.projects li {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
 /* main-card */
 
 article.main-card img {
@@ -856,6 +817,11 @@ ul.project-specifications li div {
     ul.project-specifications li:nth-child(2n) {
         background-color: lightgrey;
     }
+}
+
+/* alphabet + special characters insertion for font demos */
+div.abc::after {
+    content: "ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 .,-_/\()[]?!*#'$''&{}";
 }
 
 /* lightbox background */
