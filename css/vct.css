@@ -1,0 +1,92 @@
+:root {
+    --vct-red: #C00136;
+
+    --half-black: #00000080;
+}
+
+body {
+    background-image: url("/res/sitebg.jpg");
+    background-size: cover;
+    background-color: var(--vct-red);
+    margin: 0;
+}
+
+/* header */
+
+header {
+    background-color: white;
+    box-sizing: border-box;
+    box-shadow: 1px 3px 6px var(--half-black);
+    height: 6vh;
+    padding: 1vh;
+}
+
+header img {
+    height: 4vh;
+}
+
+/* footer */
+
+footer {
+    background-color: white;
+    border-color: var(--vct-red);
+    border-style: solid;
+    border-width: 0.6vmin 0 0 0;
+    box-shadow: 0 0 1vmin 0.5vmin var(--fifty-percent-black);
+    width: 100%;
+    box-sizing: border-box;
+
+    display: grid;
+    gap: 2vmin;
+    padding: 2vmin;
+    place-items: center;
+    text-align: center;
+
+    position: fixed;
+    bottom: 0;
+}
+footer img:not(.bottom-left) {
+    max-height: 6vmin;
+}
+
+/* social media icons */
+
+div.social-media-icons {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    width: 90vw;
+    place-items: center;
+}
+div.social-media-icons a {
+    color: black;
+}
+div.social-media-icons img {
+    object-fit: contain;
+    height: 1.5em;
+}
+
+/* phone size */
+@media screen and (max-width: 800px) {
+    div.social-media-icons {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* bottom images */
+
+img.bottom-left {
+    height: 10vmin;
+    object-fit: contain;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+img.bottom-right {
+    height: 10vmin;
+    padding: 1vmin;
+    box-sizing: border-box;
+    object-fit: contain;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
