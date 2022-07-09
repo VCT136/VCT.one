@@ -22,6 +22,7 @@ function setup() {
     // add header
     $("body").prepend("<div id=\"header\"/>");
     $("div#header").load("/header.html");
+    $("div#header div.space").css("height", $("div#header header").height());
 
     // add footer
     $("body").append("<div id=\"footer\"/>");

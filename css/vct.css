@@ -1,8 +1,16 @@
+/* maven pro font */
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700&display=swap');
+
 :root {
     --vct-red: #C00136;
-
     --half-black: #00000080;
     --translucent-white: #ffffffce;
+}
+
+a {
+    color: var(--vct-red);
+    font-weight: bold;
+    text-decoration: none;
 }
 
 body {
@@ -10,13 +18,14 @@ body {
     background-image: url("/res/sitebg.jpg");
     background-size: cover;
     background-position: center;
+    font-family: "Maven Pro", Ubuntu, Verdana, Geneva, Tahoma, sans-serif;
     margin: 0;
     gap: 1vh;
 }
 
 /* common drop shadow */
 
-header, footer, .cards div div {
+header, header nav ul li, footer, .cards div div {
     box-shadow: 1px 3px 6px var(--half-black);
 }
 
@@ -27,17 +36,57 @@ header, footer {
     backdrop-filter: blur(3px);
     box-sizing: border-box;
     width: 100%;
+    z-index: 100;
+}
+
+/* space to be inserted above and below content so header and footer don't cover content */
+
+div.space {
+    height: 10vh;
 }
 
 /* header */
 
 header {
     height: 6vh;
+    display: flex;
+    gap: 1vh;
+    justify-content: center;
     padding: 1vh;
+    position: fixed;
+    top: 0;
 }
 
 header img {
     height: 4vh;
+}
+
+header nav, header nav ul, header nav ul li {
+    display: flex;
+    height: 100%;
+    margin: 0;
+}
+
+header nav ul {
+    gap: 1vh;
+    list-style: none;
+    padding: 0;
+}
+
+header nav ul li {
+    align-items: center;
+    background-color: white;
+    border-radius: 1vh;
+    height: 100%;
+    padding: 0 1vh 0 1vh;
+    text-align: center;
+
+    transition-property: background-color;
+    transition-duration: 0.3s;
+}
+header nav ul a li:hover {
+    background-color: var(--vct-red);
+    color: white;
 }
 
 /* footer */
