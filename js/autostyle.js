@@ -14,39 +14,18 @@ $(document).ready(function()
 // set up recurring elements missing from a page
 function setup() {
 
-    // header
+    // add " | VCT.one" to title
+    if (!document.title.includes("VCT.one")) {
+        document.title += " | VCT.one";
+    }
+
+    // add header
     $("body").prepend("<div id=\"header\"/>");
     $("div#header").load("/header.html");
 
-    // footer
+    // add footer
     $("body").append("<div id=\"footer\"/>");
     $("div#footer").load("/footer.html");
-
-    //window scroll function and contact button adjustment
-    window.onscroll = function() {
-        let upScrollY = ($("body").outerHeight() - window.scrollY - window.innerHeight);
-        if (window.scrollY > $("footer").offset().top - window.innerHeight) {
-            $("button.contact").html(`
-                Contact Info<br>
-                ↓
-            `);
-            $("button.contact").css({
-                "right": "50%",
-                "bottom": "calc(2vmin + " + ($("footer").outerHeight() - upScrollY) + "px)",
-                "transform": "translateX(50%)"
-            });
-        }
-        else {
-            $("button.contact").html(`
-                Contact
-            `);
-            $("button.contact").css({
-                "right": "2vmin",
-                "bottom": "2vmin",
-                "transform": "translateX(0)"
-            });
-        }
-    }
 
     //image "lightbox"
     let lightboxImageParent = null;
@@ -139,42 +118,6 @@ function setup() {
             $(lightboxImageParent).css("z-index", "");
         }
     });
-
-    //background info on me
-
-    if ($("#background").length > 0 && $("#background-info").length == 0 && $("#background").html().length == 0) {
-        $("#background").load("/elements.html #background-info");
-        console.warn("Automatically added background info. Add it to page html to increase site performance.");
-    }
-
-    //skills lists
-
-    if ($("#skills").length > 0 && $("#skills").children().length == 0) {
-        $("#skills").empty();
-        let url = window.location.href;
-        if (url.includes("coordinator")) {
-            $("#skills").load("/elements.html #team-coordinator-skills-list");
-            console.warn("loaded skills list");
-        }
-        else if (url.includes("programmer")) {
-            $("#skills").load("/elements.html #programmer-skills-list");
-            console.warn("loaded skills list");
-        }
-        else if (url.includes("gamedesign")) {
-            $("#skills").load("/elements.html #game-designer-skills-list");
-            console.warn("loaded skills list");
-        }
-        else if (url.includes("visualdesign")) {
-            $("#skills").load("/elements.html #visual-designer-skills-list");
-            console.warn("loaded skills list");
-        }
-        else {
-            $("#skills").load("/elements.html #full-skills-list", () => {
-                $("#skills button").css("display", "none");
-            });
-            console.warn("loaded skills list");
-        }
-    }
 }
 
 //adjust to screen size

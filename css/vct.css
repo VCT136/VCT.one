@@ -2,21 +2,36 @@
     --vct-red: #C00136;
 
     --half-black: #00000080;
+    --translucent-white: #ffffffce;
 }
 
 body {
+    background-color: #cdcdcd;
     background-image: url("/res/sitebg.jpg");
     background-size: cover;
-    background-color: var(--vct-red);
+    background-position: center;
     margin: 0;
+    gap: 1vh;
+}
+
+/* common drop shadow */
+
+header, footer, .cards div div {
+    box-shadow: 1px 3px 6px var(--half-black);
+}
+
+/* header and footer */
+
+header, footer {
+    background-color: var(--translucent-white);
+    backdrop-filter: blur(3px);
+    box-sizing: border-box;
+    width: 100%;
 }
 
 /* header */
 
 header {
-    background-color: white;
-    box-sizing: border-box;
-    box-shadow: 1px 3px 6px var(--half-black);
     height: 6vh;
     padding: 1vh;
 }
@@ -28,33 +43,23 @@ header img {
 /* footer */
 
 footer {
-    background-color: white;
-    border-color: var(--vct-red);
-    border-style: solid;
-    border-width: 0.6vmin 0 0 0;
-    box-shadow: 0 0 1vmin 0.5vmin var(--fifty-percent-black);
-    width: 100%;
-    box-sizing: border-box;
-
     display: grid;
-    gap: 2vmin;
-    padding: 2vmin;
+    gap: 1vh;
+    padding: 1vh;
     place-items: center;
     text-align: center;
 
     position: fixed;
     bottom: 0;
 }
-footer img:not(.bottom-left) {
-    max-height: 6vmin;
-}
 
 /* social media icons */
 
 div.social-media-icons {
     display: grid;
+    gap: 1vh;
     grid-template-columns: repeat(5, 1fr);
-    width: 90vw;
+    width: 75vw;
     place-items: center;
 }
 div.social-media-icons a {
@@ -62,31 +67,92 @@ div.social-media-icons a {
 }
 div.social-media-icons img {
     object-fit: contain;
-    height: 1.5em;
+    height: 2vh
 }
 
-/* phone size */
+/* phone */
 @media screen and (max-width: 800px) {
     div.social-media-icons {
         grid-template-columns: 1fr 1fr;
     }
 }
 
-/* bottom images */
+/* bottom corner content */
 
-img.bottom-left {
-    height: 10vmin;
+.bottom-left, .bottom-right {
+    box-sizing: border-box;
+    height: 7vh;
     object-fit: contain;
     position: absolute;
-    left: 0;
     bottom: 0;
 }
-img.bottom-right {
-    height: 10vmin;
-    padding: 1vmin;
-    box-sizing: border-box;
-    object-fit: contain;
-    position: absolute;
+.bottom-left {
+    left: 0;
+}
+.bottom-right {
     right: 0;
+}
+
+/* cards */
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.cards div {
+    margin: 1vh;
+    perspective: 300px;
+    perspective-origin: 50% 50%;
+}
+
+.cards div div {
+    background-color: var(--translucent-white);
+    background-position: center;
+    background-size: cover;
+    box-sizing: border-box;
+    filter: saturate(60%);
+    flex: 1;
+    min-width: 400px;
+    max-width: 600px;
+    height: 100%;
+    min-height: 500px;
+    overflow: hidden;
+    transform: rotateX(6deg) scale(0.9);
+
+    border-color: white;
+    border-style: solid;
+    border-radius: 3vh;
+    border-width: 0.5vh;
+
+    transition-property: border-color, filter, transform;
+    transition-duration: 0.3s;
+}
+.cards div div:hover {
+    border-color: var(--vct-red);
+    filter: saturate(100%);
+    transform: none;
+}
+
+.cards div div p {
+    background-color: var(--translucent-white);
+    box-sizing: border-box;
+    display: block;
+    transform: translate(calc(-50% - 1vh), -100vh);
+    width: calc(100% - 2vh);
+
+    margin: 1vh;
+    padding: 1vh;
+    border-radius: 1vh;
+
+    position: absolute;
     bottom: 0;
+    left: 50%;
+
+    transition-property: transform;
+    transition-duration: 0.3s;
+}
+.cards div div:hover p {
+    transform: translate(calc(-50% - 1vh), 0);
 }
