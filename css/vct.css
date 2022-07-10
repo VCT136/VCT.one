@@ -26,20 +26,18 @@ body {
 }
 
 button {
-    background-color: white;
     border-style: none;
     font-family: "Maven Pro", Ubuntu, Verdana, Geneva, Tahoma, sans-serif;
     padding: 0.5vh;
 }
 
-h1 {
-    background-color: white;
+h1, h2 {
     font-weight: 600;
-    text-align: center;
-    z-index: 10;
-
     margin: 0;
     padding: 1vh;
+    position: relative;
+    text-align: center;
+    z-index: 10;
 }
 
 p {
@@ -47,7 +45,7 @@ p {
 }
 
 /* common drop shadow */
-button, h1, header, header nav ul li, footer, div.cards div.card, div.infoblock {
+button, h1, h2, header, header nav ul li, footer, div.cards div.card, div.infoblock {
     box-shadow: 1px 3px 6px var(--half-black);
     position: relative;
 }
@@ -55,6 +53,12 @@ button, h1, header, header nav ul li, footer, div.cards div.card, div.infoblock 
 /* common rounded corners */
 button, header nav ul li, div.cards div.card div.content, div.slideshow figure div {
     border-radius: 1vh;
+}
+
+/* common white background */
+
+button, h1, h2 {
+    background-color: white;
 }
 
 /* common white blurry background */
@@ -276,7 +280,9 @@ div.slideshow figure div {
 }
 
 div.slideshow figure h2 {
-    font-weight: 600;
+    background-color: #00000000;
+    box-shadow: none;
+    padding: 0;
     margin: 0 0 1vh 0;
 }
 
