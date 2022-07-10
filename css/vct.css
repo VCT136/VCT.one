@@ -4,6 +4,7 @@
 :root {
     --vct-red: #C00136;
     --half-black: #00000080;
+    --grey-36: #363636;
     --translucent-white: #ffffffce;
 }
 
@@ -18,22 +19,53 @@ body {
     background-image: url("/res/sitebg.jpg");
     background-size: cover;
     background-position: center;
+    color: var(--grey-36);
     font-family: "Maven Pro", Ubuntu, Verdana, Geneva, Tahoma, sans-serif;
     margin: 0;
     gap: 1vh;
 }
 
-/* common drop shadow */
+button {
+    background-color: white;
+    border-style: none;
+    font-family: "Maven Pro", Ubuntu, Verdana, Geneva, Tahoma, sans-serif;
+    padding: 0.5vh;
+}
 
-header, header nav ul li, footer, .cards div div {
+h1 {
+    background-color: white;
+    font-weight: 600;
+    text-align: center;
+    z-index: 10;
+
+    margin: 0;
+    padding: 1vh;
+}
+
+p {
+    text-align: justify;
+}
+
+/* common drop shadow */
+button, h1, header, header nav ul li, footer, div.cards div.card, div.infoblock {
     box-shadow: 1px 3px 6px var(--half-black);
+    position: relative;
+}
+
+/* common rounded corners */
+button, header nav ul li, div.cards div.card div.content, div.slideshow figure div {
+    border-radius: 1vh;
+}
+
+/* common white blurry background */
+header, footer, div.infoblock {
+    background-color: var(--translucent-white);
+    backdrop-filter: blur(3px);
 }
 
 /* header and footer */
 
 header, footer {
-    background-color: var(--translucent-white);
-    backdrop-filter: blur(3px);
     box-sizing: border-box;
     width: 100%;
     z-index: 100;
@@ -49,6 +81,7 @@ div.space {
 
 header {
     height: 6vh;
+    min-height: 3em;
     display: flex;
     gap: 1vh;
     justify-content: center;
@@ -59,6 +92,7 @@ header {
 
 header img {
     height: 4vh;
+    min-height: 2em;
 }
 
 header nav, header nav ul, header nav ul li {
@@ -76,7 +110,6 @@ header nav ul {
 header nav ul li {
     align-items: center;
     background-color: white;
-    border-radius: 1vh;
     height: 100%;
     padding: 0 1vh 0 1vh;
     text-align: center;
@@ -105,10 +138,11 @@ footer {
 /* social media icons */
 
 div.social-media-icons {
-    display: grid;
+    display: flex;
     gap: 1vh;
-    grid-template-columns: repeat(5, 1fr);
+    justify-content: space-between;
     width: 75vw;
+    max-width: 630px;
     place-items: center;
 }
 div.social-media-icons a {
@@ -116,13 +150,14 @@ div.social-media-icons a {
 }
 div.social-media-icons img {
     object-fit: contain;
-    height: 2vh
+    height: 2vh;
+    min-height: 1em;
 }
 
 /* phone */
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 480px) {
     div.social-media-icons {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
     }
 }
 
@@ -144,26 +179,26 @@ div.social-media-icons img {
 
 /* cards */
 
-.cards {
+div.cards {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
 
-.cards div {
+div.cards div.wrapper {
     margin: 1vh;
     perspective: 300px;
     perspective-origin: 50% 50%;
 }
 
-.cards div div {
+div.cards div.card {
     background-color: var(--translucent-white);
     background-position: center;
     background-size: cover;
     box-sizing: border-box;
     filter: saturate(60%);
     flex: 1;
-    min-width: 400px;
+    min-width: 370px;
     max-width: 600px;
     height: 100%;
     min-height: 500px;
@@ -178,13 +213,13 @@ div.social-media-icons img {
     transition-property: border-color, filter, transform;
     transition-duration: 0.3s;
 }
-.cards div div:hover {
+div.cards div.card:hover {
     border-color: var(--vct-red);
     filter: saturate(100%);
     transform: none;
 }
 
-.cards div div p {
+div.cards div.card div.content {
     background-color: var(--translucent-white);
     box-sizing: border-box;
     display: block;
@@ -193,7 +228,6 @@ div.social-media-icons img {
 
     margin: 1vh;
     padding: 1vh;
-    border-radius: 1vh;
 
     position: absolute;
     bottom: 0;
@@ -202,6 +236,58 @@ div.social-media-icons img {
     transition-property: transform;
     transition-duration: 0.3s;
 }
-.cards div div:hover p {
+div.cards div.card:hover div.content {
     transform: translate(calc(-50% - 1vh), 0);
+}
+
+div.cards div.content h1 {
+    background-color: #00000000;
+    box-shadow: none;
+    font-size: 1.6em;
+    margin-bottom: 1vh;
+    padding: 0;
+}
+
+div.cards div.card button {
+    margin-top: 1vh;
+    width: 100%;
+}
+
+/* banner and slideshow figures */
+
+img.banner, div.slideshow figure, div.slideshow img {
+    object-fit: cover;
+    width: 100%;
+    margin: 0;
+    max-height: 36vh;
+}
+
+/* slideshow figures */
+
+div.slideshow figure div {
+    background-color: var(--half-black);
+    color: white;
+    padding: 1vh;
+    position: absolute;
+    right: 64px;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 30vw;
+}
+
+div.slideshow figure h2 {
+    font-weight: 600;
+    margin: 0 0 1vh 0;
+}
+
+div.slideshow figure p {
+    margin: 1vh 0 0 0;
+} 
+
+/* infoblocks */
+
+div.infoblock {
+    width: 75vw;
+    margin: auto;
+    padding: 1vh 2vh 1vh 2vh;
 }
