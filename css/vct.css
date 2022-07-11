@@ -5,6 +5,7 @@
     --vct-red: #C00136;
     --half-black: #00000080;
     --grey-36: #363636;
+    --none: #00000000;
     --translucent-white: #ffffffce;
 }
 
@@ -16,9 +17,10 @@ a {
 
 body {
     background-color: #cdcdcd;
-    background-image: url("/res/sitebg.jpg");
-    background-size: cover;
+    background-image: url("/res/vct_tiling_pattern_color.png");
     background-position: center;
+    background-repeat: repeat;
+    background-size: auto;
     color: var(--grey-36);
     font-family: "Maven Pro", Ubuntu, Verdana, Geneva, Tahoma, sans-serif;
     margin: 0;
@@ -65,6 +67,24 @@ button, h1, h2 {
 header, footer, div.infoblock {
     background-color: var(--translucent-white);
     backdrop-filter: blur(3px);
+}
+
+/* scroll bar */
+
+::-webkit-scrollbar {
+    width: auto;
+}
+::-webkit-scrollbar-track {
+    background-image: linear-gradient(to right, var(--half-black), white);
+    background-color: grey;
+}
+::-webkit-scrollbar-thumb {
+    background-color: white;
+    border-radius: 2vh;
+    box-shadow: 0 0 0.5vh black inset;
+}
+::-webkit-scrollbar-thumb:hover {
+    box-shadow: 0 0 0.5vh 1px var(--vct-red) inset;
 }
 
 /* header and footer */
@@ -158,13 +178,6 @@ div.social-media-icons img {
     min-height: 1em;
 }
 
-/* phone */
-@media screen and (max-width: 480px) {
-    div.social-media-icons {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-}
-
 /* bottom corner content */
 
 .bottom-left, .bottom-right {
@@ -190,9 +203,14 @@ div.cards {
 }
 
 div.cards div.wrapper {
+    flex: 1;
+    min-height: 500px;
+    max-height: 800px;
     margin: 1vh;
     perspective: 300px;
     perspective-origin: 50% 50%;
+    min-width: 370px;
+    max-width: 400px;
 }
 
 div.cards div.card {
@@ -201,18 +219,15 @@ div.cards div.card {
     background-size: cover;
     box-sizing: border-box;
     filter: saturate(60%);
-    flex: 1;
-    min-width: 370px;
-    max-width: 600px;
     height: 100%;
-    min-height: 500px;
+    
     overflow: hidden;
     transform: rotateX(6deg) scale(0.86);
 
     border-color: white;
     border-style: solid;
     border-radius: 3vh;
-    border-width: 0.5vh;
+    border-width: 1vh;
 
     transition-property: border-color, filter, transform;
     transition-duration: 0.3s;
@@ -245,7 +260,7 @@ div.cards div.card:hover div.content {
 }
 
 div.cards div.content h1 {
-    background-color: #00000000;
+    background-color: var(--none);
     box-shadow: none;
     font-size: 1.6em;
     margin-bottom: 1vh;
@@ -272,6 +287,9 @@ img.banner, div.slideshow figure, div.slideshow img {
 div.slideshow figure div {
     background-color: var(--half-black);
     color: white;
+    max-height: 75%;
+    overflow-x: visible;
+    overflow-y: scroll;
     padding: 1vh;
     position: absolute;
     right: 64px;
@@ -280,8 +298,13 @@ div.slideshow figure div {
     width: 30vw;
 }
 
+div.slideshow figure ::-webkit-scrollbar-track {
+    background-image: none;
+    background-color: var(--none);
+}
+
 div.slideshow figure h2 {
-    background-color: #00000000;
+    background-color: var(--none);
     box-shadow: none;
     padding: 0;
     margin: 0 0 1vh 0;
