@@ -317,7 +317,12 @@ div.slideshow figure p {
 /* infoblocks */
 
 div.infoblock {
-    width: 75vw;
+    box-sizing: border-box;
     margin: auto;
-    padding: 1vh 2vh 1vh 2vh;
+    padding: 3vh 6vh 3vh 6vh;
+    width: 75vw;
+}
+
+div.infoblock p {
+    margin: 0;
 }
