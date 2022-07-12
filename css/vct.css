@@ -37,13 +37,27 @@ button {
     padding: 0.5vh;
 }
 
-h1, h2 {
+h1, h2, h3 {
     font-weight: 600;
     margin: 0;
     padding: 1vh;
     position: relative;
     text-align: center;
+}
+
+h1 {
     z-index: 10;
+}
+
+h2 {
+    z-index: 9;
+}
+
+h3 {
+    margin: auto;
+    width: 75vw;
+    max-width: 600px;
+    z-index: 8;
 }
 
 p {
@@ -51,19 +65,19 @@ p {
 }
 
 /* common drop shadow */
-button, h1, h2, header, header nav ul li, footer, div.cards div.card, div.infoblock {
+button, h1, h2, h3, header, header nav ul li, footer, div.cards div.card, div.cards div.card div.content, div.infoblock {
     box-shadow: 1px 3px 6px var(--half-black);
     position: relative;
 }
 
 /* common rounded corners */
-button, header nav ul li, div.cards div.card div.content, div.slideshow figure div {
+button, h3, header nav ul li, div.cards div.card div.content, div.slideshow figure div {
     border-radius: 1vh;
 }
 
 /* common white background */
 
-button, h1, h2 {
+button, h1, h2, h3 {
     background-color: white;
 }
 
