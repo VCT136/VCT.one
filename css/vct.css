@@ -9,6 +9,10 @@
     --translucent-white: #ffffffce;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 a {
     color: var(--vct-red);
     font-weight: bold;
@@ -64,7 +68,7 @@ button, h1, h2 {
 }
 
 /* common white blurry background */
-header, footer, div.infoblock {
+header, footer, div.cards div.card div.content, div.infoblock {
     background-color: var(--translucent-white);
     backdrop-filter: blur(3px);
 }
@@ -239,7 +243,6 @@ div.cards div.card:hover {
 }
 
 div.cards div.card div.content {
-    background-color: var(--translucent-white);
     box-sizing: border-box;
     display: block;
     transform: translate(calc(-50% - 1vh), -100vh);
@@ -269,7 +272,18 @@ div.cards div.content h1 {
 
 div.cards div.card button {
     margin-top: 1vh;
+    transition-property: background-color, color;
+    transition-duration: 0.3s;
     width: 100%;
+}
+div.cards div.card a button {
+    color: var(--vct-red);
+    cursor: pointer;
+    font-weight: bold;
+}
+div.cards div.card a button:hover {
+    background-color: var(--vct-red);
+    color: white;
 }
 
 /* banner and slideshow figures */
@@ -288,7 +302,7 @@ div.slideshow figure div {
     background-color: var(--half-black);
     color: white;
     max-height: 75%;
-    overflow-x: visible;
+    overflow-x: hidden;
     overflow-y: scroll;
     padding: 1vh;
     position: absolute;
@@ -296,6 +310,7 @@ div.slideshow figure div {
     top: 50%;
     transform: translate(0, -50%);
     width: 30vw;
+    min-width: 200px;
 }
 
 div.slideshow figure ::-webkit-scrollbar-track {
