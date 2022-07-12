@@ -24,9 +24,7 @@ function setup(callback = function(){}) {
         "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">"
     );
 
-    // add css
-    $("head").append("<link id=\"style\" rel=\"stylesheet\" href=\"/css/vct.css\">");
-    // wait for load
+    // wait for css to load
     $("head #style").on("load", () => {
 
         // add Flickity js
