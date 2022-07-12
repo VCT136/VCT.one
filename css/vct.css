@@ -39,10 +39,11 @@ button {
 
 h1, h2, h3 {
     font-weight: 600;
-    margin: 0;
+    margin: auto;
     padding: 1vh;
     position: relative;
     text-align: center;
+    max-width: 1720px;
 }
 
 h1 {
@@ -65,7 +66,7 @@ p {
 }
 
 /* common drop shadow */
-button, h1, h2, h3, header, header nav ul li, footer, div.cards div.card, div.cards div.card div.content, div.infoblock {
+button, h1, h2, h3, header, header nav ul li, footer, div.cards div.card, div.cards div.card div.content, div.infoblock, div.slideshow {
     box-shadow: 1px 3px 6px var(--half-black);
     position: relative;
 }
@@ -218,6 +219,8 @@ div.cards {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    margin: auto;
+    max-width: 1850px;
 }
 
 div.cards div.wrapper {
@@ -300,14 +303,29 @@ div.cards div.card a button:hover {
     color: white;
 }
 
+/* infoblocks */
+
+div.infoblock {
+    box-sizing: border-box;
+    margin: auto;
+    padding: 3vh 6vh 3vh 6vh;
+    width: 75vw;
+    max-width: 1690px;
+}
+
+div.infoblock p {
+    margin: 0;
+}
+
 /* banner and slideshow figures */
 
-img.banner, div.slideshow figure, div.slideshow img {
+img.banner, div.slideshow, div.slideshow figure, div.slideshow img {
     height: 100%;
     max-height: 36vh;
+    margin: auto;
     object-fit: cover;
     width: 100%;
-    margin: 0;
+    max-width: 1690px;
 }
 
 /* slideshow figures */
@@ -342,16 +360,3 @@ div.slideshow figure h2 {
 div.slideshow figure p {
     margin: 1vh 0 0 0;
 } 
-
-/* infoblocks */
-
-div.infoblock {
-    box-sizing: border-box;
-    margin: auto;
-    padding: 3vh 6vh 3vh 6vh;
-    width: 75vw;
-}
-
-div.infoblock p {
-    margin: 0;
-}
