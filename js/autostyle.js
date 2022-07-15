@@ -57,6 +57,8 @@ function setup(callback = function(){}) {
                     let headerNavLinks = $("header nav a");
                     headerNavLinks.each((index, element) => {
                         let currentUrl = window.location.href;
+                        console.log(currentUrl.substring(currentUrl.indexOf("/", 7), currentUrl.lastIndexOf("/")));
+                        console.log($(element).attr("href"));
                         if (
                             currentUrl.substring(currentUrl.indexOf("/", 7), currentUrl.lastIndexOf("/")) ==
                             $(element).attr("href")
