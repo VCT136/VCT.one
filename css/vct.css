@@ -35,6 +35,16 @@ button {
     border-style: none;
     font-family: "Maven Pro", Ubuntu, Verdana, Geneva, Tahoma, sans-serif;
     padding: 0.5vh;
+    color: var(--vct-red);
+    cursor: pointer;
+    font-weight: bold;
+
+    transition-property: background-color, color;
+    transition-duration: 0.3s;
+}
+button:hover {
+    background-color: var(--vct-red);
+    color: white;
 }
 
 h1, h2, h3 {
@@ -55,9 +65,6 @@ h2 {
 }
 
 h3 {
-    margin: auto;
-    width: 75vw;
-    max-width: 600px;
     z-index: 8;
 }
 
@@ -72,7 +79,7 @@ button, h1, h2, h3, header, header nav ul li, footer, div.cards div.card, div.ca
 }
 
 /* common rounded corners */
-button, h3, header nav ul li, div.cards div.card div.content, div.slideshow figure div {
+button, header nav ul li, div.cards div.card div.content, div.slideshow figure div {
     border-radius: 1vh;
 }
 
@@ -83,7 +90,7 @@ button, h1, h2, h3 {
 }
 
 /* common white blurry background */
-header, footer, div.cards div.card div.content, div.infoblock {
+header, footer, div.infoblock {
     background-color: var(--translucent-white);
     backdrop-filter: blur(3px);
 }
@@ -239,7 +246,7 @@ div.cards div.card {
     background-position: center;
     background-size: cover;
     box-sizing: border-box;
-    filter: saturate(60%);
+    filter: saturate(86%);
     height: 100%;
     
     overflow: hidden;
@@ -250,19 +257,21 @@ div.cards div.card {
     border-radius: 3vh;
     border-width: 1vh;
 
-    transition-property: border-color, filter, transform;
+    transition-property: border, filter, transform;
     transition-duration: 0.3s;
 }
 div.cards div.card:hover {
     border-color: var(--vct-red);
+    border-width: 0.75vh;
     filter: saturate(100%);
     transform: none;
 }
 
 div.cards div.card div.content {
+    background-color: var(--translucent-white);
     box-sizing: border-box;
     display: block;
-    transform: translate(calc(-50% - 1vh), -100vh);
+    transform: translate(calc(-50% - 1vh), calc(100% - 1vh - 2em));
     width: calc(100% - 2vh);
 
     margin: 1vh;
@@ -276,7 +285,24 @@ div.cards div.card div.content {
     transition-duration: 0.3s;
 }
 div.cards div.card:hover div.content {
-    transform: translate(calc(-50% - 1vh), 0);
+    animation: card-content-show;
+    animation-duration: 0.6s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes card-content-show {
+    0% {
+        backdrop-filter: none;
+        transform: translate(calc(-50% - 1vh), calc(100% - 1vh - 2em));
+    }
+    50% {
+        backdrop-filter: none;
+        transform: translate(calc(-50% - 1vh), 0);
+    }
+    100% {
+        backdrop-filter: blur(3px);
+        transform: translate(calc(-50% - 1vh), 0);
+    }
 }
 
 div.cards div.content h1 {
@@ -289,18 +315,7 @@ div.cards div.content h1 {
 
 div.cards div.card button {
     margin-top: 1vh;
-    transition-property: background-color, color;
-    transition-duration: 0.3s;
     width: 100%;
-}
-div.cards div.card a button {
-    color: var(--vct-red);
-    cursor: pointer;
-    font-weight: bold;
-}
-div.cards div.card a button:hover {
-    background-color: var(--vct-red);
-    color: white;
 }
 
 /* infoblocks */
@@ -322,6 +337,7 @@ div.infoblock p {
 img.banner, div.slideshow, div.slideshow figure, div.slideshow img {
     height: 100%;
     max-height: 36vh;
+    min-height: 300px;
     margin: auto;
     object-fit: cover;
     width: 100%;
@@ -332,6 +348,7 @@ img.banner, div.slideshow, div.slideshow figure, div.slideshow img {
 
 div.slideshow figure div {
     background-color: var(--half-black);
+    backdrop-filter: blur(3px);
     color: white;
     max-height: 75%;
     overflow-x: hidden;
@@ -348,6 +365,14 @@ div.slideshow figure div {
 div.slideshow figure ::-webkit-scrollbar-track {
     background-image: none;
     background-color: var(--none);
+}
+
+div.slideshow figure a {
+    display: grid;
+    justify-content: center;
+}
+div.slideshow figure button {
+    margin-top: 1vh;
 }
 
 div.slideshow figure h2 {

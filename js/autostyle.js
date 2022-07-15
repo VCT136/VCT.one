@@ -45,6 +45,7 @@ function setup(callback = function(){}) {
                     contain: true,
                     pageDots: false,
                     pausePlayOnHover: true,
+                    setGallerySize: false,
                     wrapAround: true
                 });
     
@@ -55,7 +56,11 @@ function setup(callback = function(){}) {
                     // adjust links in case they go to current page
                     let headerNavLinks = $("header nav a");
                     headerNavLinks.each((index, element) => {
-                        if (window.location.href.indexOf($(element).attr("href")) !== -1) {
+                        let currentUrl = window.location.href;
+                        if (
+                            currentUrl.substring(currentUrl.indexOf("/", 7), currentUrl.lastIndexOf("/")) ==
+                            $(element).attr("href")
+                        ) {
                             $(element).attr("href", "#top");
                             $(element).css("font-weight", "normal");
                             $(element).children().css("box-shadow", "0 1px 3px var(--half-black) inset");
@@ -84,15 +89,4 @@ function adjust() {
     $("div#header div.space").css("height", $("div#header header").outerHeight());
     // adjust footer space height
     $("div#footer div.space").css("height", $("div#footer footer").outerHeight());
-
-    //id links
-
-    $("a").on("click", function(event) {
-        if ($(this).attr("href").substring(0, 1) == "#") {
-            event.preventDefault();
-            let linkOffset = $($(this).attr("href")).offset();
-            //if a table of contents exists and it's not on a phone
-            moveViewTo($(this).attr("href"));
-        }
-    });
 }
