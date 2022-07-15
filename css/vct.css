@@ -323,9 +323,11 @@ div.cards div.card button {
 div.infoblock {
     box-sizing: border-box;
     margin: auto;
+    overflow: hidden;
     padding: 3vh 6vh 3vh 6vh;
     width: 75vw;
     max-width: 1690px;
+    min-width: 370px;
 }
 
 div.infoblock p {
