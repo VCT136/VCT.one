@@ -6,6 +6,7 @@
     --half-black: #00000080;
     --grey-36: #363636;
     --none: #00000000;
+    --sheer-white: #ffffffee;
     --translucent-white: #ffffffce;
 }
 
@@ -73,7 +74,7 @@ p {
 }
 
 /* common drop shadow */
-button, h1, h2, h3, header, header nav ul li, footer, div.cards div.card, div.cards div.card div.content, div.infoblock, div.slideshow {
+button, h1, h2, h3, header, header nav ul li, footer, div.cards div.card, div.cards div.card div.content, div.cvgrid img, div.infoblock, div.skillflex figure div, div.skillflex figure img, div.slideshow {
     box-shadow: 1px 3px 6px var(--half-black);
     position: relative;
 }
@@ -250,21 +251,22 @@ div.cards div.card {
     height: 100%;
     
     overflow: hidden;
-    transform: rotateX(6deg) scale(0.86);
+    transform: rotateX(6deg) scale(0.86) translate3d(0, 0, 0);
 
     border-color: white;
     border-style: solid;
     border-radius: 3vh;
     border-width: 1vh;
 
-    transition-property: border, filter, transform;
+    transition-property: border-color, filter, transform;
     transition-duration: 0.3s;
+
+    backface-visibility: hidden;
 }
 div.cards div.card:hover {
     border-color: var(--vct-red);
-    border-width: 0.75vh;
     filter: saturate(100%);
-    transform: none;
+    transform: rotateX(1deg) translate3d(0, 0, 0);
 }
 
 div.cards div.card div.content {
@@ -281,28 +283,12 @@ div.cards div.card div.content {
     bottom: 0;
     left: 50%;
 
-    transition-property: transform;
+    transition-property: background-color, transform;
     transition-duration: 0.3s;
 }
 div.cards div.card:hover div.content {
-    animation: card-content-show;
-    animation-duration: 0.6s;
-    animation-fill-mode: forwards;
-}
-
-@keyframes card-content-show {
-    0% {
-        backdrop-filter: none;
-        transform: translate(calc(-50% - 1vh), calc(100% - 1vh - 2em));
-    }
-    50% {
-        backdrop-filter: none;
-        transform: translate(calc(-50% - 1vh), 0);
-    }
-    100% {
-        backdrop-filter: blur(3px);
-        transform: translate(calc(-50% - 1vh), 0);
-    }
+    background-color: var(--sheer-white);
+    transform: translate(calc(-50% - 1vh), 0);
 }
 
 div.cards div.content h1 {
@@ -318,6 +304,42 @@ div.cards div.card button {
     width: 100%;
 }
 
+/* CV grid */
+
+div.cvgrid {
+    display: grid;
+    gap: 2vh;
+    grid-template-columns: min-content 1fr;
+}
+
+div.cvgrid h3, h4 {
+    background-color: var(--none);
+    box-shadow: none;
+    margin: 0 0 0.5em 0;
+    padding: 0;
+    text-align: left;
+}
+
+div.cvgrid img {
+    border-radius: 50%;
+    box-sizing: border-box;
+    float: left;
+    height: 10vh;
+    max-height: 256px;
+    min-height: 64px;
+}
+div.cvgrid a img:hover {
+    border-color: var(--vct-red);
+    border-style: solid;
+    border-width: 0.3vh;
+    padding: 0.1vh;
+}
+
+div.cvgrid p {
+    line-height: 1.5em;
+    text-align: left;
+}
+
 /* infoblocks */
 
 div.infoblock {
@@ -330,13 +352,46 @@ div.infoblock {
     min-width: 370px;
 }
 
+div.infoblock h2, div.infoblock h3 {
+    background-color: var(--none);
+    box-shadow: none;
+    text-align: left;
+}
+
 div.infoblock p {
     margin: 0;
 }
 
-/* banner and slideshow figures */
+/* skill flex */
 
-img.banner, div.slideshow, div.slideshow figure, div.slideshow img {
+div.skillflex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1vh;
+}
+div.skillflex figure {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    margin: 0;
+    place-items: center;
+}
+div.skillflex figure div {
+    border-radius: 0 1vh 1vh 0;
+    padding: 1vh 1vh 1vh calc(1vh + 16px);
+    transform: translate(-16px, 0);
+    white-space: nowrap;
+}
+div.skillflex figure img {
+    border-radius: 50%;
+    height: 5vh;
+    max-height: 128px;
+    min-height: 32px;
+    z-index: 1;
+}
+
+/* slideshows */
+
+div.slideshow, div.slideshow figure, div.slideshow img {
     height: 100%;
     max-height: 36vh;
     min-height: 300px;
@@ -345,8 +400,6 @@ img.banner, div.slideshow, div.slideshow figure, div.slideshow img {
     width: 100%;
     max-width: 1690px;
 }
-
-/* slideshow figures */
 
 div.slideshow figure div {
     background-color: var(--half-black);
