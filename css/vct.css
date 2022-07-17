@@ -273,6 +273,7 @@ div.cards div.card div.content {
     background-color: var(--translucent-white);
     box-sizing: border-box;
     display: block;
+    text-align: justify;
     transform: translate(calc(-50% - 1vh), calc(100% - 1vh - 2em));
     width: calc(100% - 2vh);
 
@@ -331,8 +332,8 @@ div.cvgrid img {
 div.cvgrid a img:hover {
     border-color: var(--vct-red);
     border-style: solid;
-    border-width: 0.3vh;
-    padding: 0.1vh;
+    border-width: 3px;
+    padding: 3px;
 }
 
 div.cvgrid p {
@@ -355,6 +356,8 @@ div.infoblock {
 div.infoblock h2, div.infoblock h3 {
     background-color: var(--none);
     box-shadow: none;
+    margin: 1vh 0 1vh 0;
+    padding: 0;
     text-align: left;
 }
 
