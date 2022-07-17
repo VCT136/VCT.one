@@ -45,6 +45,7 @@ function setup(callback = function(){}) {
                     autoPlay: 6000,
                     cellAlign: "left",
                     contain: true,
+                    imagesLoaded: true,
                     pageDots: false,
                     pausePlayOnHover: true,
                     setGallerySize: false,

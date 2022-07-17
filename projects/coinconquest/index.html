@@ -1,129 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
 
-    <!-- Open Graph Protocol -->
-    <meta property="og:title" content="VCT.one" />
-    <meta property="og:image" content="//VCT.one/res/vct_one_logo.png" />
-    <meta property="og:description" content="Vınсenт's online portfolio." />
-    <meta property="og:url" content="//VCT.one/" />
+        <title>Coin Conquest | VCT.one</title>
+        <!-- Open Graph Protocol -->
+        <meta property="og:title" content="Coin Conquest | VCT.one" />
+        <meta property="og:image" content="//VCT.one/res/vct_one_logo.png" />
+        <meta property="og:description" content="Coin Conquest is a digital, casino style game, based on the minigame ''Fruit Cahoots'' from the Mario Party game series by Nintendo." />
+        <meta property="og:url" content="//VCT.one/" />
 
-    <!-- JQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        
+    </head>
+    <body>
 
-    <!-- style -->
-	<link rel="stylesheet" href="/css/main.css">
-    <script src="/js/style.js"></script>
-    
-    <link rel="shortcut icon" href="/res/VCT2022_iconShape.png">
-    
-	<title>Coin Conquest | VCT.one</title>
-</head>
-<body onload="setup(); adjust();" onresize="adjust()" style="background-image: url('/res/coinconquest/background.jpg');">
+        <div class="slideshow">
 
-    <!--top bar-->
-    <nav>
-        <a href="/"><img id="logo" src="/res/vct_one_logo.png" alt="VCT.one logo" /></a>
-        <ul>
-            <a href="/"><li>Home</li></a>
-            <a href="/gamedesigner/"><li>Game Designer</li></a>
-            <a href="/teamcoordinator/"><li>Team Coordinator</li></a>
-            <a href="/programmer/"><li>Programmer</li></a>
-            <a href="/visualdesigner/"><li>Visual Designer</li></a>
-            <a href="/about/"><li>About</li></a>
-        </ul>
-    </nav>
-    <!--top bar end-->
+            <figure>
+                <img src="/res/coinconquest/coinconquest.jpg" alt="screenshot of Coin Conquest" />
+            </figure>
 
-    <article class="main-card card">
+            <figure>
+                <img src="/res/coinconquest/screenshot_tutorial.jpg" alt="screenshot of Coin Conquest's tutorial screen">
+                <div>
+                    <h2>Tutorial Screen</h2>
+                    <p>
+                        The game begins with an overlay explaining all of its elements.
+                    </p>
+                </div>
+            </figure>
+
+            <figure>
+                <img src="/res/coinconquest/screenshot_victory.jpg" alt="screenshot of Coin Conquest's victory screen">
+                <div>
+                    <h2>Victory Screen</h2>
+                    <p>
+                        What every player wants to see at the end of their game.
+                    </p>
+                </div>
+            </figure>
+        </div>
         <h1>Coin Conquest</h1>
-        <img src="/res/coinconquest/coinconquest.jpg" alt="screenshot of Coin Conquest" />
-        <p>
-            Coin Conquest is a digital, casino style game, based on the minigame "Fruit Cahoots" from the Mario Party game series by Nintendo.<br/>
-            <br/>
-            I developed it as part of my Game Design studies at the Hanze University of Applied Sciences Groningen and I wrote a report about its design, which is available <a href="https://drive.google.com/file/d/1MwlxnM1bCQ8E4BqaWXgiJnQi8AF-HhVq/view">here</a>.
-        </p>
-    </article>
+        
+        <div class="infoblock">
 
-    <a href="https://drive.google.com/file/d/1su36AciPcWiI0L64wyHHEuySqvcLpFwD/view" target="_blank"><div class="row-button"><h1>Download</h1></div></a>
+            <h2>Description</h2>
+            <p>
+                Coin Conquest is a digital, casino style game, based on the minigame "Fruit Cahoots" from the Mario Party game series by Nintendo.<br/>
+                <br/>
+                I developed it as part of my Game Design studies at the Hanze University of Applied Sciences Groningen and I wrote a report about its design, which is available <a href="https://drive.google.com/file/d/1MwlxnM1bCQ8E4BqaWXgiJnQi8AF-HhVq/view">here</a>.
+            </p>
 
-    <article class="card">
-        <h1>Vincent's Thoughts</h1>
-        <p>
-            In this project I learned to code in the engine specific "GameMaker Language" and was intrigued by some of the convenient features it offers. I also found that the game, through its visual design, slight animations and sound design is rather effectively addicting despite its minimalist content, especially when tested on tablets.
-        </p>
-    </article>
+            <h2>Vincent's Thoughts</h2>
+            <p>
+                In this project I learned to code in the engine specific "GameMaker Language" and was intrigued by some of the convenient features it offers. I also found that the game, through its visual design, slight animations and sound design is rather effectively addicting despite its minimalist content, especially when tested on tablets.
+            </p>
 
-    <article class="card">
-        <h1>Specifications</h1>
-        <ul class="project-specifications">
-            <li>
-                <div>Place and Time of Production</div>
-                <div>Groningen, 2019 - 2020</div>
-            </li>
-            <li>
-                <div>Game Engine</div>
-                <div>GameMaker Studio 2</div>
-            </li>
-            <li>
-                <div>Target Platforms</div>
-                <div>Windows</div>
-            </li>
-            <li>
-                <div>Code Language</div>
-                <div>GameMaker Language</div>
-            </li>
-            <li>
-                <div>Team Size</div>
-                <div>Individual</div>
-            </li>
-        </ul>
-    </article>
+            <h2>Specifications</h2>
+            <p>
+                Made in Groningen, 2019 - 2020 <br>
+                Game Engine: GameMaker Studio 2 <br>
+                Target Platform: Windows <br>
+                Programming Language: GameMaker Language
+            </p>
 
-    <!--recurring page end elements-->
-    
-    <div id="contact-button">
-        <button class="contact" onclick="moveViewTo('footer')">Contact</button>
-    </div>
-
-    <div class="space"></div>
-
-    <footer>
-        <div class="social-media-icons">
-            <a href="https://instagram.com/vct136">
-                <img src="/res/instagram_icon.png" alt="Instagram icon" /><br>
-                @vct136
-            </a>
-            <a href="https://linkedin.com/in/vct">
-                <img src="/res/linkedin_logo_black.png" alt="LinkedIn icon" /><br>
-                Vincent Busch / VCT
-            </a>
-            <a href="mailto://vct136@gmail.com">
-                <img src="/res/email-icon-vindicator-at.svg" alt="at-symbol" /><br>
-                VCT136@Gmail.com
-            </a>
-            <a href="tel:+4917657470599">
-                <img src="/res/phone_icon.svg" alt="phone icon" /><br>
-                +49 176 5 747 0599
-            </a>
-            <a href="https://facebook.com/vct136">
-                <img src="/res/facebook_f_icon_black.png" alt="Facebook icon" /><br>
-                Vincent Busch / VCT136
-            </a>
+            <h2>Downloads</h2>
+            <a href="https://drive.google.com/file/d/1su36AciPcWiI0L64wyHHEuySqvcLpFwD/view"><button>Coin Conquest.zip (Game)</button></a>
+            <a href="https://drive.google.com/file/d/1MwlxnM1bCQ8E4BqaWXgiJnQi8AF-HhVq/view"><button>PAE2 Project Report.pdf (Report)</button></a>
         </div>
-        <div>
-            VCT.one is the portfolio website of Vincent Busch a.k.a. VCT.
-        </div>
-        <div>
-            ©2022 Vincent Busch
-        </div>
-        <img class="bottom-left" src="/res/mesitting2021.png" alt="a photo of me sitting" />
-        <img class="bottom-right" src="/res/logo.png" alt="VCT logo" />
-    </footer>
 
-    <!--page end-->
-
-</body>
+        <!-- Autostyle -->
+        <script src="/js/autostyle.js"></script>
+    </body>
 </html>
