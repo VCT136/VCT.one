@@ -1,167 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
 
-    <!-- Open Graph Protocol -->
-    <meta property="og:title" content="VCT.one" />
-    <meta property="og:image" content="//VCT.one/res/vct_one_logo.png" />
-    <meta property="og:description" content="Vınсenт's online portfolio." />
-    <meta property="og:url" content="//VCT.one/" />
+        <title>VRquaponics | VCT.one</title>
+        <!-- Open Graph Protocol -->
+        <meta property="og:title" content="VRquaponics | VCT.one" />
+        <meta property="og:image" content="//VCT.one/res/vct_one_logo.png" />
+        <meta property="og:description" content="The virtual reality aquaponics simulation VRquaponics is a concept prototype for a dystopian science-fiction game promoting sustainable, aquaponic farming." />
+        <meta property="og:url" content="//VCT.one/" />
 
-    <!-- JQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <!-- style -->
-	<link rel="stylesheet" href="/css/main.css">
-    <script src="/js/style.js"></script>
-    
-    <link rel="shortcut icon" href="/res/VCT2022_iconShape.png">
-    
-	<title>VRquaponics | VCT.one</title>
-</head>
-<body onload="setup(); adjust();" onresize="adjust()" style="background-image: url('/res/vrquaponics/vrquaponics_screenshot_light.jpg');">
+    </head>
+    <body>
+        
+        <div class="slideshow">
 
-    <!--top bar-->
-    <nav>
-        <a href="/"><img id="logo" src="/res/vct_one_logo.png" alt="VCT.one logo" /></a>
-        <ul>
-            <a href="/"><li>Home</li></a>
-            <a href="/gamedesigner/"><li>Game Designer</li></a>
-            <a href="/teamcoordinator/"><li>Team Coordinator</li></a>
-            <a href="/programmer/"><li>Programmer</li></a>
-            <a href="/visualdesigner/"><li>Visual Designer</li></a>
-            <a href="/about/"><li>About</li></a>
-        </ul>
-    </nav>
-    <!--top bar end-->
-    
-    <article class="main-card card">
-        <h1>VRquaponics</h1>
-        <iframe class="ytvideo" src="https://www.youtube.com/embed/-h4boInDdFo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <p>
-            The virtual reality aquaponics simulation "VRquaponics" is a concept prototype for a dystopian science-fiction game promoting sustainable, aquaponic farming.<br>
-            <br>
-            As the player, you find yourself in a spaceship en route to your unnamed destination, locked in a room with a basic aquaponics setup (planting table and fish basin with fish), a large screen displaying data, a window allowing you to look outside, a radio playing music and an ominous machine: a seed dispenser.<br>
-            Your goal is to reach the destination alive. In order to do so, you must plant seeds from the seed dispenser in the planting table and eat the fruit you have grown. In order to gain nutrients for the plants, you must feed the fish in the fish tank.<br>
-            There's one catch: You have just enough fish food and seeds in reserve to make it to the destination. Can you reach it?
-        </p>
-    </article>
+            <figure>
+                <iframe class="ytvideo" src="https://www.youtube.com/embed/-h4boInDdFo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </figure>
 
-    <a href="https://drive.google.com/file/d/1sPNK4qYVocIAdSPpMn6VJ669i4gIutCY/view?usp=sharing" target="_blank"><div class="row-button"><h1>Download</h1></div></a>
-
-    <article class="card">
-        <h1>Specifications</h1>
-        <ul class="project-specifications">
-            <li>
-                <div>Place and Time of Production</div>
-                <div>Groningen, 2020</div>
-            </li>
-            <li>
-                <div>Game Engine</div>
-                <div>Unity</div>
-            </li>
-            <li>
-                <div>Target Platforms</div>
-                <div>Windows + SteamVR</div>
-            </li>
-            <li>
-                <div>Compatibility</div>
-                <div>The game is made for use with an HTC Vive or Vive Pro virtual reality set using SteamVR technology on Windows. While it is possible to launch the game without a Vive, the VR equipment is required to successfully play the game.</div>
-            </li>
-            <li>
-                <div>Code Language</div>
-                <div>C#</div>
-            </li>
-            <li>
-                <div>Team Size</div>
-                <div>6</div>
-            </li>
-        </ul>
-        <h2>Credits</h2>
-        <ul class="project-specifications">
-            <li>
-                <div>Vincent Busch</div>
-                <div>Programming, Management & Test Organization</div>
-            </li>
-            <li>
-                <div>Sten-Erik Matt</div>
-                <div>Programming, Video Production & Outreach</div>
-            </li>
-            <li>
-                <div>Enrico Stroet</div>
-                <div>3D Art, Management & Test Organization</div>
-            </li>
-            <li>
-                <div>Arthur Dzhanbaev</div>
-                <div>Sound Effects & Research</div>
-            </li>
-            <li>
-                <div>Jered Helligar</div>
-                <div>Sound Effects & Research</div>
-            </li>
-            <li>
-                <div>"Chilli"</div>
-                <div>Music</div>
-            </li>
-        </ul>
-    </article>
-
-    <article class="card">
-        <h1>Images</h1>
-        <div class="image-collection">
-            <div class="column">
+            <figure>
                 <img src="/res/vrquaponics/vrquaponics_screenshot.jpg" alt="screenshot of VRquaponics">  
-            </div>
-            <div class="column">
-                <img src="/res/vrquaponics/vrquaponics_logo.png" alt="VRquaponics logo">
-            </div>
+            </figure>
         </div>
-    </article>
+        <h1>VRquaponics</h1>
+        
+        <div class="infoblock">
 
-    <!--recurring page end elements-->
-    
-    <div id="contact-button">
-        <button class="contact" onclick="moveViewTo('footer')">Contact</button>
-    </div>
+            <h2>Description</h2>
+            <p>
+                The virtual reality aquaponics simulation "VRquaponics" is a concept prototype for a dystopian science-fiction game promoting sustainable, aquaponic farming.<br>
+                <br>
+                As the player, you find yourself in a spaceship en route to your unnamed destination, locked in a room with a basic aquaponics setup (planting table and fish basin with fish), a large screen displaying data, a window allowing you to look outside, a radio playing music and an ominous machine: a seed dispenser.<br>
+                Your goal is to reach the destination alive. In order to do so, you must plant seeds from the seed dispenser in the planting table and eat the fruit you have grown. In order to gain nutrients for the plants, you must feed the fish in the fish tank.<br>
+                There's one catch: You have just enough fish food and seeds in reserve to make it to the destination. Can you reach it?
+            </p>
 
-    <div class="space"></div>
+            <h2>Specifications</h2>
+            <p>
+                Made in Groningen, 2020 <br>
+                Game Engine: Unity <br>
+                Target Platform: SteamVR + Windows <br>
+                Programming Language: C# <br>
+                <b>Compatibility Note:</b> The game is made for use with an HTC Vive or Vive Pro virtual reality set using SteamVR technology on Windows. While it is possible to launch the game without a Vive, the VR equipment is required to successfully play the game.
+            </p>
 
-    <footer>
-        <div class="social-media-icons">
-            <a href="https://instagram.com/vct136">
-                <img src="/res/instagram_icon.png" alt="Instagram icon" /><br>
-                @vct136
-            </a>
-            <a href="https://linkedin.com/in/vct">
-                <img src="/res/linkedin_logo_black.png" alt="LinkedIn icon" /><br>
-                Vincent Busch / VCT
-            </a>
-            <a href="mailto://vct136@gmail.com">
-                <img src="/res/email-icon-vindicator-at.svg" alt="at-symbol" /><br>
-                VCT136@Gmail.com
-            </a>
-            <a href="tel:+4917657470599">
-                <img src="/res/phone_icon.svg" alt="phone icon" /><br>
-                +49 176 5 747 0599
-            </a>
-            <a href="https://facebook.com/vct136">
-                <img src="/res/facebook_f_icon_black.png" alt="Facebook icon" /><br>
-                Vincent Busch / VCT136
-            </a>
+            <h2>Credits</h2>
+            <p>
+                <b>Vincent Busch</b> Programming, Management & Test Organization <br>
+                <b>Sten-Erik Matt</b> Programming, Video Production & Outreach <br>
+                <b>Enrico Stroet</b> 3D Art, Management & Test Organization <br>
+                <b>Arthur Dzhanbaev</b> Sound Effects & Research <br>
+                <b>Jered Helligar</b> Sound Effects & Research <br>
+                <b>"Chili"</b> Music
+            </p>
         </div>
-        <div>
-            VCT.one is the portfolio website of Vincent Busch a.k.a. VCT.
-        </div>
-        <div>
-            ©2022 Vincent Busch
-        </div>
-        <img class="bottom-left" src="/res/mesitting2021.png" alt="a photo of me sitting" />
-        <img class="bottom-right" src="/res/logo.png" alt="VCT logo" />
-    </footer>
 
-    <!--page end-->
-
-</body>
+        <!-- Autostyle -->
+        <script src="/js/autostyle.js"></script>
+    </body>
 </html>

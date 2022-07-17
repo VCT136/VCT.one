@@ -408,6 +408,10 @@ div.slideshow, div.slideshow figure, div.slideshow img {
     max-width: 1690px;
 }
 
+div.slideshow {
+    background-color: var(--grey-36);
+}
+
 div.slideshow figure div {
     background-color: var(--half-black);
     backdrop-filter: blur(3px);
@@ -446,4 +450,10 @@ div.slideshow figure h2 {
 
 div.slideshow figure p {
     margin: 1vh 0 0 0;
-} 
+}
+
+div.slideshow figure .ytvideo {
+    height: 100%;
+    margin-left: 64px;
+    width: calc(100% - 128px);
+}
