@@ -1,159 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
 
-    <!-- Open Graph Protocol -->
-    <meta property="og:title" content="VCT.one" />
-    <meta property="og:image" content="//VCT.one/res/vct_one_logo.png" />
-    <meta property="og:description" content="Vınсenт's online portfolio." />
-    <meta property="og:url" content="//VCT.one/" />
+        <title>VRgora | VCT.one</title>
+        <!-- Open Graph Protocol -->
+        <meta property="og:title" content="VRgora | VCT.one" />
+        <meta property="og:image" content="//VCT.one/res/vct_one_logo.png" />
+        <meta property="og:description" content="VRgora (virtual reality agora) is a VR prototype for a concept of an AR app designed to improve the lives of people with agoraphobia." />
+        <meta property="og:url" content="//VCT.one/projects/vrgora" />
+        
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        
+    </head>
+    <body>
 
-    <!-- JQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <div class="slideshow">
 
-    <!-- style -->
-	<link rel="stylesheet" href="/css/main.css">
-    <script src="/js/style.js"></script>
-    
-    <link rel="shortcut icon" href="/res/VCT2022_iconShape.png">
-    
-	<title>VRgora | VCT.one</title>
-</head>
-<body onload="setup(); adjust();" onresize="adjust()" style="background-image: url('/res/vrgora/vrgora_background.jpg');">
+            <figure>
+                <img src="/res/vrgora/vrgora_optimized.gif" alt="animated gampeplay of VRgora">
+                <div>
+                    <h2>Gameplay Animation</h2>
+                    <p>
+                        The main character walks through the street and stop when they are frightened. The player encourages them to move on by providing helpful messages.
+                    </p>
+                </div>
+            </figure>
+                
+            <figure>
+                <img src="/res/vrgora/vrgora_screenshot.png" alt="screenshot of VRgora" />
+                <div>
+                    <h2>Closeup</h2>
+                    <p>
+                        An eventual full product based on this should provide a believable look. In our demo this is exeplifield in the main character, whose human proportions make them relatable.
+                    </p>
+                </div>
+            </figure>
 
-    <!--top bar-->
-    <nav>
-        <a href="/"><img id="logo" src="/res/vct_one_logo.png" alt="VCT.one logo" /></a>
-        <ul>
-            <a href="/"><li>Home</li></a>
-            <a href="/gamedesigner/"><li>Game Designer</li></a>
-            <a href="/teamcoordinator/"><li>Team Coordinator</li></a>
-            <a href="/programmer/"><li>Programmer</li></a>
-            <a href="/visualdesigner/"><li>Visual Designer</li></a>
-            <a href="/about/"><li>About</li></a>
-        </ul>
-    </nav>
-    <!--top bar end-->
+            <figure>
+                <img src="/res/vrgora/vrgora_brand.png" alt="overview image of VRgora brand elements">
+                <div>
+                    <h2>Brand Overview</h2>
+                    <p>
+                        This chart served as the style guide for the development of our prototype and presentation materials.
+                    </p>
+                </div>
+            </figure>
+        </div>
 
-    <article class="main-card card">
         <h1>VRgora</h1>
-        <img src="/res/vrgora/vrgora_screenshot.png" alt="screenshot of VRgora" />
-        <p>
-            VRgora (virtual reality agora) is a VR prototype for a concept of an AR app designed to improve the lives of people with agoraphobia.<br/>
-            <br>
-            The player observes a miniature environment, which a character traverses on their way to their goal. That character, named Sam, is agoraphobic and the player must choose the right messages to motivate him to overcome his fear and proceed walking, balancing between avoidance, engagement and exposure-induced panic.<br>
-            <br>
-            The game is based on the principle that by coaching another person, one also indirectly coaches themselves, since both parties receive the coach's motivational messaging.
-        </p>
-    </article>
+        <div class="infoblock">
 
-    <a href="https://drive.google.com/file/d/1Mh6HnXMILUbwtC5hlHnTotvYzk1c47PG/view?usp=sharing" target="_blank"><div class="row-button"><h1>Download</h1></div></a>
+            <h2>Description</h2>
+            <p>
+                VRgora (virtual reality agora) is a VR prototype for a concept of an AR app designed to improve the lives of people with agoraphobia.<br/>
+                <br>
+                The player observes a miniature environment, which a character traverses on their way to their goal. That character, named Sam, is agoraphobic and the player must choose the right messages to motivate him to overcome his fear and proceed walking, balancing between avoidance, engagement and exposure-induced panic.<br>
+                <br>
+                The game is based on the principle that by coaching another person, one also indirectly coaches themselves, since both parties receive the coach's motivational messaging.
+            </p>
 
-    <article class="card">
-        <p>
-            <img src="/res/vrgora/vrgora_optimized.gif" alt="animated gampeplay of VRgora"><br>
-            This animation showcases the the look of the prototype's gameplay.
-        </p>
-    </article>
+            <h2>Specifications</h2>
+            <p>
+                Made in Groningen, 2020 - 2021 <br>
+                Game Engine: Unity <br>
+                Target Platforms: SteamVR & Windows <br>
+                Programming Language: C#
+            </p>
 
-    <article class="card">
-        <h1>Specifications</h1>
-        <ul class="project-specifications">
-            <li>
-                <div>Place and Time of Production</div>
-                <div>Groningen, 2020 - 2021</div>
-            </li>
-            <li>
-                <div>Game Engine</div>
-                <div>Unity</div>
-            </li>
-            <li>
-                <div>Target Platforms</div>
-                <div>Windows + SteamVR</div>
-            </li>
-            <li>
-                <div>Code Language</div>
-                <div>C#</div>
-            </li>
-            <li>
-                <div>Team Size</div>
-                <div>5</div>
-            </li>
-        </ul>
-        <h2>Credits</h2>
-        <ul class="project-specifications">
-            <li>
-                <div>Ruben ter Voert</div>
-                <div>Game Design, Script, Voice Acting (speaker), Research & Documentation</div>
-            </li>
-            <li>
-                <div>Vincent Busch</div>
-                <div>Programming, Game Design, Management & Brand Design</div>
-            </li>
-            <li>
-                <div>Amanda Wendt</div>
-                <div>3D Art, Management, Game Design, Brand Design, Script, Research & Documentation</div>
-            </li>
-            <li>
-                <div>Irene Bilius</div>
-                <div>3D Art, Animation & Voice Acting (Sam)</div>
-            </li>
-            <li>
-                <div>Alexander Caroli</div>
-                <div>Programming, Level Design & Script</div>
-            </li>
-        </ul>
-    </article>
+            <h2>Credits</h2>
+            <p>
+                <b>Ruben ter Voert</b> Game Design, Script, Voice Acting (speaker), Research & Documentation <br>
+                <b>Vincent Busch</b> Programming, Game Design, Management & Brand Design <br>
+                <b>Amanda Wendt</b> 3D Art, Management, Game Design, Brand Design, Script, Research & Documentation <br>
+                <b>Irene Bilius</b> 3D Art, Animation & Voice Acting (Sam) <br>
+                <b>Alexandro Caroli</b> Programming, Level Design & Script
+            </p>
 
-    <article class="full-image-card card">
-        <h1>Brand Overview</h1>
-        <img src="/res/vrgora/vrgora_brand.png" alt="overview image of VRgora brand elements">
-    </article>
-
-    <!--recurring page end elements-->
-    
-    <div id="contact-button">
-        <button class="contact" onclick="moveViewTo('footer')">Contact</button>
-    </div>
-
-    <div class="space"></div>
-
-    <footer>
-        <div class="social-media-icons">
-            <a href="https://instagram.com/vct136">
-                <img src="/res/instagram_icon.png" alt="Instagram icon" /><br>
-                @vct136
-            </a>
-            <a href="https://linkedin.com/in/vct">
-                <img src="/res/linkedin_logo_black.png" alt="LinkedIn icon" /><br>
-                Vincent Busch / VCT
-            </a>
-            <a href="mailto://vct136@gmail.com">
-                <img src="/res/email-icon-vindicator-at.svg" alt="at-symbol" /><br>
-                VCT136@Gmail.com
-            </a>
-            <a href="tel:+4917657470599">
-                <img src="/res/phone_icon.svg" alt="phone icon" /><br>
-                +49 176 5 747 0599
-            </a>
-            <a href="https://facebook.com/vct136">
-                <img src="/res/facebook_f_icon_black.png" alt="Facebook icon" /><br>
-                Vincent Busch / VCT136
-            </a>
+            <h2>Download</h2>
+            <a href="https://drive.google.com/file/d/1Mh6HnXMILUbwtC5hlHnTotvYzk1c47PG/view?usp=sharing" target="_blank"><button>VRgora.zip</button></a>
         </div>
-        <div>
-            VCT.one is the portfolio website of Vincent Busch a.k.a. VCT.
-        </div>
-        <div>
-            ©2022 Vincent Busch
-        </div>
-        <img class="bottom-left" src="/res/mesitting2021.png" alt="a photo of me sitting" />
-        <img class="bottom-right" src="/res/logo.png" alt="VCT logo" />
-    </footer>
 
-    <!--page end-->
-
-</body>
+        <!-- Autostyle -->
+        <script src="/js/autostyle.js"></script>
+    </body>
 </html>

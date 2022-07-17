@@ -2,7 +2,9 @@
 $(function() 
 {
     // run setup and adjust
-    setup(adjust);
+    setup(() => {
+        adjust();
+    });
 
     //re-adjust on resize
     $(window).resize(adjust);
