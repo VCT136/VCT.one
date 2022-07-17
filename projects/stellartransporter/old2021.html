@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Open Graph Protocol -->
+    <meta property="og:title" content="VCT.one" />
+    <meta property="og:image" content="//VCT.one/res/vct_one_logo.png" />
+    <meta property="og:description" content="Vınсenт's online portfolio." />
+    <meta property="og:url" content="//VCT.one/" />
+
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- style -->
+	<link rel="stylesheet" href="/css/main.css">
+    <script src="/js/style.js"></script>
+    
+    <link rel="shortcut icon" href="/res/VCT2022_iconShape.png">
+    
+	<title>Stellar Transporter | VCT.one</title>
+</head>
+<body onload="setup(); adjust();" onresize="adjust()" style="background-image: url('/res/stellartransporter/screenshot_light.jpg');">
+
+    <!--top bar-->
+    <nav>
+        <a href="/"><img id="logo" src="/res/vct_one_logo.png" alt="VCT.one logo" /></a>
+        <ul>
+            <a href="/"><li>Home</li></a>
+            <a href="/gamedesigner/"><li>Game Designer</li></a>
+            <a href="/teamcoordinator/"><li>Team Coordinator</li></a>
+            <a href="/programmer/"><li>Programmer</li></a>
+            <a href="/visualdesigner/"><li>Visual Designer</li></a>
+            <a href="/about/"><li>About</li></a>
+        </ul>
+    </nav>
+    <!--top bar end-->
+
+    <article class="main-card card">
+        <h1>Stellar Transporter</h1>
+        <img src="/res/stellartransporter/screenshot.jpg" alt="screenshot of Stellar Transporter" />
+        <p>
+            Stellar Transporter is a browser game, which puts you in charge of managing a space cargo ship.<br/>
+            <br/>
+            Your mission is to make money by trading container goods at space stations and bringing them to others safely and selling them profitably.<br/>
+            <br/>
+            In the beginning you start at a station with 1300 points worth of cargo loaded. It is recommended that as the first action you take in the game you sell the loaded cargo containers at the starting station and buy new ones with the money you get. Both selling and buying containers is done in the "station market".
+        </p>
+    </article>
+
+    <a href="play" target="_blank"><div class="row-button"><h1>Play</h1></div></a>
+
+    <article class="card">
+        <h1>Vincent's Thoughts</h1>
+        <p>
+            This game was made using the JavaScript framework Phaser. Getting used to developing using Phaser was remarkably difficult, considering that JavaScript is the first programming language I ever used for an actual project. Many of the systems provided by the Phaser engine were rather counter-intuitive to me, and I often found myself frustrated about how solutions, which seemed obvious to me, turned out to work entirely different in Phaser.<br>
+            <br>
+            In contrast to my initial expectation, the engine provides many kinds of template classes, which are very good at fulfilling their specific purpose, but can hardly be repurposed or tinkered with.<br>
+            Phaser comes with a particle system for example, and while I wanted to have particles in the game that collide with other objects in space, phaser's particles do not come with that functionality. Finding that it may put mid-level computers on too much load to repurpose another phaser class for such particles I instead compromised on that idea.<br>
+            Because of problems such as those, I sought help regarding some issues on their official support Discord, where the engine's creator "Photonstorm" (Richard Davey) not only gave me relevant leads to crucial problem solutions, but also taught me quite a bunch about how parts of the engine are meant to be used and why, as well as the basics of binary operations, which I had not worked with at all before this project.<br>
+            <br>
+            In hindsight I do very much appreciate the open source, HTML5 and web based approach to a game engine. I'd just wish it'd have had better documentation, as the API documentation on their website was not user friendly and many features only explained through analyzing the code of the example projects on the Phaser website.<br>
+            I am happy that, despite the inconveniences on the way, I didn't end up switching from my concept of a space cargo ship game to making a simple platformer for convenience :)
+        </p>
+    </article>
+
+    <article class="card">
+        <h1>Specifications</h1>
+        <ul class="project-specifications">
+            <li>
+                <div>Place and Time of Production</div>
+                <div>Groningen, 2020</div>
+            </li>
+            <li>
+                <div>Game Engine</div>
+                <div>Phaser</div>
+            </li>
+            <li>
+                <div>Target Platforms</div>
+                <div>Web</div>
+            </li>
+            <li>
+                <div>Compatibility</div>
+                <div>Playability issues arise on small touchscreens.</div>
+            </li>
+            <li>
+                <div>Code Language</div>
+                <div>JavaScript</div>
+            </li>
+            <li>
+                <div>Team Size</div>
+                <div>Individual</div>
+            </li>
+        </ul>
+    </article>
+
+    <!--recurring page end elements-->
+    
+    <div id="contact-button">
+        <button class="contact" onclick="moveViewTo('footer')">Contact</button>
+    </div>
+
+    <div class="space"></div>
+
+    <footer>
+        <div class="social-media-icons">
+            <a href="https://instagram.com/vct136">
+                <img src="/res/instagram_icon.png" alt="Instagram icon" /><br>
+                @vct136
+            </a>
+            <a href="https://linkedin.com/in/vct">
+                <img src="/res/linkedin_logo_black.png" alt="LinkedIn icon" /><br>
+                Vincent Busch / VCT
+            </a>
+            <a href="mailto://vct136@gmail.com">
+                <img src="/res/email-icon-vindicator-at.svg" alt="at-symbol" /><br>
+                VCT136@Gmail.com
+            </a>
+            <a href="tel:+4917657470599">
+                <img src="/res/phone_icon.svg" alt="phone icon" /><br>
+                +49 176 5 747 0599
+            </a>
+            <a href="https://facebook.com/vct136">
+                <img src="/res/facebook_f_icon_black.png" alt="Facebook icon" /><br>
+                Vincent Busch / VCT136
+            </a>
+        </div>
+        <div>
+            VCT.one is the portfolio website of Vincent Busch a.k.a. VCT.
+        </div>
+        <div>
+            ©2022 Vincent Busch
+        </div>
+        <img class="bottom-left" src="/res/mesitting2021.png" alt="a photo of me sitting" />
+        <img class="bottom-right" src="/res/logo.png" alt="VCT logo" />
+    </footer>
+
+    <!--page end-->
+
+</body>
+</html>
