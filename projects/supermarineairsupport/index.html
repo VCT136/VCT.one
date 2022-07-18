@@ -1,163 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
 
-    <!-- Open Graph Protocol -->
-    <meta property="og:title" content="VCT.one" />
-    <meta property="og:image" content="//VCT.one/res/vct_one_logo.png" />
-    <meta property="og:description" content="Vınсenт's online portfolio." />
-    <meta property="og:url" content="//VCT.one/" />
+        <title>Supermarine Air Support | VCT.one</title>
+        <!-- Open Graph Protocol -->
+        <meta property="og:title" content="Supermarine Air Support | VCT.one" />
+        <meta property="og:image" content="//VCT.one/res/vct_one_logo.png" />
+        <meta property="og:description" content="In Supermarine Air Support you control a flying submarine (thus 'super' (lat. 'above') - 'marine' (derived from lat. 'mare' - sea; means 'related to the sea'))." />
+        <meta property="og:url" content="//VCT.one/projects/supermarineairsupport" />
 
-    <!-- JQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        
+    </head>
+    <body>
 
-    <!-- style -->
-	<link rel="stylesheet" href="/css/main.css">
-    <script src="/js/style.js"></script>
-    
-    <link rel="shortcut icon" href="/res/VCT2022_iconShape.png">
-    
-	<title>Supermarine Air Support | VCT.one</title>
-</head>
-<body onload="setup(); adjust();" onresize="adjust()" style="background-image: url('/res/supermarineairsupport/background.png');">
+        <div class="slideshow">
 
-    <!--top bar-->
-    <nav>
-        <a href="/"><img id="logo" src="/res/vct_one_logo.png" alt="VCT.one logo" /></a>
-        <ul>
-            <a href="/"><li>Home</li></a>
-            <a href="/gamedesigner/"><li>Game Designer</li></a>
-            <a href="/teamcoordinator/"><li>Team Coordinator</li></a>
-            <a href="/programmer/"><li>Programmer</li></a>
-            <a href="/visualdesigner/"><li>Visual Designer</li></a>
-            <a href="/about/"><li>About</li></a>
-        </ul>
-    </nav>
-    <!--top bar end-->
-
-    <article class="main-card card">
+            <figure>
+                <img src="/res/supermarineairsupport/screenshot.png" alt="screenshot of Supermarine Air Support" />
+            </figure>
+        </div>
         <h1>Supermarine Air Support</h1>
-        <img src="/res/supermarineairsupport/screenshot.png" alt="screenshot of Supermarine Air Support" />
-        <p>
-            In Supermarine Air Support you control a flying submarine (thus "super" (lat. "above") - "marine" (derived from lat. "mare" - sea; means "related to the sea")).<br>
-            <br>
-            The supermarine can move in the air and drop bombs. <br>
-            <br>
-            An agent tries to escape the level by running through it from left to right in a limited amount of time. It is your mission to get the agent safely through the level. <br>
-            <br>
-            There are zombies and other dangers on the way, which need to be avoided or eliminated.
-        </p>
-    </article>
 
-    <a href="play"><div class="row-button"><h1>Play</h1></div></a>
+        <div class="infoblock">
+            
+            <h2>Description</h2>
+            <p>
+                In Supermarine Air Support you control a flying submarine (thus "super" (lat. "above") - "marine" (derived from lat. "mare" - sea; means "related to the sea")).<br>
+                <br>
+                The supermarine can move in the air and drop bombs. <br>
+                <br>
+                An agent tries to escape the level by running through it from left to right in a limited amount of time. It is your mission to get the agent safely through the level. <br>
+                <br>
+                There are zombies and other dangers on the way, which need to be avoided or eliminated.
+            </p>
 
-    <a href="https://drive.google.com/file/d/1ggnIROFZ0peZ4cN_FRTm2wMhd1GCXk4u/view" target="_blank"><div class="row-button"><h1>Download</h1></div></a>
-
-    <article class="card">
-        <h1>Vincent's Thoughts</h1>
-        <p>
-            We had originally intended to implement a more dynamic destruction system, but dropped it because it created performance issues.<br>
+            <h2>Vincent's Thoughts</h2>
+            <p>
+                We had originally intended to implement a more dynamic destruction system, but dropped it because it created performance issues.<br>
                 <br>
                 A big problem with this game is its poor level design. Almost all our testers noted this, and we could not disagree with them. This flaw is not simply the level designer's fault however, but has some additional background.<br>
                 Our team originally had five members, but one of them left and quit after not contributing anything to the project for over a month. Because they were our level designer we had to redistribute their tasks and rush them. This made me realize that I'll have to investigate what the situation is if team members are not showing signs of progress in future projects, as to blindly trust them is detrimental to the whole team's efforts.<br>
                 <br>
                 Amongst other interesting things, such as making my first contacts with Unity's Raycast system for this project, I think it was particularly valuable to have learned the basics of Unity engine coroutines, which in this case I implemented for the level generator, which significantly decreased loading times. Originally the entire level was generated at the start, in the game as above the level generates from left to right at runtime, allowing for the game to have nearly no interruption of play between levels.
-        </p>
-    </article>
+            </p>
 
-    <article class="card">
-        <h1>Specifications</h1>
-        <ul class="project-specifications">
-            <li>
-                <div>Place and Time of Production</div>
-                <div>Groningen, 2020</div>
-            </li>
-            <li>
-                <div>Game Engine</div>
-                <div>Unity</div>
-            </li>
-            <li>
-                <div>Target Platforms</div>
-                <div>Web, Windows</div>
-            </li>
-            <li>
-                <div>Compatibility</div>
-                <div>Best played with a mouse pointer; Unity WebGL is not supported some browsers.</div>
-            </li>
-            <li>
-                <div>Code Language</div>
-                <div>C#</div>
-            </li>
-            <li>
-                <div>Team Size</div>
-                <div>4</div>
-            </li>
-        </ul>
-        <h2>Credits</h2>
-        <ul class="project-specifications">
-            <li>
-                <div>Aruzhan Amantay</div>
-                <div>programming, interface design and animations</div>
-            </li>
-            <li>
-                <div>Daan Rekker</div>
-                <div>music, sound, artwork and animations</div>
-            </li>
-            <li>
-                <div>Joanna-Ritta Abi Matar</div>
-                <div>artwork and level design</div>
-            </li>
-            <li>
-                <div>Vincent Busch</div>
-                <div>programming, game design and management</div>
-            </li>
-        </ul>
-    </article>
+            <h2>Specifications</h2>
+            <p>
+                Made in Groningen, 2020 <br>
+                Game Engine: Unity <br>
+                Target Platforms: Web & Windows <br>
+                Programming Language: C# <br>
+                <b>Compatibility Note:</b>Best played with a mouse pointer; Unity WebGL is not supported some browsers. <br>
+            </p>
 
-    <!--recurring page end elements-->
-    
-    <div id="contact-button">
-        <button class="contact" onclick="moveViewTo('footer')">Contact</button>
-    </div>
+            <h2>Credits</h2>
+            <p>
+                <b>Aruzhan Amantay</b> Programming, Interface Design & Animation <br>
+                <b>Daan Rekker</b> Music, Sound, Artwork & Animation <br>
+                <b>Joanna-Ritta Abi Matar</b> Artwork & Level Design <br>
+                <b>Vincent Busch</b> Programming, Game Design & Management <br>
+            </p>
 
-    <div class="space"></div>
-
-    <footer>
-        <div class="social-media-icons">
-            <a href="https://instagram.com/vct136">
-                <img src="/res/instagram_icon.png" alt="Instagram icon" /><br>
-                @vct136
-            </a>
-            <a href="https://linkedin.com/in/vct">
-                <img src="/res/linkedin_logo_black.png" alt="LinkedIn icon" /><br>
-                Vincent Busch / VCT
-            </a>
-            <a href="mailto://vct136@gmail.com">
-                <img src="/res/email-icon-vindicator-at.svg" alt="at-symbol" /><br>
-                VCT136@Gmail.com
-            </a>
-            <a href="tel:+4917657470599">
-                <img src="/res/phone_icon.svg" alt="phone icon" /><br>
-                +49 176 5 747 0599
-            </a>
-            <a href="https://facebook.com/vct136">
-                <img src="/res/facebook_f_icon_black.png" alt="Facebook icon" /><br>
-                Vincent Busch / VCT136
-            </a>
+            <h2>Play / Download</h2>
+            <a href="play"><button>Play now! (Web)</button></a>
+            <a href="https://drive.google.com/file/d/1ggnIROFZ0peZ4cN_FRTm2wMhd1GCXk4u/view"><button>SupermarineAirSupport.zip (Windows)</button></a>
         </div>
-        <div>
-            VCT.one is the portfolio website of Vincent Busch a.k.a. VCT.
-        </div>
-        <div>
-            ©2022 Vincent Busch
-        </div>
-        <img class="bottom-left" src="/res/mesitting2021.png" alt="a photo of me sitting" />
-        <img class="bottom-right" src="/res/logo.png" alt="VCT logo" />
-    </footer>
 
-    <!--page end-->
-
-</body>
+        <!-- Autostyle -->
+        <script src="/js/autostyle.js"></script>
+    </body>
 </html>
