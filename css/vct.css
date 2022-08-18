@@ -1,5 +1,5 @@
 /* maven pro font */
-@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;460;500;600;700&display=swap');
 
 :root {
     --vct-red: #C00136;
@@ -53,12 +53,13 @@ button:hover {
 }
 
 h1, h2, h3 {
+    box-sizing: border-box;
     font-weight: 600;
     margin: auto;
     padding: 1vh;
     position: relative;
     text-align: center;
-    max-width: 1720px;
+    max-width: 1920px;
 }
 
 h1 {
@@ -242,7 +243,7 @@ div.cards div.wrapper {
     margin: 1vh;
     perspective: 300px;
     perspective-origin: 50% 50%;
-    min-width: 370px;
+    min-width: 280px;
     max-width: 400px;
 }
 
@@ -352,9 +353,6 @@ div.infoblock {
     margin: auto;
     overflow: hidden;
     padding: 3vh 6vh 3vh 6vh;
-    width: 75vw;
-    max-width: 1690px;
-    min-width: 370px;
 }
 
 div.infoblock h2, div.infoblock h3 {
@@ -366,7 +364,16 @@ div.infoblock h2, div.infoblock h3 {
 }
 
 div.infoblock p {
+    font-weight: 460;
     margin: 0;
+}
+
+/* very big screens */
+@media screen and (min-width: 1921px) {
+    div.infoblock {
+        width: 75vw;
+        max-width: 1920px;
+    }
 }
 
 /* skill flex */
@@ -400,12 +407,12 @@ div.skillflex figure img {
 
 div.slideshow, div.slideshow figure, div.slideshow img {
     height: 100%;
-    max-height: 36vh;
+    max-height: 60vh;
     min-height: 300px;
     margin: auto;
     object-fit: cover;
     width: 100%;
-    max-width: 1690px;
+    max-width: 1920px;
 }
 
 div.slideshow {
