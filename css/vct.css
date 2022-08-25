@@ -63,6 +63,8 @@ h1, h2, h3 {
 }
 
 h1 {
+    background-color: var(--vct-red);
+    color: white;
     z-index: 10;
 }
 
@@ -91,7 +93,7 @@ button, header nav ul li, div.cards div.card div.content, div.slideshow figure d
 
 /* common white background */
 
-button, h1, h2, h3 {
+button, h2, h3 {
     background-color: white;
 }
 
@@ -300,6 +302,7 @@ div.cards div.card:hover div.content {
 div.cards div.content h1 {
     background-color: var(--none);
     box-shadow: none;
+    color: var(--grey-36);
     font-size: 1.6em;
     margin-bottom: 1vh;
     padding: 0;
