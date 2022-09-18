@@ -3,6 +3,7 @@
 
 :root {
     --vct-red: #C00136;
+    --a-quarter-black: #00000040;
     --half-black: #00000080;
     --grey-36: #363636;
     --none: #00000000;
@@ -231,11 +232,12 @@ div.social-media-icons img {
 /* cards */
 
 div.cards {
+    background-color: var(--a-quarter-black);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     margin: auto;
-    max-width: 1850px;
+    max-width: 1920px;
 }
 
 div.cards div.wrapper {
