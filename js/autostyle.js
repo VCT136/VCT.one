@@ -19,7 +19,7 @@ function setup(callback = function(){}) {
 
     // add logo favicon
     $("head").append(
-        "<link rel=\"shortcut icon\" href=\"/res/VCT2022_iconShape.png\">"
+        "<link rel=\"shortcut icon\" href=\"/res/VCT2023_iconShape.png\">"
     );
     // add meta viewport tag
     $("head").append(
@@ -46,7 +46,7 @@ function setup(callback = function(){}) {
                     cellAlign: "left",
                     contain: true,
                     imagesLoaded: true,
-                    pageDots: false,
+                    pageDots: true,
                     pausePlayOnHover: true,
                     setGallerySize: false,
                     wrapAround: true
@@ -58,11 +58,13 @@ function setup(callback = function(){}) {
     
                     // adjust links in case they go to current page
                     let headerNavLinks = $("header nav a");
+                    let currentUrl = window.location.pathname;
+                    if (currentUrl != "/") {
+                        currentUrl = currentUrl.substring(currentUrl.indexOf("/"), currentUrl.lastIndexOf("/"));
+                    }
                     headerNavLinks.each((index, element) => {
-                        let currentUrl = window.location.href;
                         if (
-                            currentUrl.substring(currentUrl.indexOf("/", 8), currentUrl.lastIndexOf("/")) ==
-                            $(element).attr("href")
+                            currentUrl == $(element).attr("href")
                         ) {
                             $(element).attr("href", "#top");
                             $(element).css("font-weight", "normal");
