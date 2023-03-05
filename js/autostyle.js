@@ -19,7 +19,7 @@ function setup(callback = function(){}) {
 
     // add logo favicon
     $("head").append(
-        "<link rel=\"shortcut icon\" href=\"/res/VCT2023_iconShape.png\">"
+        "<link rel=\"shortcut icon\" href=\"/res/vct_icon.png\">"
     );
     // add meta viewport tag
     $("head").append(
