@@ -4,12 +4,17 @@
 :root {
     --vct-red: #C00136;
     --vct-red-0f: #C001360F;
+    --vct-highlight: #f2ccd7;
     --a-quarter-black: #00000040;
     --half-black: #00000080;
     --grey-36: #363636;
+    --mahogany: #231a16;
+    --half-mahogany: #231a1680;
     --none: #00000000;
     --sheer-white: #ffffffee;
     --translucent-white: #ffffffce;
+    color: var(--grey-36);
+    font-size: 14pt;
 }
 
 html, body {
@@ -32,7 +37,6 @@ body {
     background-position: center;
     background-repeat: repeat;
     background-size: auto;
-    color: var(--grey-36);
     font-family: "Maven Pro", Ubuntu, Verdana, Geneva, Tahoma, sans-serif;
     margin: 0;
     gap: 1vh;
@@ -40,22 +44,23 @@ body {
 
 button {
     border-style: none;
+    border-radius: 20px;
     font-family: "Maven Pro", Ubuntu, Verdana, Geneva, Tahoma, sans-serif;
-    padding: clamp(10px, 0.5vh, 16px);
+    height: 40px;
+    padding: 0 24px 0 24px;
     color: var(--vct-red);
     cursor: pointer;
     font-weight: bold;
 
-    transition-property: background-color, box-shadow;
+    transition-property: background-color;
     transition-duration: 0.3s;
 }
 button:hover {
-    background-color: #FBF0F3;
-    box-shadow: var(--half-black) 1px 3px 6px, var(--half-black) 0 0 6px inset;
+    background-color: var(--vct-highlight);
 }
 
 h1, h2, h3 {
-    box-sizing: border-box;
+    background-color: white;
     font-weight: 600;
     margin: auto;
     padding: 1vh;
@@ -66,15 +71,20 @@ h1, h2, h3 {
 
 h1 {
     background-color: var(--vct-red);
+    box-sizing: border-box;
     color: white;
+    font-size: 22pt;
+    letter-spacing: -1.36px;
     z-index: 10;
 }
 
 h2 {
+    font-size: 22pt;
     z-index: 9;
 }
 
 h3 {
+    font-size: 16pt;
     z-index: 8;
 }
 
@@ -82,31 +92,31 @@ li {
     margin-top: 0.3rem;
 }
 
-p {
-    text-align: justify;
+.smalltext {
+    font-size: 12pt;
 }
 
 /* common drop shadow */
 button, h1, h2, h3, header, footer, div.cards div.card, div.cards div.card div.content, div.cvgrid img, div.infoblock, div.skillflex figure div, div.skillflex figure img, div.slideshow {
-    box-shadow: 1px 3px 6px var(--half-black);
+    box-shadow: 1px 3px 6px var(--half-mahogany);
     position: relative;
 }
 
 /* common rounded corners */
-button, div.cards div.card div.content, div.slideshow figure div {
-    border-radius: 1vh;
+div.slideshow figure div {
+    border-radius: 16px;
 }
 
 /* common white background */
 
-button, h2, h3 {
+button {
     background-color: white;
 }
 
 /* common white blurry background */
 header, footer, div.infoblock {
     background-color: var(--translucent-white);
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(4px);
 }
 
 /* scroll bar */
@@ -115,13 +125,13 @@ header, footer, div.infoblock {
     width: auto;
 }
 ::-webkit-scrollbar-track {
-    background-image: linear-gradient(to right, black, var(--grey-36));
+    background-image: linear-gradient(to right, black, var(--mahogany));
     background-color: var(--grey-36);
 }
 ::-webkit-scrollbar-thumb {
     background-color: white;
-    border-radius: 2vh;
-    box-shadow: 0 0 0.5vh black inset;
+    border-radius: 8px;
+    box-shadow: 0 0 6px var(--mahogany) inset;
 }
 
 /* header and footer */
@@ -144,7 +154,6 @@ header {
     height: 6vh;
     min-height: 3rem;
     display: flex;
-    font-size: 1.36em;
     gap: 1vh;
     justify-content: center;
     position: fixed;
@@ -178,7 +187,7 @@ header nav ul li {
     transition-duration: 0.3s;
 }
 header nav ul a li:hover {
-    background-color: var(--vct-red-0f);
+    background-color: var(--vct-highlight);
     box-shadow: var(--half-black) 0 0 6px inset;
 }
 
@@ -187,7 +196,7 @@ header nav ul a li:hover {
 footer {
     display: grid;
     gap: 1vh;
-    padding: 1vh;
+    padding: 4px;
     place-items: center;
     text-align: center;
 
@@ -202,29 +211,32 @@ footer div {
 
 div.social-media-icons {
     display: flex;
-    gap: 1vh;
-    justify-content: space-between;
+    justify-content: center;
     width: 75vw;
     max-width: 360px;
     place-items: center;
 }
-div.social-media-icons a {
-    color: black;
-}
 div.social-media-icons img {
     object-fit: contain;
-    height: 2vh;
+    height: 24px;
     min-height: 1em;
+    padding: 8px;
 }
 
 /* bottom corner content */
 
 .bottom-left, .bottom-right {
     box-sizing: border-box;
-    height: 7vh;
+    height: 96px;
     object-fit: contain;
     position: absolute;
     bottom: 0;
+
+    transition-property: bottom;
+    transition-duration: 0.3s;
+}
+.bottom-left:hover, .bottom-right:hover {
+    bottom: -48px;
 }
 .bottom-left {
     left: 0;
@@ -233,26 +245,42 @@ div.social-media-icons img {
     right: 0;
 }
 
+@media screen and (max-width: 420px) {
+    .bottom-left, .bottom-right {
+        display: none;
+    }
+}
+
 /* cards */
 
-div.cards {
+.cardarea {
     background-color: var(--a-quarter-black);
+}
+
+.cardarea h2, .cardarea h3 {
+    background-color: var(--none);
+    box-shadow: none;
+    color: white;
+    text-shadow: 1px 3px 6px var(--mahogany);
+}
+
+div.cards {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: center;
     margin: auto;
     max-width: 1920px;
 }
 
 div.cards div.wrapper {
-    flex: 1;
-    min-height: 500px;
-    max-height: 800px;
-    margin: 1vh;
+    flex-basis: 260px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    height: 420px;
+    width: 280px;
+    margin: 16px;
     perspective: 300px;
     perspective-origin: 50% 50%;
-    min-width: 280px;
-    max-width: 400px;
 }
 
 div.cards div.card {
@@ -264,12 +292,12 @@ div.cards div.card {
     height: 100%;
     
     overflow: hidden;
-    transform: rotateX(6deg) scale(0.86) translate3d(0, 0, 0);
+    transform: rotateX(6deg) scale(0.86) translate3d(0, -16px, 0);
 
     border-color: white;
     border-style: solid;
-    border-radius: 3vh;
-    border-width: 1vh;
+    border-radius: 32px;
+    border-width: 8px;
 
     transition-property: filter, transform;
     transition-duration: 0.3s;
@@ -283,14 +311,14 @@ div.cards div.card:hover {
 
 div.cards div.card div.content {
     background-color: var(--translucent-white);
+    border-radius: 16px 16px 0 0;
     box-sizing: border-box;
     display: block;
-    text-align: justify;
-    transform: translate(calc(-50% - 1vh), calc(100% - 1vh - 2em));
-    width: calc(100% - 2vh);
+    font-size: 12pt;
+    transform: translate(calc(-50%), calc(100% - 1.6em - 20px));
+    width: calc(100% + 4px);
 
-    margin: 1vh;
-    padding: 1vh;
+    padding: 8px;
 
     position: absolute;
     bottom: 0;
@@ -299,9 +327,18 @@ div.cards div.card div.content {
     transition-property: background-color, transform;
     transition-duration: 0.3s;
 }
+div.cards div.card div.content::before {
+    border-radius: 2px;
+    content: "";
+    display: block;
+    height: 4px;
+    margin-left: 25%;
+    width: 50%;
+    background-color: #aaaaaa;
+}
 div.cards div.card:hover div.content {
     background-color: var(--sheer-white);
-    transform: translate(calc(-50% - 1vh), 0);
+    transform: translate(calc(-50%), 0);
 }
 
 div.cards div.content h1 {
@@ -318,12 +355,50 @@ div.cards div.card button {
     width: 100%;
 }
 
+/* infoblocks */
+
+.infoblock {
+    box-sizing: border-box;
+    margin: auto;
+    overflow: hidden;
+    padding: 24px 48px 24px 48px;
+}
+
+.infoblock * {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 900px;
+}
+
+.infoblock button {
+    margin-bottom: 8px;
+}
+
+.infoblock h2, .infoblock h3 {
+    color: var(--grey-36);
+    background-color: var(--none);
+    box-shadow: none;
+    margin-top: 12px;
+    margin-bottom: 4px;
+    padding: 0;
+    text-align: left;
+}
+
+.infoblock h2 {
+    margin-top: 24px;
+}
+
 /* CV grid */
 
 div.cvgrid {
     display: grid;
     gap: 2vh;
     grid-template-columns: min-content 1fr;
+    max-width: 900px;
+}
+
+div.cvgrid * {
+    margin: initial;
 }
 
 div.cvgrid h3, h4 {
@@ -354,41 +429,13 @@ div.cvgrid p {
     text-align: left;
 }
 
-/* infoblocks */
-
-div.infoblock {
-    box-sizing: border-box;
-    margin: auto;
-    overflow: hidden;
-    padding: 3vh 6vh 3vh 6vh;
-}
-
-div.infoblock h2, div.infoblock h3 {
-    background-color: var(--none);
-    box-shadow: none;
-    margin: 1vh 0 1vh 0;
-    padding: 0;
-    text-align: left;
-}
-
-div.infoblock p {
-    font-weight: 460;
-    margin: 0;
-}
-
-/* very big screens */
-@media screen and (min-width: 1921px) {
-    div.infoblock {
-        max-width: 1920px;
-    }
-}
-
 /* skill flex */
 
 div.skillflex {
     display: flex;
     flex-wrap: wrap;
-    gap: 1vh;
+    column-gap: 8px;
+    row-gap: 16px;
 }
 div.skillflex figure {
     display: grid;
@@ -406,7 +453,7 @@ div.skillflex figure img {
     border-radius: 50%;
     height: 5vh;
     max-height: 128px;
-    min-height: 32px;
+    min-height: 40px;
     z-index: 1;
 }
 
@@ -428,12 +475,12 @@ div.slideshow {
 
 div.slideshow figure div {
     background-color: var(--half-black);
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(4px);
     color: white;
     max-height: 75%;
     overflow-x: hidden;
     overflow-y: scroll;
-    padding: 1vh;
+    padding: 16px;
     position: absolute;
     right: 64px;
     top: 50%;

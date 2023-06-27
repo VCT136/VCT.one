@@ -67,8 +67,8 @@ function setup(callback = function(){}) {
                             currentUrl == $(element).attr("href")
                         ) {
                             $(element).attr("href", "#top");
-                            $(element).css("font-weight", "normal");
-                            $(element).children().css("box-shadow", "0 1px 3px var(--half-black) inset");
+                            $(element).css("color", "var(--grey-36)");
+                            $(element).children().css("box-shadow", "0 0 16px var(--half-mahogany) inset");
                         }
                         // if it's the last element continue with the rest of the code
                         if (!--headerNavLinks.length) {
