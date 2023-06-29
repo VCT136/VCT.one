@@ -328,13 +328,14 @@ div.cards div.card div.content {
     transition-duration: 0.3s;
 }
 div.cards div.card div.content::before {
+    background-color: var(--a-quarter-black);
     border-radius: 2px;
+    box-shadow: 0 0 2px var(--half-mahogany) inset;
     content: "";
     display: block;
     height: 4px;
     margin-left: 25%;
     width: 50%;
-    background-color: #aaaaaa;
 }
 div.cards div.card:hover div.content {
     background-color: var(--sheer-white);
