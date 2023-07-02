@@ -62,9 +62,12 @@ button:hover {
 h1, h2, h3 {
     background-color: white;
     box-sizing: border-box;
-    font-weight: 600;
-    margin: auto;
-    padding: 1vh;
+    font-weight: 500;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 12px;
     position: relative;
     text-align: center;
 }
@@ -74,7 +77,11 @@ h1 {
     color: white;
     font-size: 22pt;
     letter-spacing: -1.36px;
+    margin: 0;
     z-index: 10;
+}
+h1 b {
+    font-weight: 600;
 }
 
 h2 {
@@ -254,17 +261,22 @@ div.social-media-icons img {
 
 .cardarea {
     background-color: var(--a-quarter-black);
+    padding: 16px;
 }
 
 .cardarea h2, .cardarea h3 {
     background-color: var(--none);
     box-shadow: none;
     color: var(--mahogany);
+    margin-top: 16px;
+    margin-bottom: 8px;
+    padding: 0;
 }
 
 div.cards {
     display: flex;
     flex-wrap: wrap;
+    column-gap: 12px;
     justify-content: center;
     margin: auto;
     max-width: 1920px;
@@ -276,7 +288,6 @@ div.cards div.wrapper {
     flex-shrink: 0;
     height: 420px;
     width: 280px;
-    margin: 16px;
     perspective: 300px;
     perspective-origin: 50% 50%;
 }
@@ -290,7 +301,7 @@ div.cards div.card {
     height: 100%;
     
     overflow: hidden;
-    transform: rotateX(6deg) scale(0.86) translate3d(0, -16px, 0);
+    transform: rotateX(8deg) scale(0.95) translate3d(0, -16px, 0);
 
     border-color: white;
     border-style: solid;
@@ -302,8 +313,14 @@ div.cards div.card {
 
     backface-visibility: hidden;
 }
+div.cards div.wrapper:nth-of-type(2n) div.card {
+    transform: rotateX(8deg) scale(0.9) translate3d(0, -24px, 0);
+}
 div.cards div.card:hover {
     filter: saturate(100%);
+    transform: rotateX(1deg) translate3d(0, 0, 0);
+}
+div.cards div.wrapper:nth-of-type(2n) div.card:hover {
     transform: rotateX(1deg) translate3d(0, 0, 0);
 }
 
