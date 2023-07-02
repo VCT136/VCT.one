@@ -61,17 +61,16 @@ button:hover {
 
 h1, h2, h3 {
     background-color: white;
+    box-sizing: border-box;
     font-weight: 600;
     margin: auto;
     padding: 1vh;
     position: relative;
     text-align: center;
-    max-width: 1920px;
 }
 
 h1 {
     background-color: var(--vct-red);
-    box-sizing: border-box;
     color: white;
     font-size: 22pt;
     letter-spacing: -1.36px;
@@ -260,8 +259,7 @@ div.social-media-icons img {
 .cardarea h2, .cardarea h3 {
     background-color: var(--none);
     box-shadow: none;
-    color: white;
-    text-shadow: 1px 3px 6px var(--mahogany);
+    color: var(--mahogany);
 }
 
 div.cards {
