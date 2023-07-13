@@ -297,7 +297,6 @@ div.cards div.card {
     background-position: center;
     background-size: cover;
     box-sizing: border-box;
-    filter: saturate(86%);
     height: 100%;
     
     overflow: hidden;
@@ -308,7 +307,7 @@ div.cards div.card {
     border-radius: 32px;
     border-width: 8px;
 
-    transition-property: filter, transform;
+    transition-property: transform;
     transition-duration: 0.3s;
 
     backface-visibility: hidden;
@@ -317,7 +316,6 @@ div.cards div.wrapper:nth-of-type(2n) div.card {
     transform: rotateX(8deg) scale(0.9) translate3d(0, -24px, 0);
 }
 div.cards div.card:hover {
-    filter: saturate(100%);
     transform: rotateX(1deg) translate3d(0, 0, 0);
 }
 div.cards div.wrapper:nth-of-type(2n) div.card:hover {
