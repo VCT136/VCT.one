@@ -464,6 +464,7 @@ div.skillflex figure div {
     white-space: nowrap;
 }
 div.skillflex figure img {
+    background-color: white;
     border-radius: 50%;
     height: 5vh;
     max-height: 128px;
