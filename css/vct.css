@@ -402,6 +402,13 @@ div.cards div.card button {
     margin-top: 24px;
 }
 
+.infoblock img {
+    display: block;
+    margin: 8px auto 8px auto;
+    max-height: 40vh;
+    max-width: 100%;
+}
+
 /* CV grid */
 
 div.cvgrid {
