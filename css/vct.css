@@ -437,6 +437,7 @@ div.cvgrid img {
     height: 10vh;
     max-height: 256px;
     min-height: 64px;
+    max-width: none;
 
     transition-property: box-shadow;
     transition-duration: 0.3s;
@@ -476,6 +477,7 @@ div.skillflex figure img {
     height: 5vh;
     max-height: 128px;
     min-height: 40px;
+    max-width: none;
     z-index: 1;
 }
 
