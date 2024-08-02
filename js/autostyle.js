@@ -42,7 +42,7 @@ function setup(callback = function(){}) {
 
                 // enable Flickity plugin for slideshows
                 $("div.slideshow").flickity({
-                    autoPlay: 6000,
+                    autoPlay: false,
                     cellAlign: "left",
                     contain: true,
                     imagesLoaded: true,
