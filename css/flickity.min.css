@@ -13,16 +13,16 @@ https://flickity.metafizzy.co
     position:absolute;
     background: var(--vct-oldark-red);
     border: none;
-    box-shadow: 0 0 8px 0 white;
+    box-shadow: 0 0 8px 0 #ffffff80;
     color:white;
     transition-property:box-shadow;
-    transition-duration: 1s;
+    transition-duration: 0.3s;
 }
 .flickity-button:hover {
-    box-shadow: 0 0 8px 0 var(--vct-highlight), 0 0 20px var(--vct-red-half) inset;
+    box-shadow: 0 0 8px 0 #ffffff80, 0 0 20px var(--vct-highlight-half) inset;
     cursor:pointer
 }
-.flickity-button:focus{outline:0;box-shadow:0 0 0 5px #19f}.flickity-button:active{opacity:.6}.flickity-button:disabled{opacity:.3;cursor:auto;pointer-events:none}.flickity-button-icon{fill:currentColor}
+.flickity-button:disabled{opacity:.3;cursor:auto;pointer-events:none}.flickity-button-icon{fill:currentColor}
 .flickity-prev-next-button {
     top:50%;
     width:48px;

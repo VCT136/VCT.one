@@ -5,8 +5,9 @@
     --vct-red: #C00136;
     --vct-red-half: #C0013680;
     --vct-red-0f: #C001360F;
-    --vct-link: #3FD3C0;
-    --vct-highlight: #EA86A2;
+    --vct-link: #ffe066;
+    --vct-highlight: #ffeca1;
+    --vct-highlight-half: #ffeca180;
     --vct-oldark-grey-d7: #d7d7d7;
     --vct-oldark-red: #0C0003;
     --vct-oldark-red-translucent: #0C0003ce;
@@ -67,12 +68,12 @@ button {
     text-decoration: none;
 
     transition-property: border-color, box-shadow, color;
-    transition-duration: 0.3s, 1s, 0.3s;
+    transition-duration: 0.1s, 0.4s, 0.1s;
 }
 button:hover {
     border-color: var(--vct-highlight);
-    box-shadow: 0 0 20px 0 var(--vct-red-half) inset;
-    color: white;
+    box-shadow: 0 0 20px 0 var(--vct-highlight-half) inset;
+    color: var(--vct-highlight);
 }
 
 h1, h2, h3 {
@@ -114,10 +115,6 @@ li {
 
 .smalltext {
     font-size: 12pt;
-}
-
-div.slideshow figure div {
-    border-radius: 16px;
 }
 
 /* gradients */
@@ -527,11 +524,12 @@ div.slideshow {
 div.slideshow figure div {
     background-color: var(--vct-oldark-red-translucent);
     backdrop-filter: blur(4px);
+    border-radius: 16px;
     color: white;
     max-height: 75%;
     overflow-x: hidden;
     overflow-y: scroll;
-    padding: 16px;
+    padding: 24px;
     position: absolute;
     right: 64px;
     top: 50%;
