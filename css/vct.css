@@ -5,6 +5,7 @@
     --vct-red: #C00136;
     --vct-red-half: #C0013680;
     --vct-red-0f: #C001360F;
+    --vct-bright-pink: #F6D6D6;
     --vct-link: #ffe066;
     --vct-highlight: #ffeca1;
     --vct-highlight-half: #ffeca180;
@@ -205,7 +206,7 @@ header nav ul a {
 
 header nav ul li {
     align-items: center;
-    color: white;
+    color: var(--vct-bright-pink);
     gap: 1vh;
     height: 100%;
     padding: 0 2vh 0 2vh;
