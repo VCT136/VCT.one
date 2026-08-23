@@ -100,6 +100,9 @@ h1 {
 h1 b {
     font-weight: 500;
 }
+h1 small {
+    font-size: 18pt;
+}
 
 h2 {
     font-size: 22pt;
@@ -123,6 +126,10 @@ li {
 
 @media screen and (max-width: 420px) {
     :root {
+        font-size: 12pt;
+    }
+
+    h1 small {
         font-size: 12pt;
     }
 
