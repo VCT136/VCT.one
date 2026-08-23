@@ -1,4 +1,4 @@
-/* maven pro font */
+/* Google fonts */
 @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Maven+Pro:wght@400;460;500;600;700&display=swap');
 
 :root {
@@ -119,6 +119,22 @@ li {
     font-size: 12pt;
 }
 
+/* mobile font size changes */
+
+@media screen and (max-width: 420px) {
+    :root {
+        font-size: 12pt;
+    }
+
+    h2 {
+        font-size: 16pt;
+    }
+
+    h3 {
+        font-size: 14pt;
+    }
+}
+
 /* gradients */
 
 .bottom-gradient {
@@ -219,6 +235,13 @@ header nav ul li {
 header nav ul a li:hover {
     color: var(--vct-highlight);
     transform: scale(1.1);
+}
+
+@media screen and (max-width: 480px) {
+    header nav ul li {
+        padding: 0 6px 0 6px;
+        font-size: 14pt;
+    }
 }
 
 /* footer */
