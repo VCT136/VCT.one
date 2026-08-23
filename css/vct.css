@@ -358,7 +358,7 @@ div.card {
     overflow: hidden;
     transform: rotateX(8deg) scale(0.95) translate3d(0, -16px, 0);
 
-    border-color: var(--grey-36);
+    border-color: var(--mahogany);
     border-style: solid;
     border-radius: 32px;
     border-width: 4px;
