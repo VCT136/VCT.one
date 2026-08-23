@@ -288,16 +288,16 @@ div.social-media-icons img:hover {
 
 .bottom-left, .bottom-right {
     box-sizing: border-box;
-    height: 96px;
+    height: 192px;
     object-fit: contain;
     position: absolute;
     bottom: 0;
 
     transition-property: bottom;
-    transition-duration: 0.3s;
+    transition-duration: 0.6s;
 }
 .bottom-left:hover, .bottom-right:hover {
-    bottom: -48px;
+    bottom: -128px;
 }
 .bottom-left {
     left: 0;
@@ -306,7 +306,8 @@ div.social-media-icons img:hover {
     right: 0;
 }
 
-@media screen and (max-width: 420px) {
+
+@media screen and (max-width: 1100px) {
     .bottom-left, .bottom-right {
         display: none;
     }
